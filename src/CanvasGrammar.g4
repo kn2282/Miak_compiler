@@ -4,7 +4,7 @@ options {}
 // lexer only
 @actionName {...}
 
-program: instruction_chain;
+program: instruction_chain EOF;
 
 instruction  :
      loop
@@ -44,7 +44,7 @@ AritmeticOperator: '+' | '-' | '*' | '/';
 
 ComprehensionOperator: '==' | '<' | '<=' | '>' | '>=' | '~';
 
- condition  : IF  boolean ':' NEW_LINE
+ condition  : IF  bool ':' NEW_LINE
  instruction_chain 
 ('!'
  instruction_chain )?
@@ -54,7 +54,7 @@ function  : DEF  Name
  instruction_chain 
 END DEF ;
 
-loop : WHILE boolean NEW_LINE
+loop : WHILE bool NEW_LINE
  instruction_chain
 END ;
 
@@ -66,13 +66,13 @@ color  :
 
 expression :   variable | '(' expression ')' | (variable AritmeticOperator expression);
 
-boolean :
-    boolean_src
-    | (boolean_src AND boolean)
-    | (boolean_src OR boolean)
+bool :
+    bool_src
+    | (bool_src AND bool)
+    | (bool_src OR bool)
 	;
 
-boolean_src :
+bool_src :
     ((expression ComprehensionOperator expression)
     | TRUE
     | FALSE) ws
@@ -88,9 +88,9 @@ figure :
 
  arithmetic_instruction  :  Variable_ref AssignOperator expression ;
 
-Number  :  ('0'..'9') | (('1'..'9')('0'..'9')+) ;
-
 Hex  : (('0'..'9') | ('A'..'F')) ;
+
+Number  :  ('0'..'9') | (('1'..'9')('0'..'9')+) ;
 
 Variable_ref  :  (('a'..'z') | ('A'..'Z') | '_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
 
