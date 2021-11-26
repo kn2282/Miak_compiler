@@ -1,5 +1,5 @@
-// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/javaprocessor/canvas-compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
-package CanvasGrammar;
+// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/canvas-interpreter/src\CanvasGrammar.g4 by ANTLR 4.9.2
+package Interpreter;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**

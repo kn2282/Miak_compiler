@@ -16,6 +16,22 @@ instruction  :
 
 instruction_chain  :  (instruction NEW_LINE)+ ;
 
+fragment
+NonZeroDigit : [1-9];
+
+Hex :   [0-9a-fA-F];
+
+fragment
+Digit   : [0-9];
+
+Integer  :  NonZeroDigit Digit* ;
+
+VariableRef  :  (('a'..'z') |'_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
+
+
+
+variable  :  (Integer | VariableRef) ws ;
+
 ws: SPACE*;
 SPACE: (' ');
 NEW_LINE: '\n';
@@ -38,8 +54,6 @@ RGB: 'RGB'SPACE+;
 DRAW:'DRAW'SPACE*;
 AssignOperator: '='SPACE*;
 
-
-
 AritmeticOperator: '+' | '-' | '*' | '/';
 
 ComprehensionOperator: '==' | '<' | '<=' | '>' | '>=' | '~';
@@ -59,12 +73,12 @@ loop : WHILE bool NEW_LINE
 END ;
 
 color  :
-    Color_name
+    ColorName
 	|(RGB '(' expression  ',' expression  ',' expression ')')
 	|('#' Hex  Hex  Hex  Hex  Hex  Hex)
 	;
 
-expression :   variable | '(' expression ')' | (variable AritmeticOperator expression);
+expression :   variable | '(' expression ')' | (variable AritmeticOperator expression) | Integer;
 
 bool :
     bool_src
@@ -86,20 +100,10 @@ figure :
 
  draw_instruction  : DRAW  figure SPACE+  color ;
 
- arithmetic_instruction  :  Variable_ref AssignOperator expression ;
+ arithmetic_instruction  :  VariableRef AssignOperator expression ;
 
-Hex  : (('0'..'9') | ('A'..'F')) ;
+ColorName: 'RED' | 'BLUE' | 'YELLOW' | 'GREEN' | 'WHITE' | 'BLACK';
 
-Number  :  ('0'..'9') | (('1'..'9')('0'..'9')+) ;
-
-Variable_ref  :  (('a'..'z') | ('A'..'Z') | '_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
-
-
-
-variable  :  (Number | Variable_ref) ws ;
-
-Color_name: 'RED' | 'BLUE' | 'YELLOW' | 'GREEN' | 'WHITE' | 'BLACK';
-
-Name : Variable_ref;
+Name : VariableRef;
 
 
