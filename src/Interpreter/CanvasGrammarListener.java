@@ -38,6 +38,16 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitInstructionChain(CanvasGrammarParser.InstructionChainContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableRef(CanvasGrammarParser.VariableRefContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableRef(CanvasGrammarParser.VariableRefContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#variable}.
 	 * @param ctx the parse tree
 	 */
@@ -134,6 +144,52 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitExpression(CanvasGrammarParser.ExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code VariableExpression}
+	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableExpression(CanvasGrammarParser.VariableExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code VariableExpression}
+	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableExpression(CanvasGrammarParser.VariableExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code BracketExpression}
+	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterBracketExpression(CanvasGrammarParser.BracketExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code BracketExpression}
+	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitBracketExpression(CanvasGrammarParser.BracketExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ConstantExpression}
+	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstantExpression(CanvasGrammarParser.ConstantExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ConstantExpression}
+	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstantExpression(CanvasGrammarParser.ConstantExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#expressionSuffix}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressionSuffix(CanvasGrammarParser.ExpressionSuffixContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#expressionSuffix}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressionSuffix(CanvasGrammarParser.ExpressionSuffixContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#bool}.
 	 * @param ctx the parse tree
 	 */
@@ -200,13 +256,13 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitDrawInstruction(CanvasGrammarParser.DrawInstructionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#arithmeticInstruction}.
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#variableOperation}.
 	 * @param ctx the parse tree
 	 */
-	void enterArithmeticInstruction(CanvasGrammarParser.ArithmeticInstructionContext ctx);
+	void enterVariableOperation(CanvasGrammarParser.VariableOperationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#arithmeticInstruction}.
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#variableOperation}.
 	 * @param ctx the parse tree
 	 */
-	void exitArithmeticInstruction(CanvasGrammarParser.ArithmeticInstructionContext ctx);
+	void exitVariableOperation(CanvasGrammarParser.VariableOperationContext ctx);
 }

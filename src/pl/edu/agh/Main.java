@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class Main {
     public static void main(String[] args) {
-        CanvasGrammarLexer lexer = new CanvasGrammarLexer(CharStreams.fromString("DRAW RECTANGLE(10,10,10,1) RED\n"));
+        CanvasGrammarLexer lexer = new CanvasGrammarLexer(CharStreams.fromString("var=19\nDRAW RECTANGLE(10+10,10*10,var,var-10) RED\n"));
         CanvasGrammarParser parser = new CanvasGrammarParser(new CommonTokenStream(lexer));
         CanvasMainListener listener = new CanvasMainListener(parser);
         ParseTreeWalker walker = new ParseTreeWalker();

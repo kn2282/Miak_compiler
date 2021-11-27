@@ -29,6 +29,12 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInstructionChain(CanvasGrammarParser.InstructionChainContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariableRef(CanvasGrammarParser.VariableRefContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#variable}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -86,6 +92,33 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpression(CanvasGrammarParser.ExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code VariableExpression}
+	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariableExpression(CanvasGrammarParser.VariableExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code BracketExpression}
+	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBracketExpression(CanvasGrammarParser.BracketExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ConstantExpression}
+	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstantExpression(CanvasGrammarParser.ConstantExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#expressionSuffix}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressionSuffix(CanvasGrammarParser.ExpressionSuffixContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#bool}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -125,9 +158,9 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDrawInstruction(CanvasGrammarParser.DrawInstructionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#arithmeticInstruction}.
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#variableOperation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitArithmeticInstruction(CanvasGrammarParser.ArithmeticInstructionContext ctx);
+	T visitVariableOperation(CanvasGrammarParser.VariableOperationContext ctx);
 }

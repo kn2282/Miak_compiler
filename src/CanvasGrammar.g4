@@ -11,7 +11,7 @@ instruction  :
 	| function
 	| condition
 	| drawInstruction
-	| arithmeticInstruction
+	| variableOperation
 	;
 
 instructionChain  :  (instruction NEW_LINE)+ ;
@@ -35,8 +35,10 @@ HexColor : HexPrefix HexDigit  HexDigit  HexDigit  HexDigit  HexDigit  HexDigit;
 fragment
 Integer  :  NonZeroDigit Digit* ;
 
-fragment
-VariableRef  :  (('a'..'z') |'_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
+//fragment
+variableRef  : VariableName;
+
+ VariableName: (('a'..'z') |'_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
 
 
 
@@ -66,9 +68,9 @@ WHILE: 'WHILE'SPACE+;
 DEF: 'DEF'SPACE+;
 RGB: ('RGB'|'rgb');
 DRAW:'DRAW'SPACE*;
-AssignOperator: '='SPACE*;
+AssignOperator: '=';
 
-AritmeticOperator: '+' | '-' | '*' | '/';
+ArithmeticOperator: '+' | '-' | '*' | '/';
 
 ComprehensionOperator: '==' | '<' | '<=' | '>' | '>=' | '~';
 
@@ -92,7 +94,20 @@ color  :
 	|HexColor #ColorHex
 	;
 
-expression :   variable | '(' expression ')' | (variable AritmeticOperator expression) | Constant;
+expression :
+ | (halfExpression expressionSuffix)
+ ;
+
+halfExpression:
+    variableRef #VariableExpression
+ | '(' expression ')' #BracketExpression
+ | Constant #ConstantExpression
+ ;
+
+expressionSuffix:
+ArithmeticOperator expression
+|
+;
 
 bool :
     boolSrc
@@ -114,11 +129,8 @@ figure :
 
  drawInstruction  : DRAW  figure SPACE+  color ;
 
- arithmeticInstruction  :  VariableRef AssignOperator expression ;
+ variableOperation  :  variableRef AssignOperator expression ;
 
 ColorName: 'RED' | 'BLUE' | 'YELLOW' | 'GREEN' | 'WHITE' | 'BLACK';
-
-fragment
-Name : VariableRef;
 
 

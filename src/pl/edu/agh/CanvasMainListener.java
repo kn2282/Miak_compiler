@@ -9,9 +9,13 @@ import java.util.stream.IntStream;
 
 public class CanvasMainListener extends CanvasGrammarBaseListener {
     CanvasGrammarParser parser;
+    private Evaluator evaluator;
+    private Memory memory;
 
     public CanvasMainListener(CanvasGrammarParser parser) {
         this.parser = parser;
+        this.memory = new Memory();
+        this.evaluator = new Evaluator(memory);
     }
 
     @Override
@@ -29,8 +33,8 @@ public class CanvasMainListener extends CanvasGrammarBaseListener {
                 ArrayList<String> strings = new ArrayList<>();
                 instruction+="fillRect(";
                 for (int i = 0; i < 4; i++) {
-                    String s = rect.expression(i).getText();
-                    instruction += s;//Integer.parseInt(s);
+                    //String s = rect.expression(i).getText();
+                    instruction += Integer.toString(evaluator.eval(rect.expression(i)));//s;//Integer.parseInt(s);
                     if(i==3)
                     instruction+=")";
                     else instruction+=",";
@@ -74,4 +78,9 @@ public class CanvasMainListener extends CanvasGrammarBaseListener {
         System.out.println("enter draw");
 
     }
+    @Override public void exitVariableOperation(CanvasGrammarParser.VariableOperationContext ctx) {
+        ValueContainer cont = new ValueContainer(evaluator.eval(ctx.expression()));
+        memory.add(ctx.variableRef().getText(),cont);
+    }
+
 }
