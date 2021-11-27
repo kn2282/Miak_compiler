@@ -4,33 +4,46 @@ options {}
 // lexer only
 @actionName {...}
 
-program: instruction_chain EOF;
+program: instructionChain EOF;
 
 instruction  :
      loop
 	| function
 	| condition
-	| draw_instruction
-	| arithmetic_instruction
+	| drawInstruction
+	| arithmeticInstruction
 	;
 
-instruction_chain  :  (instruction NEW_LINE)+ ;
+instructionChain  :  (instruction NEW_LINE)+ ;
 
 fragment
 NonZeroDigit : [1-9];
 
-Hex :   [0-9a-fA-F];
+fragment
+HexDigit :   [0-9a-fA-F];
+
+fragment
+HexPrefix : '#'
+|'0'[xX];
 
 fragment
 Digit   : [0-9];
 
+
+HexColor : HexPrefix HexDigit  HexDigit  HexDigit  HexDigit  HexDigit  HexDigit;
+
+fragment
 Integer  :  NonZeroDigit Digit* ;
 
+fragment
 VariableRef  :  (('a'..'z') |'_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
 
 
 
-variable  :  (Integer | VariableRef) ws ;
+variable  :  ( VariableRef) ws ;
+
+
+Constant : Integer;
 
 ws: SPACE*;
 SPACE: (' ');
@@ -46,11 +59,12 @@ CIRCLE: 'CIRCLE'SPACE*;
 LINE: 'LINE'SPACE*;
 BEGIN: 'BEGIN'SPACE+;
 END: 'END'SPACE*;
-IF: ('IF' | 'if')SPACE+;
+IF: ('IF' | 'if' | '?')SPACE+;
+ELSE : '!'SPACE+;
 THEN: 'THEN'SPACE+;
 WHILE: 'WHILE'SPACE+;
 DEF: 'DEF'SPACE+;
-RGB: 'RGB'SPACE+;
+RGB: ('RGB'|'rgb');
 DRAW:'DRAW'SPACE*;
 AssignOperator: '='SPACE*;
 
@@ -59,51 +73,52 @@ AritmeticOperator: '+' | '-' | '*' | '/';
 ComprehensionOperator: '==' | '<' | '<=' | '>' | '>=' | '~';
 
  condition  : IF  bool ':' NEW_LINE
- instruction_chain 
-('!'
- instruction_chain )?
+ instructionChain
+(ELSE
+ instructionChain )?
 END ;
 
 function  : DEF  Name
- instruction_chain 
+ instructionChain
 END DEF ;
 
 loop : WHILE bool NEW_LINE
- instruction_chain
+ instructionChain
 END ;
 
 color  :
-    ColorName
-	|(RGB '(' expression  ',' expression  ',' expression ')')
-	|('#' Hex  Hex  Hex  Hex  Hex  Hex)
+    ColorName   #ColorName
+	|RGB '(' expression  ',' expression  ',' expression ')'   #ColorRGB
+	|HexColor #ColorHex
 	;
 
-expression :   variable | '(' expression ')' | (variable AritmeticOperator expression) | Integer;
+expression :   variable | '(' expression ')' | (variable AritmeticOperator expression) | Constant;
 
 bool :
-    bool_src
-    | (bool_src AND bool)
-    | (bool_src OR bool)
+    boolSrc
+    | (boolSrc AND bool)
+    | (boolSrc OR bool)
 	;
 
-bool_src :
+boolSrc :
     ((expression ComprehensionOperator expression)
     | TRUE
     | FALSE) ws
     ;
 
 figure :
-    (RECTANGLE '(' expression ',' expression ','  expression ',' expression ')')
-	| (CIRCLE '(' expression ',' expression ',' expression ')')
-	| (LINE '(' expression  ',' expression  ',' expression  ',' expression ')')
+    (RECTANGLE '(' expression ',' expression ','  expression ',' expression ')')    #Rectangle
+	| (CIRCLE '(' expression ',' expression ',' expression ')') #Circle
+	| (LINE '(' expression  ',' expression  ',' expression  ',' expression ')') #Line
 	;
 
- draw_instruction  : DRAW  figure SPACE+  color ;
+ drawInstruction  : DRAW  figure SPACE+  color ;
 
- arithmetic_instruction  :  VariableRef AssignOperator expression ;
+ arithmeticInstruction  :  VariableRef AssignOperator expression ;
 
 ColorName: 'RED' | 'BLUE' | 'YELLOW' | 'GREEN' | 'WHITE' | 'BLACK';
 
+fragment
 Name : VariableRef;
 
 

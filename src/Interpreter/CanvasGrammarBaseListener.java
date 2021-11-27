@@ -1,4 +1,4 @@
-// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/canvas-interpreter/src\CanvasGrammar.g4 by ANTLR 4.9.2
+// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
 package Interpreter;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -40,13 +40,25 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstruction_chain(CanvasGrammarParser.Instruction_chainContext ctx) { }
+	@Override public void enterInstructionChain(CanvasGrammarParser.InstructionChainContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstruction_chain(CanvasGrammarParser.Instruction_chainContext ctx) { }
+	@Override public void exitInstructionChain(CanvasGrammarParser.InstructionChainContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVariable(CanvasGrammarParser.VariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariable(CanvasGrammarParser.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -100,13 +112,37 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterColor(CanvasGrammarParser.ColorContext ctx) { }
+	@Override public void enterColorName(CanvasGrammarParser.ColorNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitColor(CanvasGrammarParser.ColorContext ctx) { }
+	@Override public void exitColorName(CanvasGrammarParser.ColorNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterColorRGB(CanvasGrammarParser.ColorRGBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitColorRGB(CanvasGrammarParser.ColorRGBContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterColorHex(CanvasGrammarParser.ColorHexContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitColorHex(CanvasGrammarParser.ColorHexContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -136,61 +172,73 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBool_src(CanvasGrammarParser.Bool_srcContext ctx) { }
+	@Override public void enterBoolSrc(CanvasGrammarParser.BoolSrcContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBool_src(CanvasGrammarParser.Bool_srcContext ctx) { }
+	@Override public void exitBoolSrc(CanvasGrammarParser.BoolSrcContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFigure(CanvasGrammarParser.FigureContext ctx) { }
+	@Override public void enterRectangle(CanvasGrammarParser.RectangleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFigure(CanvasGrammarParser.FigureContext ctx) { }
+	@Override public void exitRectangle(CanvasGrammarParser.RectangleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDraw_instruction(CanvasGrammarParser.Draw_instructionContext ctx) { }
+	@Override public void enterCircle(CanvasGrammarParser.CircleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDraw_instruction(CanvasGrammarParser.Draw_instructionContext ctx) { }
+	@Override public void exitCircle(CanvasGrammarParser.CircleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArithmetic_instruction(CanvasGrammarParser.Arithmetic_instructionContext ctx) { }
+	@Override public void enterLine(CanvasGrammarParser.LineContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArithmetic_instruction(CanvasGrammarParser.Arithmetic_instructionContext ctx) { }
+	@Override public void exitLine(CanvasGrammarParser.LineContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariable(CanvasGrammarParser.VariableContext ctx) { }
+	@Override public void enterDrawInstruction(CanvasGrammarParser.DrawInstructionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariable(CanvasGrammarParser.VariableContext ctx) { }
+	@Override public void exitDrawInstruction(CanvasGrammarParser.DrawInstructionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArithmeticInstruction(CanvasGrammarParser.ArithmeticInstructionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArithmeticInstruction(CanvasGrammarParser.ArithmeticInstructionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

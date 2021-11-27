@@ -1,4 +1,4 @@
-// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/canvas-interpreter/src\CanvasGrammar.g4 by ANTLR 4.9.2
+// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
 package Interpreter;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -23,11 +23,17 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInstruction(CanvasGrammarParser.InstructionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#instruction_chain}.
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#instructionChain}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInstruction_chain(CanvasGrammarParser.Instruction_chainContext ctx);
+	T visitInstructionChain(CanvasGrammarParser.InstructionChainContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#variable}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariable(CanvasGrammarParser.VariableContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#ws}.
 	 * @param ctx the parse tree
@@ -53,11 +59,26 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLoop(CanvasGrammarParser.LoopContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#color}.
+	 * Visit a parse tree produced by the {@code ColorName}
+	 * labeled alternative in {@link CanvasGrammarParser#color}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitColor(CanvasGrammarParser.ColorContext ctx);
+	T visitColorName(CanvasGrammarParser.ColorNameContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ColorRGB}
+	 * labeled alternative in {@link CanvasGrammarParser#color}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitColorRGB(CanvasGrammarParser.ColorRGBContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ColorHex}
+	 * labeled alternative in {@link CanvasGrammarParser#color}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitColorHex(CanvasGrammarParser.ColorHexContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#expression}.
 	 * @param ctx the parse tree
@@ -71,33 +92,42 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBool(CanvasGrammarParser.BoolContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#bool_src}.
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#boolSrc}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBool_src(CanvasGrammarParser.Bool_srcContext ctx);
+	T visitBoolSrc(CanvasGrammarParser.BoolSrcContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#figure}.
+	 * Visit a parse tree produced by the {@code Rectangle}
+	 * labeled alternative in {@link CanvasGrammarParser#figure}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFigure(CanvasGrammarParser.FigureContext ctx);
+	T visitRectangle(CanvasGrammarParser.RectangleContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#draw_instruction}.
+	 * Visit a parse tree produced by the {@code Circle}
+	 * labeled alternative in {@link CanvasGrammarParser#figure}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDraw_instruction(CanvasGrammarParser.Draw_instructionContext ctx);
+	T visitCircle(CanvasGrammarParser.CircleContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#arithmetic_instruction}.
+	 * Visit a parse tree produced by the {@code Line}
+	 * labeled alternative in {@link CanvasGrammarParser#figure}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitArithmetic_instruction(CanvasGrammarParser.Arithmetic_instructionContext ctx);
+	T visitLine(CanvasGrammarParser.LineContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#variable}.
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#drawInstruction}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVariable(CanvasGrammarParser.VariableContext ctx);
+	T visitDrawInstruction(CanvasGrammarParser.DrawInstructionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#arithmeticInstruction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArithmeticInstruction(CanvasGrammarParser.ArithmeticInstructionContext ctx);
 }

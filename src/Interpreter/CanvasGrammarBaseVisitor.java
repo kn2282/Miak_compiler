@@ -1,4 +1,4 @@
-// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/canvas-interpreter/src\CanvasGrammar.g4 by ANTLR 4.9.2
+// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
 package Interpreter;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -31,7 +31,14 @@ public class CanvasGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> imp
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInstruction_chain(CanvasGrammarParser.Instruction_chainContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInstructionChain(CanvasGrammarParser.InstructionChainContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitVariable(CanvasGrammarParser.VariableContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -66,7 +73,21 @@ public class CanvasGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> imp
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitColor(CanvasGrammarParser.ColorContext ctx) { return visitChildren(ctx); }
+	@Override public T visitColorName(CanvasGrammarParser.ColorNameContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitColorRGB(CanvasGrammarParser.ColorRGBContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitColorHex(CanvasGrammarParser.ColorHexContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -87,33 +108,40 @@ public class CanvasGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> imp
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBool_src(CanvasGrammarParser.Bool_srcContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBoolSrc(CanvasGrammarParser.BoolSrcContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFigure(CanvasGrammarParser.FigureContext ctx) { return visitChildren(ctx); }
+	@Override public T visitRectangle(CanvasGrammarParser.RectangleContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDraw_instruction(CanvasGrammarParser.Draw_instructionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCircle(CanvasGrammarParser.CircleContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitArithmetic_instruction(CanvasGrammarParser.Arithmetic_instructionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLine(CanvasGrammarParser.LineContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVariable(CanvasGrammarParser.VariableContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDrawInstruction(CanvasGrammarParser.DrawInstructionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitArithmeticInstruction(CanvasGrammarParser.ArithmeticInstructionContext ctx) { return visitChildren(ctx); }
 }

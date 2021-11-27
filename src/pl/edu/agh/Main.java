@@ -3,13 +3,18 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import Interpreter.CanvasGrammarParser;
 import Interpreter.CanvasGrammarLexer;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 
 public class Main {
     public static void main(String[] args) {
-        CanvasGrammarLexer lexer = new CanvasGrammarLexer(CharStreams.fromString("DRAW RECTANGLE(10,10,10,1) #FF00CE\n"));
+        CanvasGrammarLexer lexer = new CanvasGrammarLexer(CharStreams.fromString("DRAW RECTANGLE(10,10,10,1) RED\n"));
         CanvasGrammarParser parser = new CanvasGrammarParser(new CommonTokenStream(lexer));
-
-        parser.program();
+        CanvasMainListener listener = new CanvasMainListener(parser);
+        ParseTreeWalker walker = new ParseTreeWalker();
+        ParseTree tree = parser.program();
+        walker.walk(listener, tree);
+        //parser.program();
     }
 }

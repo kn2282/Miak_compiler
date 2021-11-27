@@ -1,4 +1,4 @@
-// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/canvas-interpreter/src\CanvasGrammar.g4 by ANTLR 4.9.2
+// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
 package Interpreter;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -28,15 +28,25 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitInstruction(CanvasGrammarParser.InstructionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#instruction_chain}.
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#instructionChain}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstruction_chain(CanvasGrammarParser.Instruction_chainContext ctx);
+	void enterInstructionChain(CanvasGrammarParser.InstructionChainContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#instruction_chain}.
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#instructionChain}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstruction_chain(CanvasGrammarParser.Instruction_chainContext ctx);
+	void exitInstructionChain(CanvasGrammarParser.InstructionChainContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#variable}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariable(CanvasGrammarParser.VariableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#variable}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariable(CanvasGrammarParser.VariableContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#ws}.
 	 * @param ctx the parse tree
@@ -78,15 +88,41 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitLoop(CanvasGrammarParser.LoopContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#color}.
+	 * Enter a parse tree produced by the {@code ColorName}
+	 * labeled alternative in {@link CanvasGrammarParser#color}.
 	 * @param ctx the parse tree
 	 */
-	void enterColor(CanvasGrammarParser.ColorContext ctx);
+	void enterColorName(CanvasGrammarParser.ColorNameContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#color}.
+	 * Exit a parse tree produced by the {@code ColorName}
+	 * labeled alternative in {@link CanvasGrammarParser#color}.
 	 * @param ctx the parse tree
 	 */
-	void exitColor(CanvasGrammarParser.ColorContext ctx);
+	void exitColorName(CanvasGrammarParser.ColorNameContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ColorRGB}
+	 * labeled alternative in {@link CanvasGrammarParser#color}.
+	 * @param ctx the parse tree
+	 */
+	void enterColorRGB(CanvasGrammarParser.ColorRGBContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ColorRGB}
+	 * labeled alternative in {@link CanvasGrammarParser#color}.
+	 * @param ctx the parse tree
+	 */
+	void exitColorRGB(CanvasGrammarParser.ColorRGBContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ColorHex}
+	 * labeled alternative in {@link CanvasGrammarParser#color}.
+	 * @param ctx the parse tree
+	 */
+	void enterColorHex(CanvasGrammarParser.ColorHexContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ColorHex}
+	 * labeled alternative in {@link CanvasGrammarParser#color}.
+	 * @param ctx the parse tree
+	 */
+	void exitColorHex(CanvasGrammarParser.ColorHexContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#expression}.
 	 * @param ctx the parse tree
@@ -108,53 +144,69 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitBool(CanvasGrammarParser.BoolContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#bool_src}.
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#boolSrc}.
 	 * @param ctx the parse tree
 	 */
-	void enterBool_src(CanvasGrammarParser.Bool_srcContext ctx);
+	void enterBoolSrc(CanvasGrammarParser.BoolSrcContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#bool_src}.
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#boolSrc}.
 	 * @param ctx the parse tree
 	 */
-	void exitBool_src(CanvasGrammarParser.Bool_srcContext ctx);
+	void exitBoolSrc(CanvasGrammarParser.BoolSrcContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#figure}.
+	 * Enter a parse tree produced by the {@code Rectangle}
+	 * labeled alternative in {@link CanvasGrammarParser#figure}.
 	 * @param ctx the parse tree
 	 */
-	void enterFigure(CanvasGrammarParser.FigureContext ctx);
+	void enterRectangle(CanvasGrammarParser.RectangleContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#figure}.
+	 * Exit a parse tree produced by the {@code Rectangle}
+	 * labeled alternative in {@link CanvasGrammarParser#figure}.
 	 * @param ctx the parse tree
 	 */
-	void exitFigure(CanvasGrammarParser.FigureContext ctx);
+	void exitRectangle(CanvasGrammarParser.RectangleContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#draw_instruction}.
+	 * Enter a parse tree produced by the {@code Circle}
+	 * labeled alternative in {@link CanvasGrammarParser#figure}.
 	 * @param ctx the parse tree
 	 */
-	void enterDraw_instruction(CanvasGrammarParser.Draw_instructionContext ctx);
+	void enterCircle(CanvasGrammarParser.CircleContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#draw_instruction}.
+	 * Exit a parse tree produced by the {@code Circle}
+	 * labeled alternative in {@link CanvasGrammarParser#figure}.
 	 * @param ctx the parse tree
 	 */
-	void exitDraw_instruction(CanvasGrammarParser.Draw_instructionContext ctx);
+	void exitCircle(CanvasGrammarParser.CircleContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#arithmetic_instruction}.
+	 * Enter a parse tree produced by the {@code Line}
+	 * labeled alternative in {@link CanvasGrammarParser#figure}.
 	 * @param ctx the parse tree
 	 */
-	void enterArithmetic_instruction(CanvasGrammarParser.Arithmetic_instructionContext ctx);
+	void enterLine(CanvasGrammarParser.LineContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#arithmetic_instruction}.
+	 * Exit a parse tree produced by the {@code Line}
+	 * labeled alternative in {@link CanvasGrammarParser#figure}.
 	 * @param ctx the parse tree
 	 */
-	void exitArithmetic_instruction(CanvasGrammarParser.Arithmetic_instructionContext ctx);
+	void exitLine(CanvasGrammarParser.LineContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#variable}.
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#drawInstruction}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariable(CanvasGrammarParser.VariableContext ctx);
+	void enterDrawInstruction(CanvasGrammarParser.DrawInstructionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#variable}.
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#drawInstruction}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariable(CanvasGrammarParser.VariableContext ctx);
+	void exitDrawInstruction(CanvasGrammarParser.DrawInstructionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#arithmeticInstruction}.
+	 * @param ctx the parse tree
+	 */
+	void enterArithmeticInstruction(CanvasGrammarParser.ArithmeticInstructionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#arithmeticInstruction}.
+	 * @param ctx the parse tree
+	 */
+	void exitArithmeticInstruction(CanvasGrammarParser.ArithmeticInstructionContext ctx);
 }
