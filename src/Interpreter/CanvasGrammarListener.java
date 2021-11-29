@@ -38,6 +38,16 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitInstructionChain(CanvasGrammarParser.InstructionChainContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#functionName}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionName(CanvasGrammarParser.FunctionNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#functionName}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionName(CanvasGrammarParser.FunctionNameContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#variableRef}.
 	 * @param ctx the parse tree
 	 */
@@ -68,6 +78,36 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitWs(CanvasGrammarParser.WsContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCall(CanvasGrammarParser.FunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCall(CanvasGrammarParser.FunctionCallContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#functionCallArguments}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCallArguments(CanvasGrammarParser.FunctionCallArgumentsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#functionCallArguments}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCallArguments(CanvasGrammarParser.FunctionCallArgumentsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void enterArguments(CanvasGrammarParser.ArgumentsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void exitArguments(CanvasGrammarParser.ArgumentsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#condition}.
 	 * @param ctx the parse tree
 	 */
@@ -78,15 +118,15 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitCondition(CanvasGrammarParser.ConditionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#function}.
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#functionDefinition}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunction(CanvasGrammarParser.FunctionContext ctx);
+	void enterFunctionDefinition(CanvasGrammarParser.FunctionDefinitionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#function}.
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#functionDefinition}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunction(CanvasGrammarParser.FunctionContext ctx);
+	void exitFunctionDefinition(CanvasGrammarParser.FunctionDefinitionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#loop}.
 	 * @param ctx the parse tree

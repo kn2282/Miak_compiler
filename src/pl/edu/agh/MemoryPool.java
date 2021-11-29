@@ -2,10 +2,10 @@ package pl.edu.agh;
 
 import java.util.HashMap;
 
-public class Memory {
+public class MemoryPool {
     private HashMap<String, ValueContainer> memory;
 
-    public Memory() {
+    public MemoryPool() {
         this.memory = new HashMap();
     }
 

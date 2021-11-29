@@ -2,11 +2,19 @@ package pl.edu.agh;
 
 import Interpreter.CanvasGrammarParser;
 
-public class Evaluator {
-    private Memory mem;
+import java.util.LinkedList;
+import java.util.List;
 
-    public Evaluator(Memory mem) {
+public class Evaluator {
+    private MemoryPool mem;
+    private FunctionPool functionPool;
+    private CanvasMainListener listener;
+    int depth;
+    public Evaluator(MemoryPool mem,FunctionPool functionPool) {
         this.mem = mem;
+        this.functionPool = functionPool;
+        this.depth = 0;
+        this.listener= listener;
     }
 
     int halfEval(CanvasGrammarParser.HalfExpressionContext ctx) {
@@ -66,4 +74,6 @@ public class Evaluator {
     int evalVariable(CanvasGrammarParser.VariableExpressionContext ctx) {
         return mem.get(ctx.variableRef().getText()).getInt();
     }
+
+
 }

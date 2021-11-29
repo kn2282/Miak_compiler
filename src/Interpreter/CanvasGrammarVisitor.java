@@ -29,6 +29,12 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInstructionChain(CanvasGrammarParser.InstructionChainContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#functionName}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionName(CanvasGrammarParser.FunctionNameContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#variableRef}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -47,17 +53,35 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitWs(CanvasGrammarParser.WsContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#functionCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCall(CanvasGrammarParser.FunctionCallContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#functionCallArguments}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCallArguments(CanvasGrammarParser.FunctionCallArgumentsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#arguments}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArguments(CanvasGrammarParser.ArgumentsContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#condition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitCondition(CanvasGrammarParser.ConditionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#function}.
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#functionDefinition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunction(CanvasGrammarParser.FunctionContext ctx);
+	T visitFunctionDefinition(CanvasGrammarParser.FunctionDefinitionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#loop}.
 	 * @param ctx the parse tree

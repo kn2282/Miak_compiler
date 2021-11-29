@@ -52,6 +52,18 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFunctionName(CanvasGrammarParser.FunctionNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionName(CanvasGrammarParser.FunctionNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariableRef(CanvasGrammarParser.VariableRefContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -88,6 +100,42 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFunctionCall(CanvasGrammarParser.FunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionCall(CanvasGrammarParser.FunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunctionCallArguments(CanvasGrammarParser.FunctionCallArgumentsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionCallArguments(CanvasGrammarParser.FunctionCallArgumentsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArguments(CanvasGrammarParser.ArgumentsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArguments(CanvasGrammarParser.ArgumentsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCondition(CanvasGrammarParser.ConditionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -100,13 +148,13 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunction(CanvasGrammarParser.FunctionContext ctx) { }
+	@Override public void enterFunctionDefinition(CanvasGrammarParser.FunctionDefinitionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunction(CanvasGrammarParser.FunctionContext ctx) { }
+	@Override public void exitFunctionDefinition(CanvasGrammarParser.FunctionDefinitionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

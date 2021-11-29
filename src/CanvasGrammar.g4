@@ -8,13 +8,14 @@ program: instructionChain EOF;
 
 instruction  :
      loop
-	| function
+	| functionDefinition
 	| condition
 	| drawInstruction
 	| variableOperation
+	| functionCall
 	;
 
-instructionChain  :  (instruction NEW_LINE)+ ;
+instructionChain  :  instr+=instruction (ENDL instr+=instruction )* ENDL?;
 
 fragment
 NonZeroDigit : [1-9];
@@ -35,7 +36,7 @@ HexColor : HexPrefix HexDigit  HexDigit  HexDigit  HexDigit  HexDigit  HexDigit;
 fragment
 Integer  :  NonZeroDigit Digit* ;
 
-//fragment
+functionName : VariableName;
 variableRef  : VariableName;
 
  VariableName: (('a'..'z') |'_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
@@ -49,8 +50,7 @@ Constant : Integer;
 
 ws: SPACE*;
 SPACE: (' ');
-NEW_LINE: '\n';
-
+ENDL: '\n';
 
 AND: ('AND' | '&')SPACE+;
 OR: ('OR' | '|')SPACE+;
@@ -62,10 +62,10 @@ LINE: 'LINE'SPACE*;
 BEGIN: 'BEGIN'SPACE+;
 END: 'END'SPACE*;
 IF: ('IF' | 'if' | '?')SPACE+;
-ELSE : '!'SPACE+;
-THEN: 'THEN'SPACE+;
-WHILE: 'WHILE'SPACE+;
-DEF: 'DEF'SPACE+;
+ELSE : ('!'|'ELSE')SPACE+;
+THEN: 'THEN'SPACE?;
+WHILE: 'WHILE'SPACE?;
+DEF: 'DEF'SPACE?;
 RGB: ('RGB'|'rgb');
 DRAW:'DRAW'SPACE*;
 AssignOperator: '=';
@@ -74,17 +74,26 @@ ArithmeticOperator: '+' | '-' | '*' | '/';
 
 ComprehensionOperator: '==' | '<' | '<=' | '>' | '>=' | '~';
 
- condition  : IF  bool ':' NEW_LINE
+functionCall : functionName functionCallArguments;
+
+functionCallArguments:
+'(' arg+=expression (',' arg+=expression)* ')'
+;
+
+arguments:
+'(' arg+=variableRef (',' arg+=variableRef)* ')'
+;
+ condition  : IF  bool ':' ENDL
  instructionChain
 (ELSE
  instructionChain )?
 END ;
 
-function  : DEF  Name
- instructionChain
+functionDefinition  : DEF  functionName arguments ENDL
+instructionChain
 END DEF ;
 
-loop : WHILE bool NEW_LINE
+loop : WHILE bool ENDL
  instructionChain
 END ;
 

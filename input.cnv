@@ -1,0 +1,6 @@
+var=5
+DEF square(x,y)
+var=100
+DRAW RECTANGLE(x,y,var,var) RED
+END DEF
+square(var,10)
