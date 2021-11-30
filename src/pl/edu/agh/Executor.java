@@ -40,7 +40,7 @@ public class Executor {
         CanvasGrammarParser.VariableOperationContext v = ctx.variableOperation();
         if(v!=null){
             ValueContainer cont = new ValueContainer(evaluator.eval(v.expression()));
-            memory.add(v.variableRef().getText(),cont);
+            memory.set(v.variableRef().getText(),cont);
         }
         CanvasGrammarParser.DrawInstructionContext d = ctx.drawInstruction();
         if (d != null) {
@@ -70,6 +70,12 @@ public class Executor {
             System.out.println("ctx.fillsyle = "+color.getText());
             System.out.println(instruction);
         }
+        CanvasGrammarParser.BlockContext b = ctx.block();
+        if(b!=null){
+            MemoryPool lesserMem = new MemoryPool(this.memory);
+            Executor lesserExecutor = new Executor(lesserMem,this.functionPool,new Evaluator(lesserMem,functionPool));
+            lesserExecutor.executeInstructionChain(b.instructionChain());
+        }
 
-    }
+    }//todo - refractor
 }

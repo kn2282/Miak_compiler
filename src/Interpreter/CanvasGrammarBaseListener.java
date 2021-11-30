@@ -40,6 +40,18 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBlock(CanvasGrammarParser.BlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBlock(CanvasGrammarParser.BlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInstructionChain(CanvasGrammarParser.InstructionChainContext ctx) { }
 	/**
 	 * {@inheritDoc}

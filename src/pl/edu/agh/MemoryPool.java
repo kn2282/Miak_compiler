@@ -4,17 +4,27 @@ import java.util.HashMap;
 
 public class MemoryPool {
     private HashMap<String, ValueContainer> memory;
+    private MemoryPool widerScopePool;
 
-    public MemoryPool() {
+    public MemoryPool(MemoryPool widerScopePool) {
+        this.widerScopePool = widerScopePool;
         this.memory = new HashMap();
     }
 
     public ValueContainer get(String key) {
-        return memory.get(key);
+        if (memory.containsKey(key))
+            return memory.get(key);
+        else return widerScopePool.get(key);
     }
 
-    public void add(String key, ValueContainer val) {
-        memory.put(key, val);
+    public void set(String key, ValueContainer val) {
+
+        if (memory.containsKey(key)){
+            memory.replace(key, val);
+        }
+        else {
+            memory.put(key, val);
+        }
     }
 
     public void update(String key, ValueContainer val) {

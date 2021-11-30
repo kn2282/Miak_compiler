@@ -16,17 +16,18 @@ public class FunctionBlock {
         this.name = name;
         this.args = args;
         this.ctx = ctx;
-        this.memPool = new MemoryPool();
+        this.memPool = new MemoryPool(null);
         this.funcPool = funcPool;
     }
     public int run(List<ValueContainer> arguments){
         for (int i = 0; i < this.args.size(); i++) {
-            memPool.add(this.args.get(i),arguments.get(i));  //dodanie argumentów do puli pamiêci
+            memPool.set(this.args.get(i),arguments.get(i));  //dodanie argumentów do puli pamiêci
         }
 
         Evaluator evaluator= new Evaluator(memPool,funcPool);
         Executor executor = new Executor(memPool,funcPool,evaluator);   //todo - nowa instancja executor mo¿e nie byæ potrzebna
         executor.executeInstructionChain(this.ctx);
+
         return 0;
     }
 

@@ -15,7 +15,7 @@ public class CanvasMainListener extends CanvasGrammarBaseListener {
     private Executor executor;
     public CanvasMainListener(CanvasGrammarParser parser) {
         this.parser = parser;
-        this.memory = new MemoryPool();
+        this.memory = new MemoryPool(null);
         this.functions = new FunctionPool();
         this.depth = 0;
         this.evaluator = new Evaluator(memory,functions);
@@ -53,8 +53,8 @@ public class CanvasMainListener extends CanvasGrammarBaseListener {
     }
 
     @Override
-    public void exitInstructionChain(CanvasGrammarParser.InstructionChainContext ctx){
-        if(currentFunctionName==null)
-        executor.executeInstructionChain(ctx);
+    public void exitProgram(CanvasGrammarParser.ProgramContext ctx){
+        //if(currentFunctionName==null)
+        executor.executeInstructionChain(ctx.instructionChain());
     }
 }

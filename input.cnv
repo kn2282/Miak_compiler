@@ -1,6 +1,8 @@
 var=5
-DEF square(x,y)
-var=100
-DRAW RECTANGLE(x,y,var,var) RED
-END DEF
-square(var,10)
+DRAW RECTANGLE(var,var,var,var) RED
+BLOCK
+DRAW RECTANGLE(var,var,var,var) GREEN
+var=10
+DRAW RECTANGLE(var,var,var,var) BLUE
+END BLOCK
+DRAW RECTANGLE(var,var,var,var) #134151

@@ -13,7 +13,12 @@ instruction  :
 	| drawInstruction
 	| variableOperation
 	| functionCall
+	| block ENDL?
 	;
+
+block:BLOCK ENDL
+instructionChain
+END BLOCK;
 
 instructionChain  :  instr+=instruction (ENDL instr+=instruction )* ENDL?;
 
@@ -50,7 +55,7 @@ Constant : Integer;
 
 ws: SPACE*;
 SPACE: (' ');
-ENDL: '\n';
+ENDL:  '\r'? '\n';
 
 AND: ('AND' | '&')SPACE+;
 OR: ('OR' | '|')SPACE+;
@@ -68,6 +73,7 @@ WHILE: 'WHILE'SPACE?;
 DEF: 'DEF'SPACE?;
 RGB: ('RGB'|'rgb');
 DRAW:'DRAW'SPACE*;
+BLOCK: 'BLOCK';
 AssignOperator: '=';
 
 ArithmeticOperator: '+' | '-' | '*' | '/';
