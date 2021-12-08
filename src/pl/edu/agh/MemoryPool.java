@@ -11,20 +11,52 @@ public class MemoryPool {
         this.memory = new HashMap();
     }
 
-    public ValueContainer get(String key) {
-        if (memory.containsKey(key))
-            return memory.get(key);
-        else return widerScopePool.get(key);
-    }
+    public ValueContainer get(String key, int level) {
+        switch (level) {
+            case 0: //szukanie w obecnym scopie/zasiêgu
+                if (memory.containsKey(key))
+                    return memory.get(key);
+                else return widerScopePool.get(key, 0);
 
-    public void set(String key, ValueContainer val) {
+            case 1: //szukanie w zasiêgu wy¿ej
+                return widerScopePool.get(key, 0);
 
-        if (memory.containsKey(key)){
-            memory.replace(key, val);
+            case 2: //szukanie w zasiêgu globalnym
+                if (widerScopePool == null) {
+                    return memory.get(key);
+                } else {
+                    return widerScopePool.get(key, 2);
+                }
         }
-        else {
+        return null;
+    }
+    private void safeSet(String key, ValueContainer val){
+        if (memory.containsKey(key)) {
+            memory.replace(key, val);
+        } else {
             memory.put(key, val);
         }
+    }
+    public void set(String key, ValueContainer val, int level) {
+        switch (level) {
+            case 0:
+                safeSet(key,val);
+                break;
+            case 1:
+                if (widerScopePool == null)
+                    safeSet(key,val);
+                else
+                    widerScopePool.set(key, val, 0);
+                break;
+            case 2:
+                if (widerScopePool == null)
+                    safeSet(key,val);
+                else
+                    widerScopePool.set(key, val, 2);
+                break;
+        }
+
+
     }
 
     public void update(String key, ValueContainer val) {

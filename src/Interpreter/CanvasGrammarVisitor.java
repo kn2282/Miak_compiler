@@ -41,23 +41,38 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFunctionName(CanvasGrammarParser.FunctionNameContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#variableRef}.
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#variableName}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVariableRef(CanvasGrammarParser.VariableRefContext ctx);
+	T visitVariableName(CanvasGrammarParser.VariableNameContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code TopScopeVar}
+	 * labeled alternative in {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTopScopeVar(CanvasGrammarParser.TopScopeVarContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code HigherScopeVar}
+	 * labeled alternative in {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHigherScopeVar(CanvasGrammarParser.HigherScopeVarContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code SameScopeVar}
+	 * labeled alternative in {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSameScopeVar(CanvasGrammarParser.SameScopeVarContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#variable}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitVariable(CanvasGrammarParser.VariableContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#ws}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWs(CanvasGrammarParser.WsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#functionCall}.
 	 * @param ctx the parse tree

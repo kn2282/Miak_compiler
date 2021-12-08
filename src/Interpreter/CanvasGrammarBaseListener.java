@@ -76,13 +76,49 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableRef(CanvasGrammarParser.VariableRefContext ctx) { }
+	@Override public void enterVariableName(CanvasGrammarParser.VariableNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableRef(CanvasGrammarParser.VariableRefContext ctx) { }
+	@Override public void exitVariableName(CanvasGrammarParser.VariableNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTopScopeVar(CanvasGrammarParser.TopScopeVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTopScopeVar(CanvasGrammarParser.TopScopeVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterHigherScopeVar(CanvasGrammarParser.HigherScopeVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHigherScopeVar(CanvasGrammarParser.HigherScopeVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSameScopeVar(CanvasGrammarParser.SameScopeVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSameScopeVar(CanvasGrammarParser.SameScopeVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -95,18 +131,6 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVariable(CanvasGrammarParser.VariableContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterWs(CanvasGrammarParser.WsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitWs(CanvasGrammarParser.WsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

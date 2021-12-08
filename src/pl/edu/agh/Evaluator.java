@@ -72,7 +72,18 @@ public class Evaluator {
     }
 
     int evalVariable(CanvasGrammarParser.VariableExpressionContext ctx) {
-        return mem.get(ctx.variableRef().getText()).getInt();
+        String toReturn;
+        CanvasGrammarParser.VariableRefContext varRef = ctx.variableRef();
+        if (varRef instanceof CanvasGrammarParser.HigherScopeVarContext){
+            toReturn = ((CanvasGrammarParser.HigherScopeVarContext) varRef).variableName().getText();
+            return mem.get(toReturn,1).getInt();
+        }else if(varRef instanceof CanvasGrammarParser.TopScopeVarContext){
+            toReturn = ((CanvasGrammarParser.TopScopeVarContext) varRef).variableName().getText();
+            return mem.get(toReturn,2).getInt();
+        }else{
+           toReturn = ((CanvasGrammarParser.SameScopeVarContext) varRef).variableName().getText();
+            return mem.get(toReturn,0).getInt();
+        }
     }
 
 

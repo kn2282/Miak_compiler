@@ -58,15 +58,51 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitFunctionName(CanvasGrammarParser.FunctionNameContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#variableRef}.
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#variableName}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariableRef(CanvasGrammarParser.VariableRefContext ctx);
+	void enterVariableName(CanvasGrammarParser.VariableNameContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#variableRef}.
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#variableName}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariableRef(CanvasGrammarParser.VariableRefContext ctx);
+	void exitVariableName(CanvasGrammarParser.VariableNameContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code TopScopeVar}
+	 * labeled alternative in {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 */
+	void enterTopScopeVar(CanvasGrammarParser.TopScopeVarContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code TopScopeVar}
+	 * labeled alternative in {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 */
+	void exitTopScopeVar(CanvasGrammarParser.TopScopeVarContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code HigherScopeVar}
+	 * labeled alternative in {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 */
+	void enterHigherScopeVar(CanvasGrammarParser.HigherScopeVarContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code HigherScopeVar}
+	 * labeled alternative in {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 */
+	void exitHigherScopeVar(CanvasGrammarParser.HigherScopeVarContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code SameScopeVar}
+	 * labeled alternative in {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 */
+	void enterSameScopeVar(CanvasGrammarParser.SameScopeVarContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code SameScopeVar}
+	 * labeled alternative in {@link CanvasGrammarParser#variableRef}.
+	 * @param ctx the parse tree
+	 */
+	void exitSameScopeVar(CanvasGrammarParser.SameScopeVarContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#variable}.
 	 * @param ctx the parse tree
@@ -77,16 +113,6 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVariable(CanvasGrammarParser.VariableContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#ws}.
-	 * @param ctx the parse tree
-	 */
-	void enterWs(CanvasGrammarParser.WsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#ws}.
-	 * @param ctx the parse tree
-	 */
-	void exitWs(CanvasGrammarParser.WsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#functionCall}.
 	 * @param ctx the parse tree

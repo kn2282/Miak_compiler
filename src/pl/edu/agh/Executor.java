@@ -40,7 +40,14 @@ public class Executor {
         CanvasGrammarParser.VariableOperationContext v = ctx.variableOperation();
         if(v!=null){
             ValueContainer cont = new ValueContainer(evaluator.eval(v.expression()));
-            memory.set(v.variableRef().getText(),cont);
+            CanvasGrammarParser.VariableRefContext varRef = v.variableRef();
+            if(varRef instanceof CanvasGrammarParser.SameScopeVarContext)
+                memory.set(((CanvasGrammarParser.SameScopeVarContext) varRef).variableName().getText(),cont,0);
+            else if(varRef instanceof CanvasGrammarParser.HigherScopeVarContext)
+                memory.set(((CanvasGrammarParser.HigherScopeVarContext) varRef).variableName().getText(),cont,1);
+            else if(varRef instanceof CanvasGrammarParser.TopScopeVarContext)
+                memory.set(((CanvasGrammarParser.TopScopeVarContext) varRef).variableName().getText(),cont,2);
+
         }
         CanvasGrammarParser.DrawInstructionContext d = ctx.drawInstruction();
         if (d != null) {

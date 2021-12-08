@@ -42,20 +42,34 @@ fragment
 Integer  :  NonZeroDigit Digit* ;
 
 functionName : VariableName;
-variableRef  : VariableName;
 
- VariableName: (('a'..'z') |'_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
+variableName: VariableName;
+
+variableRef  :
+TopScopeModifier variableName  #TopScopeVar
+|HigherScopeModifier variableName   #HigherScopeVar
+|variableName   #SameScopeVar
+;
+
+VariableName: (('a'..'z') |'_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
 
 
 
-variable  :  ( VariableRef) ws ;
+variable  :  ( VariableRef) ;
 
 
 Constant : Integer;
 
-ws: SPACE*;
-SPACE: (' ');
-ENDL:  '\r'? '\n';
+//WhiteSpace:
+// ' '+
+//-> skip
+//;
+SPACE: ' '+
+-> skip
+;
+
+ENDL:  '\r'? '\n'
+;
 
 AND: ('AND' | '&')SPACE+;
 OR: ('OR' | '|')SPACE+;
@@ -75,7 +89,8 @@ RGB: ('RGB'|'rgb');
 DRAW:'DRAW'SPACE*;
 BLOCK: 'BLOCK';
 AssignOperator: '=';
-
+TopScopeModifier: '^^';
+HigherScopeModifier: '^';
 ArithmeticOperator: '+' | '-' | '*' | '/';
 
 ComprehensionOperator: '==' | '<' | '<=' | '>' | '>=' | '~';
@@ -133,7 +148,7 @@ bool :
 boolSrc :
     ((expression ComprehensionOperator expression)
     | TRUE
-    | FALSE) ws
+    | FALSE)
     ;
 
 figure :
@@ -142,7 +157,7 @@ figure :
 	| (LINE '(' expression  ',' expression  ',' expression  ',' expression ')') #Line
 	;
 
- drawInstruction  : DRAW  figure SPACE+  color ;
+ drawInstruction  : DRAW  figure  color ;
 
  variableOperation  :  variableRef AssignOperator expression ;
 

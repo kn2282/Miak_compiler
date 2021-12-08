@@ -15,7 +15,8 @@ public class FunctionPool {
         LinkedList<String> argNames = new LinkedList<>();
         for (CanvasGrammarParser.VariableRefContext arg:args
              ) {
-            argNames.add(arg.VariableName().getText());
+
+            argNames.add(arg.getText());
         }
         FunctionBlock functionBlock = new FunctionBlock(name,argNames,ctx,this);
         pool.put(name,functionBlock);
