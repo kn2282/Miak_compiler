@@ -1,10 +1,1 @@
-var=5
-DRAW RECTANGLE(var,var,var,var) RED
-BLOCK
-    var=10
-    DRAW RECTANGLE(var,var,var,var) BLUE
-    ^^var=20
-    DRAW RECTANGLE(^var,^var,^var,^var) YELLOW
-    DRAW RECTANGLE(var,var,var,var) GREEN
-END BLOCK
-DRAW RECTANGLE(var,var,var,var) #134151
+DRAW LINE(5,5,100,100) #134151

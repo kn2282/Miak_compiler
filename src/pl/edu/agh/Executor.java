@@ -18,11 +18,17 @@ public class Executor {
     void executeInstructionChain(CanvasGrammarParser.InstructionChainContext ctx){
         for (CanvasGrammarParser.InstructionContext instCtx:ctx.instr
         ) {
-            executeInstruction(instCtx);
+            try{
+                executeInstruction(instCtx);
+
+            }catch (StackOverflowError e){
+                System.out.println("//Stack overflow!");
+                return;
+            }
         }
 
     }
-    void executeInstruction(CanvasGrammarParser.InstructionContext ctx){
+    void executeInstruction(CanvasGrammarParser.InstructionContext ctx) throws StackOverflowError{
         CanvasGrammarParser.FunctionDefinitionContext f = ctx.functionDefinition();
         if(f != null){
             functionPool.define(f.functionName().getText(),f.arguments().arg,f.instructionChain());
@@ -55,6 +61,17 @@ public class Executor {
             CanvasGrammarParser.FigureContext figure = d.figure();
             switch (figure.getClass().getSimpleName()) {
                 case "CircleContext":
+                    CanvasGrammarParser.CircleContext circle = (CanvasGrammarParser.CircleContext) figure;
+                   // ArrayList<String> strings = new ArrayList<>();
+                    instruction+="ctx.beginPath()\n";
+                    instruction+="ctx.arc(";
+                    for (int i = 0; i < 3; i++) {
+                        //String s = rect.expression(i).getText();
+                        instruction += Integer.toString(evaluator.eval(circle.expression(i)));//s;//Integer.parseInt(s);
+                        instruction+=",";
+                    }
+                    instruction+=" 0, 2 * Math.PI)\n";
+                    instruction+="ctx.stroke()";
 
                     break;
                 case "RectangleContext":
@@ -70,11 +87,19 @@ public class Executor {
                     }
                     break;
                 case "LineContext":
-
+                    CanvasGrammarParser.LineContext line = (CanvasGrammarParser.LineContext)figure;
+                   // ArrayList<String> strings = new ArrayList<>();
+                    ArrayList<String> parsedArgs = new ArrayList<>();
+                    for (int i = 0; i < 4; i++) {
+                        parsedArgs.add(Integer.toString(evaluator.eval(line.expression(i))));
+                    }
+                    instruction+="ctx.moveTo("+parsedArgs.get(0)+","+parsedArgs.get(1)+")\n";
+                    instruction+="ctx.lineTo("+parsedArgs.get(2)+","+parsedArgs.get(3)+")\n";
+                    instruction+="ctx.stroke();\n";
             }
             //definiowanie koloru
             CanvasGrammarParser.ColorContext color = d.color();
-            System.out.println("ctx.fillsyle = "+color.getText());
+            System.out.println("ctx.fillsyle = '"+color.getText()+"'");
             System.out.println(instruction);
         }
         CanvasGrammarParser.BlockContext b = ctx.block();
