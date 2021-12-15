@@ -35,7 +35,7 @@ public class Evaluator {
     }
 
     int eval(CanvasGrammarParser.ExpressionContext ctx) {
-        if(ctx.expressionSuffix().ArithmeticOperator()==null){  //czy wyra¿enie jest jednostronne?
+        if(ctx.expressionSuffix().ArithmeticOperator()==null){  //czy wyraï¿½enie jest jednostronne?
             return halfEval(ctx.halfExpression());
             //return halfEval(ctx.halfExpression());
         }else{
@@ -84,6 +84,43 @@ public class Evaluator {
            toReturn = ((CanvasGrammarParser.SameScopeVarContext) varRef).variableName().getText();
             return mem.get(toReturn,0).getInt();
         }
+    }
+
+    boolean evalBool(CanvasGrammarParser.BoolContext boolContext){
+        if(boolContext.bool() == null){
+            return evalBoolSRC(boolContext.boolSrc());
+        }
+        if (boolContext.AND() != null){
+            return evalBoolSRC(boolContext.boolSrc()) & evalBool(boolContext.bool());
+        }
+        if (boolContext.OR() != null){
+            return evalBoolSRC(boolContext.boolSrc()) | evalBool(boolContext.bool());
+        }
+        System.out.println("calc error");
+        return false;
+    }
+
+    boolean evalBoolSRC(CanvasGrammarParser.BoolSrcContext boolSrcContext){
+        if (boolSrcContext.TRUE() != null) return true;
+        if (boolSrcContext.FALSE() != null) return false;
+        if (boolSrcContext.expression()!=null){
+            CanvasGrammarParser.ExpressionContext expressionContextLeft = boolSrcContext.expression().get(0), expressionContextRight = boolSrcContext.expression().get(1);
+            int left = eval(expressionContextLeft), right = eval(expressionContextRight);
+            switch (boolSrcContext.ComprehensionOperator().getText()){
+                case "==":
+                    return left == right;
+                case "<":
+                    return  left<right;
+                case "<=":
+                    return left<=right;
+                case ">":
+                    return left>right;
+                case ">=":
+                    return left>=right;
+            }
+        }
+        System.out.println("calc error");
+        return false;
     }
 
 
