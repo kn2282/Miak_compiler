@@ -10,11 +10,12 @@ public class Evaluator {
     private FunctionPool functionPool;
     private CanvasMainListener listener;
     int depth;
-    public Evaluator(MemoryPool mem,FunctionPool functionPool) {
+
+    public Evaluator(MemoryPool mem, FunctionPool functionPool) {
         this.mem = mem;
         this.functionPool = functionPool;
         this.depth = 0;
-        this.listener= listener;
+        this.listener = listener;
     }
 
     int halfEval(CanvasGrammarParser.HalfExpressionContext ctx) {
@@ -35,32 +36,36 @@ public class Evaluator {
     }
 
     int eval(CanvasGrammarParser.ExpressionContext ctx) {
-        if(ctx.expressionSuffix().ArithmeticOperator()==null){  //czy wyra¿enie jest jednostronne?
+        if (ctx.expressionSuffix().ArithmeticOperator() == null) {  //czy wyra¿enie jest jednostronne?
             return halfEval(ctx.halfExpression());
             //return halfEval(ctx.halfExpression());
-        }else{
-            return calc(ctx.halfExpression(),  ctx.expressionSuffix());
+        } else {
+            return calc(ctx.halfExpression(), ctx.expressionSuffix());
         }
     }
 
     int calc(CanvasGrammarParser.HalfExpressionContext expr1, CanvasGrammarParser.ExpressionSuffixContext expr2) {
         int left = halfEval(expr1);
         int right = eval(expr2.expression());
-
-        switch (expr2.ArithmeticOperator().getText()) {
-            case "+":
-                return left+right;
-            case "-":
-                return  left-right;
-            case "*":
-                return left*right;
-            case "/":
-                return left/right;
-            default:
-                System.out.println("calc error");
-                return 0;
-
+        try {
+            switch (expr2.ArithmeticOperator().getText()) {
+                case "+":
+                    return left + right;
+                case "-":
+                    return left - right;
+                case "*":
+                    return left * right;
+                case "/":
+                    return left / right;
+                default:
+                    System.out.println("//calc error");
+                    return 0;
+            }
+        } catch (ArithmeticException e) {
+            System.out.println("//Error:Division by 0");
+            return 0;
         }
+
     }
 
     int evalBracket(CanvasGrammarParser.BracketExpressionContext ctx) {
@@ -72,18 +77,24 @@ public class Evaluator {
     }
 
     int evalVariable(CanvasGrammarParser.VariableExpressionContext ctx) {
-        String toReturn;
+        String toReturn = "";
         CanvasGrammarParser.VariableRefContext varRef = ctx.variableRef();
-        if (varRef instanceof CanvasGrammarParser.HigherScopeVarContext){
-            toReturn = ((CanvasGrammarParser.HigherScopeVarContext) varRef).variableName().getText();
-            return mem.get(toReturn,1).getInt();
-        }else if(varRef instanceof CanvasGrammarParser.TopScopeVarContext){
-            toReturn = ((CanvasGrammarParser.TopScopeVarContext) varRef).variableName().getText();
-            return mem.get(toReturn,2).getInt();
-        }else{
-           toReturn = ((CanvasGrammarParser.SameScopeVarContext) varRef).variableName().getText();
-            return mem.get(toReturn,0).getInt();
+        try {
+            if (varRef instanceof CanvasGrammarParser.HigherScopeVarContext) {
+                toReturn = ((CanvasGrammarParser.HigherScopeVarContext) varRef).variableName().getText();
+                return mem.get(toReturn, 1).getInt();
+            } else if (varRef instanceof CanvasGrammarParser.TopScopeVarContext) {
+                toReturn = ((CanvasGrammarParser.TopScopeVarContext) varRef).variableName().getText();
+                return mem.get(toReturn, 2).getInt();
+            } else {
+                toReturn = ((CanvasGrammarParser.SameScopeVarContext) varRef).variableName().getText();
+                return mem.get(toReturn, 0).getInt();
+            }
+        } catch (Exception e) {
+            System.out.println("//Error:Value not found:" + toReturn);
+            System.exit(1);
         }
+        return 0;
     }
 
 

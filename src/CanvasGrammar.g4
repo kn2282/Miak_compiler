@@ -39,7 +39,8 @@ Digit   : [0-9];
 HexColor : HexPrefix HexDigit  HexDigit  HexDigit  HexDigit  HexDigit  HexDigit;
 
 fragment
-Integer  :  NonZeroDigit Digit* ;
+Integer  :  NonZeroDigit Digit*|
+'0';
 
 functionName : VariableName;
 
@@ -98,7 +99,7 @@ ComprehensionOperator: '==' | '<' | '<=' | '>' | '>=' | '~';
 functionCall : functionName functionCallArguments;
 
 functionCallArguments:
-'(' arg+=expression (',' arg+=expression)* ')'
+'(' (arg+=expression)? (',' arg+=expression)* ')'
 ;
 
 arguments:

@@ -12,22 +12,23 @@ public class MemoryPool {
     }
 
     public ValueContainer get(String key, int level) {
-        switch (level) {
-            case 0: //szukanie w obecnym scopie/zasiêgu
-                if (memory.containsKey(key))
-                    return memory.get(key);
-                else return widerScopePool.get(key, 0);
 
-            case 1: //szukanie w zasiêgu wy¿ej
-                return widerScopePool.get(key, 0);
+            switch (level) {
+                case 0: //szukanie w obecnym scopie/zasiêgu
+                    if (memory.containsKey(key))
+                        return memory.get(key);
+                    else return widerScopePool.get(key, 0);
 
-            case 2: //szukanie w zasiêgu globalnym
-                if (widerScopePool == null) {
-                    return memory.get(key);
-                } else {
-                    return widerScopePool.get(key, 2);
-                }
-        }
+                case 1: //szukanie w zasiêgu wy¿ej
+                    return widerScopePool.get(key, 0);
+
+                case 2: //szukanie w zasiêgu globalnym
+                    if (widerScopePool == null) {
+                        return memory.get(key);
+                    } else {
+                        return widerScopePool.get(key, 2);
+                    }
+            }
         return null;
     }
     private void safeSet(String key, ValueContainer val){

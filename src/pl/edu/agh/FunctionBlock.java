@@ -21,8 +21,13 @@ public class FunctionBlock {
     }
     public int run(List<ValueContainer> arguments){
         MemoryPool memPool = new MemoryPool(null);
-        for (int i = 0; i < this.args.size(); i++) {
-            memPool.set(this.args.get(i),arguments.get(i),0);  //dodanie argumentów do puli pamiêci
+        try {
+            for (int i = 0; i < this.args.size(); i++) {
+                memPool.set(this.args.get(i),arguments.get(i),0);  //dodanie argumentów do puli pamiêci
+            }
+        }catch (Exception e){
+            System.out.println("//Error:Not enough aruments in function "+this.name);
+            System.exit(1);
         }
 
         Evaluator evaluator= new Evaluator(memPool,funcPool);
