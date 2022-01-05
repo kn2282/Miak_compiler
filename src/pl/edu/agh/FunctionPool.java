@@ -21,14 +21,10 @@ public class FunctionPool {
         FunctionBlock functionBlock = new FunctionBlock(name,argNames,ctx,this);
         pool.put(name,functionBlock);
     }
-    public int call(String name, List<ValueContainer> args){
-        try{
+    public int call(String name, List<ValueContainer> args) throws Exception{
+
             return pool.get(name).run(args);
-        }catch (Exception e){
-            System.out.println("//Error:Function "+name +" is not defined");
-            System.exit(1);
-            return 0;
-        }
+
 
     }
 }

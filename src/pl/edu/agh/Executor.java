@@ -22,7 +22,7 @@ public class Executor {
                 executeInstruction(instCtx);
 
             }catch (StackOverflowError e){
-                System.out.println("//Stack overflow!");
+                System.out.println("//Error at "+ctx.start+" - stack overflow!");
                 return;
             }
         }
@@ -40,8 +40,12 @@ public class Executor {
             ) {
                  args.add(new ValueContainer(evaluator.eval(expr)));
             }
-
-            functionPool.call(c.functionName().getText(),args);
+            try{
+                functionPool.call(c.functionName().getText(),args);
+            }catch (Exception e){
+                System.out.println("//Error at "+ctx.start +" - function "+c.functionName().getText() +" is not defined");
+                System.exit(1);
+            }
         }
         CanvasGrammarParser.VariableOperationContext v = ctx.variableOperation();
         if(v!=null){

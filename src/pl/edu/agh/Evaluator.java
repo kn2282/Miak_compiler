@@ -29,7 +29,7 @@ public class Evaluator {
             case "BracketExpressionContext":
                 return evalBracket((CanvasGrammarParser.BracketExpressionContext) ctx);
             default:
-                System.out.println("evaluation error");
+                System.out.println("//evaluation error");
                 return 0;
 
         }
@@ -58,11 +58,10 @@ public class Evaluator {
                 case "/":
                     return left / right;
                 default:
-                    System.out.println("//calc error");
                     return 0;
             }
         } catch (ArithmeticException e) {
-            System.out.println("//Error:Division by 0");
+            System.out.println("//Error at "+expr1.start+" - arithmetic/division by 0");
             return 0;
         }
 
@@ -91,7 +90,7 @@ public class Evaluator {
                 return mem.get(toReturn, 0).getInt();
             }
         } catch (Exception e) {
-            System.out.println("//Error:Value not found:" + toReturn);
+            System.out.println("//Error at " + ctx.start+" - value not found:" + toReturn);
             System.exit(1);
         }
         return 0;
