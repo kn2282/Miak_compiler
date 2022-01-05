@@ -1,3 +1,10 @@
-
-DRAW LINE(5,5/0,100,100) #134151
-
+var=7
+DEF foo(x,y)
+DRAW RECTANGLE(x,y,2,2) RED
+i=0
+WHILE i<10:
+i=i+1
+DRAW RECTANGLE(x+i,y,2,2) RED
+END
+END DEF
+foo(4,4)
