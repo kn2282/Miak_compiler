@@ -21,7 +21,10 @@ public class FunctionPool {
         FunctionBlock functionBlock = new FunctionBlock(name,argNames,ctx,this);
         pool.put(name,functionBlock);
     }
-    public int call(String name, List<ValueContainer> args){
-        return pool.get(name).run(args);
+    public int call(String name, List<ValueContainer> args) throws Exception{
+
+            return pool.get(name).run(args);
+
+
     }
 }
