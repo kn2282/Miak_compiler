@@ -113,5 +113,30 @@ public class Executor {
             lesserExecutor.executeInstructionChain(b.instructionChain());
         }
 
+        CanvasGrammarParser.ConditionContext conditionContext = ctx.condition();
+        if (conditionContext != null){
+            if(evaluator.evalBool(conditionContext.bool())) {
+                MemoryPool lesserMem = new MemoryPool(this.memory);
+                Executor lesserExecutor = new Executor(lesserMem, this.functionPool, new Evaluator(lesserMem, functionPool));
+                lesserExecutor.executeInstructionChain(conditionContext.instructionChain().get(0));
+            }
+            else {
+                if (conditionContext.ELSE() != null){
+                    MemoryPool lesserMem = new MemoryPool(this.memory);
+                    Executor lesserExecutor = new Executor(lesserMem, this.functionPool, new Evaluator(lesserMem, functionPool));
+                    lesserExecutor.executeInstructionChain(conditionContext.instructionChain().get(1));
+                }
+            }
+        }
+
+        CanvasGrammarParser.LoopContext loopContext = ctx.loop();
+        if (loopContext != null){
+            while (evaluator.evalBool(loopContext.bool())) {
+                MemoryPool lesserMem = new MemoryPool(this.memory);
+                Executor lesserExecutor = new Executor(lesserMem, this.functionPool, new Evaluator(lesserMem, functionPool));
+                lesserExecutor.executeInstructionChain(loopContext.instructionChain());
+            }
+        }
+
     }//todo - refractor
 }
