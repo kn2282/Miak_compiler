@@ -1,10 +1,8 @@
 var=7
 DEF foo(x,y)
 DRAW RECTANGLE(x,y,2,2) RED
-i=0
-WHILE i<10:
-i=i+1
-DRAW RECTANGLE(x+i,y,2,2) RED
+IF x<10:
+foo(x+1,y+1)
 END
 END DEF
 foo(4,4)

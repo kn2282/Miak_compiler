@@ -117,14 +117,14 @@ public class Executor {
         if (conditionContext != null){
             if(evaluator.evalBool(conditionContext.bool())) {
 //                MemoryPool lesserMem = new MemoryPool(this.memory);
-                Executor lesserExecutor = new Executor(this.memory, this.functionPool, new Evaluator(this.memory, functionPool));
-                lesserExecutor.executeInstructionChain(conditionContext.instructionChain().get(0));
+//                Executor lesserExecutor = new Executor(this.memory, this.functionPool, new Evaluator(this.memory, functionPool));
+                executeInstructionChain(conditionContext.instructionChain().get(0));
             }
             else {
                 if (conditionContext.ELSE() != null){
 //                    MemoryPool lesserMem = new MemoryPool(this.memory);
-                    Executor lesserExecutor = new Executor(this.memory, this.functionPool, new Evaluator(this.memory, functionPool));
-                    lesserExecutor.executeInstructionChain(conditionContext.instructionChain().get(1));
+//                    Executor lesserExecutor = new Executor(this.memory, this.functionPool, new Evaluator(this.memory, functionPool));
+                    executeInstructionChain(conditionContext.instructionChain().get(1));
                 }
             }
         }
@@ -133,8 +133,8 @@ public class Executor {
         if (loopContext != null){
             while (evaluator.evalBool(loopContext.bool())) {
 //                MemoryPool lesserMem = new MemoryPool(this.memory);
-                Executor lesserExecutor = new Executor(this.memory, this.functionPool, new Evaluator(this.memory, functionPool));
-                lesserExecutor.executeInstructionChain(loopContext.instructionChain());
+//                Executor lesserExecutor = new Executor(this.memory, this.functionPool, new Evaluator(this.memory, functionPool));
+                executeInstructionChain(loopContext.instructionChain());
             }
         }
 
