@@ -1,5 +1,4 @@
-// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
-package Interpreter;
+package Interpreter;// Generated from C:/Materia³y/MIAK/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -136,6 +135,42 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterConstant(CanvasGrammarParser.ConstantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstant(CanvasGrammarParser.ConstantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNonPriorityArithmeticOperator(CanvasGrammarParser.NonPriorityArithmeticOperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNonPriorityArithmeticOperator(CanvasGrammarParser.NonPriorityArithmeticOperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPriorityArithmeticOperator(CanvasGrammarParser.PriorityArithmeticOperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPriorityArithmeticOperator(CanvasGrammarParser.PriorityArithmeticOperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFunctionCall(CanvasGrammarParser.FunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -256,6 +291,18 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterPriorityExpression(CanvasGrammarParser.PriorityExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPriorityExpression(CanvasGrammarParser.PriorityExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariableExpression(CanvasGrammarParser.VariableExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -287,6 +334,18 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitConstantExpression(CanvasGrammarParser.ConstantExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPriorityExpressionSuffix(CanvasGrammarParser.PriorityExpressionSuffixContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPriorityExpressionSuffix(CanvasGrammarParser.PriorityExpressionSuffixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

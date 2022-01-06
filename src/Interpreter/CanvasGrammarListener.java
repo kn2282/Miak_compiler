@@ -1,5 +1,4 @@
-// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
-package Interpreter;
+package Interpreter;// Generated from C:/Materia³y/MIAK/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -114,6 +113,36 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitVariable(CanvasGrammarParser.VariableContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#constant}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstant(CanvasGrammarParser.ConstantContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#constant}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstant(CanvasGrammarParser.ConstantContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#nonPriorityArithmeticOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterNonPriorityArithmeticOperator(CanvasGrammarParser.NonPriorityArithmeticOperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#nonPriorityArithmeticOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitNonPriorityArithmeticOperator(CanvasGrammarParser.NonPriorityArithmeticOperatorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#priorityArithmeticOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterPriorityArithmeticOperator(CanvasGrammarParser.PriorityArithmeticOperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#priorityArithmeticOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitPriorityArithmeticOperator(CanvasGrammarParser.PriorityArithmeticOperatorContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#functionCall}.
 	 * @param ctx the parse tree
 	 */
@@ -220,6 +249,16 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitExpression(CanvasGrammarParser.ExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#priorityExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterPriorityExpression(CanvasGrammarParser.PriorityExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#priorityExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitPriorityExpression(CanvasGrammarParser.PriorityExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code VariableExpression}
 	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
 	 * @param ctx the parse tree
@@ -255,6 +294,16 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConstantExpression(CanvasGrammarParser.ConstantExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#priorityExpressionSuffix}.
+	 * @param ctx the parse tree
+	 */
+	void enterPriorityExpressionSuffix(CanvasGrammarParser.PriorityExpressionSuffixContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#priorityExpressionSuffix}.
+	 * @param ctx the parse tree
+	 */
+	void exitPriorityExpressionSuffix(CanvasGrammarParser.PriorityExpressionSuffixContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#expressionSuffix}.
 	 * @param ctx the parse tree

@@ -37,33 +37,57 @@ public class Evaluator {
 
     int eval(CanvasGrammarParser.ExpressionContext ctx) {
 
-        if (ctx.expressionSuffix().ArithmeticOperator() == null) {  //czy wyra¿enie jest jednostronne?
+        if (ctx.expressionSuffix().nonPriorityArithmeticOperator() == null) {  //czy wyra¿enie jest jednostronne?
+
+            return eval(ctx.priorityExpression());
+            //return halfEval(ctx.halfExpression());
+        } else {
+            return calc(eval(ctx.priorityExpression()), ctx.expressionSuffix());
+        }
+    }
+
+    int eval(CanvasGrammarParser.PriorityExpressionContext ctx) {
+
+        if (ctx.priorityExpressionSuffix().priorityArithmeticOperator() == null) {  //czy wyra¿enie jest jednostronne?
 
             return halfEval(ctx.halfExpression());
             //return halfEval(ctx.halfExpression());
         } else {
-            return calc(ctx.halfExpression(), ctx.expressionSuffix());
+            return calc(halfEval(ctx.halfExpression()), ctx.priorityExpressionSuffix());
         }
     }
 
-    int calc(CanvasGrammarParser.HalfExpressionContext expr1, CanvasGrammarParser.ExpressionSuffixContext expr2) {
-        int left = halfEval(expr1);
+    int calc(int expr1, CanvasGrammarParser.ExpressionSuffixContext expr2) {
         int right = eval(expr2.expression());
         try {
-            switch (expr2.ArithmeticOperator().getText()) {
+            switch (expr2.nonPriorityArithmeticOperator().getText()) {
                 case "+":
-                    return left + right;
+                    return expr1 + right;
                 case "-":
-                    return left - right;
-                case "*":
-                    return left * right;
-                case "/":
-                    return left / right;
+                    return expr1 - right;
                 default:
                     return 0;
             }
         } catch (ArithmeticException e) {
-            System.out.println("//Error at "+expr1.start+" - arithmetic/division by 0");
+            System.out.println("//Error at "+expr2.start+" - arithmetic/division by 0");
+            return 0;
+        }
+
+    }
+
+    int calc(int expr1, CanvasGrammarParser.PriorityExpressionSuffixContext expr2) {
+        int right = eval(expr2.priorityExpression());
+        try {
+            switch (expr2.priorityArithmeticOperator().getText()) {
+                case "*":
+                    return expr1 * right;
+                case "/":
+                    return expr1 / right;
+                default:
+                    return 0;
+            }
+        } catch (ArithmeticException e) {
+            System.out.println("//Error at "+expr2.start+" - arithmetic/division by 0");
             return 0;
         }
 
@@ -79,17 +103,18 @@ public class Evaluator {
 
     int evalVariable(CanvasGrammarParser.VariableExpressionContext ctx) {
         String toReturn = "";
-        CanvasGrammarParser.VariableRefContext varRef = ctx.variableRef();
+        CanvasGrammarParser.VariableRefContext varRef = ctx.variable().variableRef();
+        int minus = ctx.variable().Minus() == null ? 1 : -1;
         try {
             if (varRef instanceof CanvasGrammarParser.HigherScopeVarContext) {
                 toReturn = ((CanvasGrammarParser.HigherScopeVarContext) varRef).variableName().getText();
-                return mem.get(toReturn, 1).getInt();
+                return mem.get(toReturn, 1).getInt() * minus;
             } else if (varRef instanceof CanvasGrammarParser.TopScopeVarContext) {
                 toReturn = ((CanvasGrammarParser.TopScopeVarContext) varRef).variableName().getText();
-                return mem.get(toReturn, 2).getInt();
+                return mem.get(toReturn, 2).getInt() * minus;
             } else {
                 toReturn = ((CanvasGrammarParser.SameScopeVarContext) varRef).variableName().getText();
-                return mem.get(toReturn, 0).getInt();
+                return mem.get(toReturn, 0).getInt() * minus;
             }
         } catch (Exception e) {
             System.out.println("//Error at " + ctx.start+" - value not found:" + toReturn);

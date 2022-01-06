@@ -1,5 +1,4 @@
-// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
-package Interpreter;
+package Interpreter;// Generated from C:/Materia³y/MIAK/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -74,6 +73,24 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVariable(CanvasGrammarParser.VariableContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#constant}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstant(CanvasGrammarParser.ConstantContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#nonPriorityArithmeticOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNonPriorityArithmeticOperator(CanvasGrammarParser.NonPriorityArithmeticOperatorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#priorityArithmeticOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPriorityArithmeticOperator(CanvasGrammarParser.PriorityArithmeticOperatorContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#functionCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -137,6 +154,12 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpression(CanvasGrammarParser.ExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#priorityExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPriorityExpression(CanvasGrammarParser.PriorityExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code VariableExpression}
 	 * labeled alternative in {@link CanvasGrammarParser#halfExpression}.
 	 * @param ctx the parse tree
@@ -157,6 +180,12 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitConstantExpression(CanvasGrammarParser.ConstantExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#priorityExpressionSuffix}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPriorityExpressionSuffix(CanvasGrammarParser.PriorityExpressionSuffixContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#expressionSuffix}.
 	 * @param ctx the parse tree

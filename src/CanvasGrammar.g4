@@ -20,7 +20,7 @@ block:BLOCK ENDL
 instructionChain
 END BLOCK;
 
-instructionChain  :  instr+=instruction (ENDL instr+=instruction )* ENDL?;
+instructionChain  :  instr+=instruction (ENDL+ instr+=instruction )* ENDL+;
 
 fragment
 NonZeroDigit : [1-9];
@@ -38,7 +38,6 @@ Digit   : [0-9];
 
 HexColor : HexPrefix HexDigit  HexDigit  HexDigit  HexDigit  HexDigit  HexDigit;
 
-fragment
 Integer  :  NonZeroDigit Digit*|
 '0';
 
@@ -56,10 +55,10 @@ VariableName: (('a'..'z') |'_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
 
 
 
-variable  :  ( VariableRef) ;
+variable  :  Minus? variableRef ;
 
 
-Constant : Integer;
+constant : Minus? Integer;
 
 //WhiteSpace:
 // ' '+
@@ -92,7 +91,15 @@ BLOCK: 'BLOCK';
 AssignOperator: '=';
 TopScopeModifier: '^^';
 HigherScopeModifier: '^';
-ArithmeticOperator: '+' | '-' | '*' | '/';
+Minus: '-';
+Plus: '+';
+Mult: '*';
+Divide: '/';
+
+nonPriorityArithmeticOperator: Plus | Minus;
+
+
+priorityArithmeticOperator: Mult | Divide;
 
 ComprehensionOperator: '==' | '<' | '<=' | '>' | '>=' | '~';
 
@@ -115,7 +122,7 @@ functionDefinition  : DEF  functionName arguments ENDL
 instructionChain
 END DEF ;
 
-loop : WHILE bool ENDL
+loop : WHILE bool ':' ENDL
  instructionChain
 END ;
 
@@ -125,18 +132,28 @@ color  :
 	|HexColor #ColorHex
 	;
 
-expression :
- | (halfExpression expressionSuffix)
+expression:
+ (priorityExpression expressionSuffix)
  ;
+
+priorityExpression:
+ halfExpression priorityExpressionSuffix
+;
 
 halfExpression:
-    variableRef #VariableExpression
+    variable #VariableExpression
  | '(' expression ')' #BracketExpression
- | Constant #ConstantExpression
+ | constant #ConstantExpression
  ;
 
+priorityExpressionSuffix:
+ priorityArithmeticOperator priorityExpression
+ |
+;
+
+
 expressionSuffix:
-ArithmeticOperator expression
+nonPriorityArithmeticOperator expression
 |
 ;
 
