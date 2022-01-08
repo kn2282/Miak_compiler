@@ -1,3 +1,6 @@
 var=-7
 i=-5+4*(var)+5*2
-DRAW RECTANGLE(i,i,4,4) RED
+//gfhgvbuyjg
+a=7
+//a=5
+DRAW RECTANGLE(i,i,a,a) RED

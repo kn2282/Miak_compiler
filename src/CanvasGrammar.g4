@@ -20,7 +20,7 @@ block:BLOCK ENDL
 instructionChain
 END BLOCK;
 
-instructionChain  :  instr+=instruction (ENDL+ instr+=instruction )* ENDL+;
+instructionChain  :  instr+=instruction (ENDL+ instr+=instruction )* ENDL*;
 
 fragment
 NonZeroDigit : [1-9];
@@ -71,22 +71,26 @@ SPACE: ' '+
 ENDL:  '\r'? '\n'
 ;
 
-AND: ('AND' | '&')SPACE+;
-OR: ('OR' | '|')SPACE+;
-TRUE: ('TRUE' | 'true')SPACE+;
-FALSE:  ('FALSE' | 'false')SPACE+;
-RECTANGLE: ('RECTANGLE')SPACE*;
-CIRCLE: 'CIRCLE'SPACE*;
-LINE: 'LINE'SPACE*;
-BEGIN: 'BEGIN'SPACE+;
-END: 'END'SPACE*;
-IF: ('IF' | 'if' | '?')SPACE+;
-ELSE : ('!'|'ELSE')SPACE+;
-THEN: 'THEN'SPACE?;
-WHILE: 'WHILE'SPACE?;
-DEF: 'DEF'SPACE?;
+COMMENT: '//' (' '..'~' | '\t')* ENDL
+-> skip
+;
+
+AND: ('AND' | '&');
+OR: ('OR' | '|');
+TRUE: ('TRUE' | 'true');
+FALSE:  ('FALSE' | 'false');
+RECTANGLE: ('RECTANGLE');
+CIRCLE: 'CIRCLE';
+LINE: 'LINE';
+BEGIN: 'BEGIN';
+END: 'END';
+IF: ('IF' | 'if' | '?');
+ELSE : ('!'|'ELSE');
+THEN: 'THEN';
+WHILE: 'WHILE';
+DEF: 'DEF';
 RGB: ('RGB'|'rgb');
-DRAW:'DRAW'SPACE*;
+DRAW:'DRAW';
 BLOCK: 'BLOCK';
 AssignOperator: '=';
 TopScopeModifier: '^^';
