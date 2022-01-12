@@ -4,6 +4,7 @@ import Interpreter.CanvasGrammarParser;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 public class Executor {
 
@@ -22,7 +23,7 @@ public class Executor {
                 executeInstruction(instCtx);
 
             }catch (StackOverflowError e){
-                System.out.println("//Error at "+ctx.start+" - stack overflow!");
+                ErrorHandler.stackOverflow(ctx.start);
                 return;
             }
         }
@@ -42,9 +43,11 @@ public class Executor {
             }
             try{
                 functionPool.call(c.functionName().getText(),args);
-            }catch (Exception e){
-                System.out.println("//Error at "+ctx.start +" - function "+c.functionName().getText() +" is not defined");
+            }catch (NoSuchElementException e){   //todo
+                ErrorHandler.functionNotDefined(ctx.start,c.functionName().getText());
                 System.exit(1);
+            }catch (Exception e){
+                ErrorHandler.argumentMismatch(ctx.start,c.functionName().getText());
             }
         }
         CanvasGrammarParser.VariableOperationContext v = ctx.variableOperation();
@@ -103,7 +106,7 @@ public class Executor {
             }
             //definiowanie koloru
             CanvasGrammarParser.ColorContext color = d.color();
-            System.out.println("ctx.fillsyle = '"+color.getText()+"'");
+            System.out.println("ctx.fillStyle = '"+color.getText()+"'");
             System.out.println(instruction);
         }
         CanvasGrammarParser.BlockContext b = ctx.block();

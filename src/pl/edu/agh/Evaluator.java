@@ -69,7 +69,7 @@ public class Evaluator {
                     return 0;
             }
         } catch (ArithmeticException e) {
-            System.out.println("//Error at "+expr2.start+" - arithmetic/division by 0");
+            ErrorHandler.arithmeticError(expr2.start);
             return 0;
         }
 
@@ -87,7 +87,7 @@ public class Evaluator {
                     return 0;
             }
         } catch (ArithmeticException e) {
-            System.out.println("//Error at "+expr2.start+" - arithmetic/division by 0");
+            ErrorHandler.arithmeticError(expr2.start);
             return 0;
         }
 
@@ -117,7 +117,7 @@ public class Evaluator {
                 return mem.get(toReturn, 0).getInt() * minus;
             }
         } catch (Exception e) {
-            System.out.println("//Error at " + ctx.start+" - value not found:" + toReturn);
+            ErrorHandler.variableNotFound(ctx.start, varRef.getText());
             System.exit(1);
         }
         return 0;
@@ -133,7 +133,6 @@ public class Evaluator {
         if (boolContext.OR() != null){
             return evalBoolSRC(boolContext.boolSrc()) | evalBool(boolContext.bool());
         }
-        System.out.println("calc error");
         return false;
     }
 
@@ -156,7 +155,6 @@ public class Evaluator {
                     return left>=right;
             }
         }
-        System.out.println("calc error");
         return false;
     }
 
