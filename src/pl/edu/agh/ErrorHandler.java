@@ -17,7 +17,7 @@ public class ErrorHandler {
     }
 
     public static void functionNotDefined(Token where, String text) {
-        error("//Error at " + where + " - function " + text + " is not defined");
+        error("Error at " + where + " - function " + text + " is not defined");
 
     }
 

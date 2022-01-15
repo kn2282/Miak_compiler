@@ -14,14 +14,14 @@ public class FunctionPool {
         this.pool = new HashMap<>();
     }
 
-    public void define(String name, List<CanvasGrammarParser.VariableRefContext> args, CanvasGrammarParser.InstructionChainContext ctx) {
+    public void define(String name, List<CanvasGrammarParser.VariableRefContext> args, CanvasGrammarParser.InstructionChainContext ctx, MemoryPool widerPool) {
         LinkedList<String> argNames = new LinkedList<>();
         for (CanvasGrammarParser.VariableRefContext arg : args
         ) {
 
             argNames.add(arg.getText());
         }
-        FunctionBlock functionBlock = new FunctionBlock(name, argNames, ctx, this);
+        FunctionBlock functionBlock = new FunctionBlock(name, argNames, ctx, this,widerPool);
         pool.put(name, functionBlock);
     }
 

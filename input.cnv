@@ -1,6 +1,6 @@
-var=-7
-i=-5+4*(var)+5*2
-//gfhgvbuyjg
-a=7
-//a=5
-DRAW RECTANGLE(i,i,a,a) RED
+var=8
+DEF test(x)
+var=4
+DRAW RECTANGLE(x,^var,var,30) RED
+END DEF
+test(6)

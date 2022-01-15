@@ -32,7 +32,7 @@ public class Executor {
     void executeInstruction(CanvasGrammarParser.InstructionContext ctx) throws StackOverflowError{
         CanvasGrammarParser.FunctionDefinitionContext f = ctx.functionDefinition();
         if(f != null){
-            functionPool.define(f.functionName().getText(),f.arguments().arg,f.instructionChain());
+            functionPool.define(f.functionName().getText(),f.arguments().arg,f.instructionChain(),memory);
         }
         CanvasGrammarParser.FunctionCallContext c = ctx.functionCall();
         if(c!=null){
@@ -43,7 +43,7 @@ public class Executor {
             }
             try{
                 functionPool.call(c.functionName().getText(),args);
-            }catch (NoSuchElementException e){   //todo
+            }catch (NoSuchElementException e){
                 ErrorHandler.functionNotDefined(ctx.start,c.functionName().getText());
                 System.exit(1);
             }catch (Exception e){
