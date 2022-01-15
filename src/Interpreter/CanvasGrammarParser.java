@@ -1,4 +1,5 @@
-package Interpreter;// Generated from C:/Materia³y/MIAK/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
+// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
+package Interpreter;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -19,9 +20,9 @@ public class CanvasGrammarParser extends Parser {
 		T__0=1, T__1=2, T__2=3, T__3=4, HexColor=5, Integer=6, VariableName=7, 
 		SPACE=8, ENDL=9, COMMENT=10, AND=11, OR=12, TRUE=13, FALSE=14, RECTANGLE=15, 
 		CIRCLE=16, LINE=17, BEGIN=18, END=19, IF=20, ELSE=21, THEN=22, WHILE=23, 
-		DEF=24, RGB=25, DRAW=26, BLOCK=27, AssignOperator=28, TopScopeModifier=29, 
-		HigherScopeModifier=30, Minus=31, Plus=32, Mult=33, Divide=34, ComprehensionOperator=35, 
-		ColorName=36;
+		DEF=24, RGB=25, DRAW=26, BLOCK=27, FILL=28, AssignOperator=29, TopScopeModifier=30, 
+		HigherScopeModifier=31, Minus=32, Plus=33, Mult=34, Divide=35, ComprehensionOperator=36, 
+		ColorName=37;
 	public static final int
 		RULE_program = 0, RULE_instruction = 1, RULE_block = 2, RULE_instructionChain = 3, 
 		RULE_functionName = 4, RULE_variableName = 5, RULE_variableRef = 6, RULE_variable = 7, 
@@ -48,7 +49,7 @@ public class CanvasGrammarParser extends Parser {
 			null, "'('", "','", "')'", "':'", null, null, null, null, null, null, 
 			null, null, null, null, null, "'CIRCLE'", "'LINE'", "'BEGIN'", "'END'", 
 			null, null, "'THEN'", "'WHILE'", "'DEF'", null, "'DRAW'", "'BLOCK'", 
-			"'='", "'^^'", "'^'", "'-'", "'+'", "'*'", "'/'"
+			"'FILL'", "'='", "'^^'", "'^'", "'-'", "'+'", "'*'", "'/'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -57,8 +58,9 @@ public class CanvasGrammarParser extends Parser {
 			null, null, null, null, null, "HexColor", "Integer", "VariableName", 
 			"SPACE", "ENDL", "COMMENT", "AND", "OR", "TRUE", "FALSE", "RECTANGLE", 
 			"CIRCLE", "LINE", "BEGIN", "END", "IF", "ELSE", "THEN", "WHILE", "DEF", 
-			"RGB", "DRAW", "BLOCK", "AssignOperator", "TopScopeModifier", "HigherScopeModifier", 
-			"Minus", "Plus", "Mult", "Divide", "ComprehensionOperator", "ColorName"
+			"RGB", "DRAW", "BLOCK", "FILL", "AssignOperator", "TopScopeModifier", 
+			"HigherScopeModifier", "Minus", "Plus", "Mult", "Divide", "ComprehensionOperator", 
+			"ColorName"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -131,7 +133,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitProgram(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitProgram(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -196,7 +198,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitInstruction(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitInstruction(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -204,6 +206,7 @@ public class CanvasGrammarParser extends Parser {
 	public final InstructionContext instruction() throws RecognitionException {
 		InstructionContext _localctx = new InstructionContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_instruction);
+
 		try {
 			setState(69);
 			_errHandler.sync(this);
@@ -304,7 +307,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBlock(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBlock(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -365,7 +368,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitInstructionChain(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitInstructionChain(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -384,7 +387,7 @@ public class CanvasGrammarParser extends Parser {
 			setState(86);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -455,7 +458,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionName(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionName(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -497,7 +500,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableName(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableName(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -550,7 +553,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitHigherScopeVar(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitHigherScopeVar(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -570,7 +573,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitTopScopeVar(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitTopScopeVar(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -589,7 +592,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitSameScopeVar(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitSameScopeVar(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -663,7 +666,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariable(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariable(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -717,7 +720,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitConstant(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitConstant(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -771,7 +774,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitNonPriorityArithmeticOperator(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitNonPriorityArithmeticOperator(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -823,7 +826,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityArithmeticOperator(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityArithmeticOperator(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -879,7 +882,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionCall(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionCall(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -930,7 +933,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionCallArguments(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionCallArguments(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1010,7 +1013,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitArguments(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitArguments(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1087,7 +1090,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitCondition(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitCondition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1166,7 +1169,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionDefinition(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionDefinition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1228,7 +1231,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitLoop(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitLoop(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1294,7 +1297,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorRGB(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorRGB(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1311,7 +1314,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorHex(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorHex(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1328,7 +1331,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorName(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorName(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1414,7 +1417,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitExpression(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1465,7 +1468,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityExpression(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1519,7 +1522,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBracketExpression(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBracketExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1538,7 +1541,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitConstantExpression(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitConstantExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1557,7 +1560,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableExpression(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1631,7 +1634,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityExpressionSuffix(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityExpressionSuffix(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1705,7 +1708,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitExpressionSuffix(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitExpressionSuffix(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1779,7 +1782,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBool(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBool(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1861,7 +1864,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBoolSrc(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBoolSrc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1950,7 +1953,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitLine(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitLine(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1973,7 +1976,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitCircle(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitCircle(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1996,7 +1999,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitRectangle(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitRectangle(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2111,6 +2114,7 @@ public class CanvasGrammarParser extends Parser {
 		public ColorContext color() {
 			return getRuleContext(ColorContext.class,0);
 		}
+		public TerminalNode FILL() { return getToken(CanvasGrammarParser.FILL, 0); }
 		public DrawInstructionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2125,7 +2129,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitDrawInstruction(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitDrawInstruction(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2133,6 +2137,7 @@ public class CanvasGrammarParser extends Parser {
 	public final DrawInstructionContext drawInstruction() throws RecognitionException {
 		DrawInstructionContext _localctx = new DrawInstructionContext(_ctx, getState());
 		enterRule(_localctx, 52, RULE_drawInstruction);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -2142,6 +2147,16 @@ public class CanvasGrammarParser extends Parser {
 			figure();
 			setState(266);
 			color();
+			setState(268);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==FILL) {
+				{
+				setState(267);
+				match(FILL);
+				}
+			}
+
 			}
 		}
 		catch (RecognitionException re) {
@@ -2177,7 +2192,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableOperation(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableOperation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2188,11 +2203,11 @@ public class CanvasGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(268);
-			variableRef();
-			setState(269);
-			match(AssignOperator);
 			setState(270);
+			variableRef();
+			setState(271);
+			match(AssignOperator);
+			setState(272);
 			expression();
 			}
 		}
@@ -2208,7 +2223,7 @@ public class CanvasGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3&\u0113\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\'\u0115\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -2228,73 +2243,75 @@ public class CanvasGrammarParser extends Parser {
 		"\3\32\3\32\3\32\3\32\5\32\u00e8\n\32\3\33\3\33\3\33\3\33\3\33\3\33\3\33"+
 		"\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33"+
 		"\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\5\33\u0109\n\33\3\34"+
-		"\3\34\3\34\3\34\3\35\3\35\3\35\3\35\3\35\2\2\36\2\4\6\b\n\f\16\20\22\24"+
-		"\26\30\32\34\36 \"$&(*,.\60\62\64\668\2\4\3\2!\"\3\2#$\2\u0114\2:\3\2"+
-		"\2\2\4G\3\2\2\2\6I\3\2\2\2\bO\3\2\2\2\na\3\2\2\2\fc\3\2\2\2\16j\3\2\2"+
-		"\2\20m\3\2\2\2\22r\3\2\2\2\24v\3\2\2\2\26x\3\2\2\2\30z\3\2\2\2\32}\3\2"+
-		"\2\2\34\u008a\3\2\2\2\36\u0095\3\2\2\2 \u00a0\3\2\2\2\"\u00a8\3\2\2\2"+
-		"$\u00ba\3\2\2\2&\u00bc\3\2\2\2(\u00bf\3\2\2\2*\u00c8\3\2\2\2,\u00ce\3"+
-		"\2\2\2.\u00d4\3\2\2\2\60\u00df\3\2\2\2\62\u00e7\3\2\2\2\64\u0108\3\2\2"+
-		"\2\66\u010a\3\2\2\28\u010e\3\2\2\2:;\5\b\5\2;<\7\2\2\3<\3\3\2\2\2=H\5"+
-		"\"\22\2>H\5 \21\2?H\5\36\20\2@H\5\66\34\2AH\58\35\2BH\5\30\r\2CE\5\6\4"+
-		"\2DF\7\13\2\2ED\3\2\2\2EF\3\2\2\2FH\3\2\2\2G=\3\2\2\2G>\3\2\2\2G?\3\2"+
-		"\2\2G@\3\2\2\2GA\3\2\2\2GB\3\2\2\2GC\3\2\2\2H\5\3\2\2\2IJ\7\35\2\2JK\7"+
-		"\13\2\2KL\5\b\5\2LM\7\25\2\2MN\7\35\2\2N\7\3\2\2\2OX\5\4\3\2PR\7\13\2"+
-		"\2QP\3\2\2\2RS\3\2\2\2SQ\3\2\2\2ST\3\2\2\2TU\3\2\2\2UW\5\4\3\2VQ\3\2\2"+
-		"\2WZ\3\2\2\2XV\3\2\2\2XY\3\2\2\2Y^\3\2\2\2ZX\3\2\2\2[]\7\13\2\2\\[\3\2"+
-		"\2\2]`\3\2\2\2^\\\3\2\2\2^_\3\2\2\2_\t\3\2\2\2`^\3\2\2\2ab\7\t\2\2b\13"+
-		"\3\2\2\2cd\7\t\2\2d\r\3\2\2\2ef\7\37\2\2fk\5\f\7\2gh\7 \2\2hk\5\f\7\2"+
-		"ik\5\f\7\2je\3\2\2\2jg\3\2\2\2ji\3\2\2\2k\17\3\2\2\2ln\7!\2\2ml\3\2\2"+
-		"\2mn\3\2\2\2no\3\2\2\2op\5\16\b\2p\21\3\2\2\2qs\7!\2\2rq\3\2\2\2rs\3\2"+
-		"\2\2st\3\2\2\2tu\7\b\2\2u\23\3\2\2\2vw\t\2\2\2w\25\3\2\2\2xy\t\3\2\2y"+
-		"\27\3\2\2\2z{\5\n\6\2{|\5\32\16\2|\31\3\2\2\2}\177\7\3\2\2~\u0080\5&\24"+
-		"\2\177~\3\2\2\2\177\u0080\3\2\2\2\u0080\u0085\3\2\2\2\u0081\u0082\7\4"+
-		"\2\2\u0082\u0084\5&\24\2\u0083\u0081\3\2\2\2\u0084\u0087\3\2\2\2\u0085"+
-		"\u0083\3\2\2\2\u0085\u0086\3\2\2\2\u0086\u0088\3\2\2\2\u0087\u0085\3\2"+
-		"\2\2\u0088\u0089\7\5\2\2\u0089\33\3\2\2\2\u008a\u008b\7\3\2\2\u008b\u0090"+
-		"\5\16\b\2\u008c\u008d\7\4\2\2\u008d\u008f\5\16\b\2\u008e\u008c\3\2\2\2"+
-		"\u008f\u0092\3\2\2\2\u0090\u008e\3\2\2\2\u0090\u0091\3\2\2\2\u0091\u0093"+
-		"\3\2\2\2\u0092\u0090\3\2\2\2\u0093\u0094\7\5\2\2\u0094\35\3\2\2\2\u0095"+
-		"\u0096\7\26\2\2\u0096\u0097\5\60\31\2\u0097\u0098\7\6\2\2\u0098\u0099"+
-		"\7\13\2\2\u0099\u009c\5\b\5\2\u009a\u009b\7\27\2\2\u009b\u009d\5\b\5\2"+
-		"\u009c\u009a\3\2\2\2\u009c\u009d\3\2\2\2\u009d\u009e\3\2\2\2\u009e\u009f"+
-		"\7\25\2\2\u009f\37\3\2\2\2\u00a0\u00a1\7\32\2\2\u00a1\u00a2\5\n\6\2\u00a2"+
-		"\u00a3\5\34\17\2\u00a3\u00a4\7\13\2\2\u00a4\u00a5\5\b\5\2\u00a5\u00a6"+
-		"\7\25\2\2\u00a6\u00a7\7\32\2\2\u00a7!\3\2\2\2\u00a8\u00a9\7\31\2\2\u00a9"+
-		"\u00aa\5\60\31\2\u00aa\u00ab\7\6\2\2\u00ab\u00ac\7\13\2\2\u00ac\u00ad"+
-		"\5\b\5\2\u00ad\u00ae\7\25\2\2\u00ae#\3\2\2\2\u00af\u00bb\7&\2\2\u00b0"+
-		"\u00b1\7\33\2\2\u00b1\u00b2\7\3\2\2\u00b2\u00b3\5&\24\2\u00b3\u00b4\7"+
-		"\4\2\2\u00b4\u00b5\5&\24\2\u00b5\u00b6\7\4\2\2\u00b6\u00b7\5&\24\2\u00b7"+
-		"\u00b8\7\5\2\2\u00b8\u00bb\3\2\2\2\u00b9\u00bb\7\7\2\2\u00ba\u00af\3\2"+
-		"\2\2\u00ba\u00b0\3\2\2\2\u00ba\u00b9\3\2\2\2\u00bb%\3\2\2\2\u00bc\u00bd"+
-		"\5(\25\2\u00bd\u00be\5.\30\2\u00be\'\3\2\2\2\u00bf\u00c0\5*\26\2\u00c0"+
-		"\u00c1\5,\27\2\u00c1)\3\2\2\2\u00c2\u00c9\5\20\t\2\u00c3\u00c4\7\3\2\2"+
-		"\u00c4\u00c5\5&\24\2\u00c5\u00c6\7\5\2\2\u00c6\u00c9\3\2\2\2\u00c7\u00c9"+
-		"\5\22\n\2\u00c8\u00c2\3\2\2\2\u00c8\u00c3\3\2\2\2\u00c8\u00c7\3\2\2\2"+
-		"\u00c9+\3\2\2\2\u00ca\u00cb\5\26\f\2\u00cb\u00cc\5(\25\2\u00cc\u00cf\3"+
-		"\2\2\2\u00cd\u00cf\3\2\2\2\u00ce\u00ca\3\2\2\2\u00ce\u00cd\3\2\2\2\u00cf"+
-		"-\3\2\2\2\u00d0\u00d1\5\24\13\2\u00d1\u00d2\5&\24\2\u00d2\u00d5\3\2\2"+
-		"\2\u00d3\u00d5\3\2\2\2\u00d4\u00d0\3\2\2\2\u00d4\u00d3\3\2\2\2\u00d5/"+
-		"\3\2\2\2\u00d6\u00e0\5\62\32\2\u00d7\u00d8\5\62\32\2\u00d8\u00d9\7\r\2"+
-		"\2\u00d9\u00da\5\60\31\2\u00da\u00e0\3\2\2\2\u00db\u00dc\5\62\32\2\u00dc"+
-		"\u00dd\7\16\2\2\u00dd\u00de\5\60\31\2\u00de\u00e0\3\2\2\2\u00df\u00d6"+
-		"\3\2\2\2\u00df\u00d7\3\2\2\2\u00df\u00db\3\2\2\2\u00e0\61\3\2\2\2\u00e1"+
-		"\u00e2\5&\24\2\u00e2\u00e3\7%\2\2\u00e3\u00e4\5&\24\2\u00e4\u00e8\3\2"+
-		"\2\2\u00e5\u00e8\7\17\2\2\u00e6\u00e8\7\20\2\2\u00e7\u00e1\3\2\2\2\u00e7"+
-		"\u00e5\3\2\2\2\u00e7\u00e6\3\2\2\2\u00e8\63\3\2\2\2\u00e9\u00ea\7\21\2"+
-		"\2\u00ea\u00eb\7\3\2\2\u00eb\u00ec\5&\24\2\u00ec\u00ed\7\4\2\2\u00ed\u00ee"+
-		"\5&\24\2\u00ee\u00ef\7\4\2\2\u00ef\u00f0\5&\24\2\u00f0\u00f1\7\4\2\2\u00f1"+
-		"\u00f2\5&\24\2\u00f2\u00f3\7\5\2\2\u00f3\u0109\3\2\2\2\u00f4\u00f5\7\22"+
-		"\2\2\u00f5\u00f6\7\3\2\2\u00f6\u00f7\5&\24\2\u00f7\u00f8\7\4\2\2\u00f8"+
-		"\u00f9\5&\24\2\u00f9\u00fa\7\4\2\2\u00fa\u00fb\5&\24\2\u00fb\u00fc\7\5"+
-		"\2\2\u00fc\u0109\3\2\2\2\u00fd\u00fe\7\23\2\2\u00fe\u00ff\7\3\2\2\u00ff"+
-		"\u0100\5&\24\2\u0100\u0101\7\4\2\2\u0101\u0102\5&\24\2\u0102\u0103\7\4"+
-		"\2\2\u0103\u0104\5&\24\2\u0104\u0105\7\4\2\2\u0105\u0106\5&\24\2\u0106"+
-		"\u0107\7\5\2\2\u0107\u0109\3\2\2\2\u0108\u00e9\3\2\2\2\u0108\u00f4\3\2"+
-		"\2\2\u0108\u00fd\3\2\2\2\u0109\65\3\2\2\2\u010a\u010b\7\34\2\2\u010b\u010c"+
-		"\5\64\33\2\u010c\u010d\5$\23\2\u010d\67\3\2\2\2\u010e\u010f\5\16\b\2\u010f"+
-		"\u0110\7\36\2\2\u0110\u0111\5&\24\2\u01119\3\2\2\2\25EGSX^jmr\177\u0085"+
-		"\u0090\u009c\u00ba\u00c8\u00ce\u00d4\u00df\u00e7\u0108";
+		"\3\34\3\34\3\34\5\34\u010f\n\34\3\35\3\35\3\35\3\35\3\35\2\2\36\2\4\6"+
+		"\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668\2\4\3\2\"#\3\2"+
+		"$%\2\u0117\2:\3\2\2\2\4G\3\2\2\2\6I\3\2\2\2\bO\3\2\2\2\na\3\2\2\2\fc\3"+
+		"\2\2\2\16j\3\2\2\2\20m\3\2\2\2\22r\3\2\2\2\24v\3\2\2\2\26x\3\2\2\2\30"+
+		"z\3\2\2\2\32}\3\2\2\2\34\u008a\3\2\2\2\36\u0095\3\2\2\2 \u00a0\3\2\2\2"+
+		"\"\u00a8\3\2\2\2$\u00ba\3\2\2\2&\u00bc\3\2\2\2(\u00bf\3\2\2\2*\u00c8\3"+
+		"\2\2\2,\u00ce\3\2\2\2.\u00d4\3\2\2\2\60\u00df\3\2\2\2\62\u00e7\3\2\2\2"+
+		"\64\u0108\3\2\2\2\66\u010a\3\2\2\28\u0110\3\2\2\2:;\5\b\5\2;<\7\2\2\3"+
+		"<\3\3\2\2\2=H\5\"\22\2>H\5 \21\2?H\5\36\20\2@H\5\66\34\2AH\58\35\2BH\5"+
+		"\30\r\2CE\5\6\4\2DF\7\13\2\2ED\3\2\2\2EF\3\2\2\2FH\3\2\2\2G=\3\2\2\2G"+
+		">\3\2\2\2G?\3\2\2\2G@\3\2\2\2GA\3\2\2\2GB\3\2\2\2GC\3\2\2\2H\5\3\2\2\2"+
+		"IJ\7\35\2\2JK\7\13\2\2KL\5\b\5\2LM\7\25\2\2MN\7\35\2\2N\7\3\2\2\2OX\5"+
+		"\4\3\2PR\7\13\2\2QP\3\2\2\2RS\3\2\2\2SQ\3\2\2\2ST\3\2\2\2TU\3\2\2\2UW"+
+		"\5\4\3\2VQ\3\2\2\2WZ\3\2\2\2XV\3\2\2\2XY\3\2\2\2Y^\3\2\2\2ZX\3\2\2\2["+
+		"]\7\13\2\2\\[\3\2\2\2]`\3\2\2\2^\\\3\2\2\2^_\3\2\2\2_\t\3\2\2\2`^\3\2"+
+		"\2\2ab\7\t\2\2b\13\3\2\2\2cd\7\t\2\2d\r\3\2\2\2ef\7 \2\2fk\5\f\7\2gh\7"+
+		"!\2\2hk\5\f\7\2ik\5\f\7\2je\3\2\2\2jg\3\2\2\2ji\3\2\2\2k\17\3\2\2\2ln"+
+		"\7\"\2\2ml\3\2\2\2mn\3\2\2\2no\3\2\2\2op\5\16\b\2p\21\3\2\2\2qs\7\"\2"+
+		"\2rq\3\2\2\2rs\3\2\2\2st\3\2\2\2tu\7\b\2\2u\23\3\2\2\2vw\t\2\2\2w\25\3"+
+		"\2\2\2xy\t\3\2\2y\27\3\2\2\2z{\5\n\6\2{|\5\32\16\2|\31\3\2\2\2}\177\7"+
+		"\3\2\2~\u0080\5&\24\2\177~\3\2\2\2\177\u0080\3\2\2\2\u0080\u0085\3\2\2"+
+		"\2\u0081\u0082\7\4\2\2\u0082\u0084\5&\24\2\u0083\u0081\3\2\2\2\u0084\u0087"+
+		"\3\2\2\2\u0085\u0083\3\2\2\2\u0085\u0086\3\2\2\2\u0086\u0088\3\2\2\2\u0087"+
+		"\u0085\3\2\2\2\u0088\u0089\7\5\2\2\u0089\33\3\2\2\2\u008a\u008b\7\3\2"+
+		"\2\u008b\u0090\5\16\b\2\u008c\u008d\7\4\2\2\u008d\u008f\5\16\b\2\u008e"+
+		"\u008c\3\2\2\2\u008f\u0092\3\2\2\2\u0090\u008e\3\2\2\2\u0090\u0091\3\2"+
+		"\2\2\u0091\u0093\3\2\2\2\u0092\u0090\3\2\2\2\u0093\u0094\7\5\2\2\u0094"+
+		"\35\3\2\2\2\u0095\u0096\7\26\2\2\u0096\u0097\5\60\31\2\u0097\u0098\7\6"+
+		"\2\2\u0098\u0099\7\13\2\2\u0099\u009c\5\b\5\2\u009a\u009b\7\27\2\2\u009b"+
+		"\u009d\5\b\5\2\u009c\u009a\3\2\2\2\u009c\u009d\3\2\2\2\u009d\u009e\3\2"+
+		"\2\2\u009e\u009f\7\25\2\2\u009f\37\3\2\2\2\u00a0\u00a1\7\32\2\2\u00a1"+
+		"\u00a2\5\n\6\2\u00a2\u00a3\5\34\17\2\u00a3\u00a4\7\13\2\2\u00a4\u00a5"+
+		"\5\b\5\2\u00a5\u00a6\7\25\2\2\u00a6\u00a7\7\32\2\2\u00a7!\3\2\2\2\u00a8"+
+		"\u00a9\7\31\2\2\u00a9\u00aa\5\60\31\2\u00aa\u00ab\7\6\2\2\u00ab\u00ac"+
+		"\7\13\2\2\u00ac\u00ad\5\b\5\2\u00ad\u00ae\7\25\2\2\u00ae#\3\2\2\2\u00af"+
+		"\u00bb\7\'\2\2\u00b0\u00b1\7\33\2\2\u00b1\u00b2\7\3\2\2\u00b2\u00b3\5"+
+		"&\24\2\u00b3\u00b4\7\4\2\2\u00b4\u00b5\5&\24\2\u00b5\u00b6\7\4\2\2\u00b6"+
+		"\u00b7\5&\24\2\u00b7\u00b8\7\5\2\2\u00b8\u00bb\3\2\2\2\u00b9\u00bb\7\7"+
+		"\2\2\u00ba\u00af\3\2\2\2\u00ba\u00b0\3\2\2\2\u00ba\u00b9\3\2\2\2\u00bb"+
+		"%\3\2\2\2\u00bc\u00bd\5(\25\2\u00bd\u00be\5.\30\2\u00be\'\3\2\2\2\u00bf"+
+		"\u00c0\5*\26\2\u00c0\u00c1\5,\27\2\u00c1)\3\2\2\2\u00c2\u00c9\5\20\t\2"+
+		"\u00c3\u00c4\7\3\2\2\u00c4\u00c5\5&\24\2\u00c5\u00c6\7\5\2\2\u00c6\u00c9"+
+		"\3\2\2\2\u00c7\u00c9\5\22\n\2\u00c8\u00c2\3\2\2\2\u00c8\u00c3\3\2\2\2"+
+		"\u00c8\u00c7\3\2\2\2\u00c9+\3\2\2\2\u00ca\u00cb\5\26\f\2\u00cb\u00cc\5"+
+		"(\25\2\u00cc\u00cf\3\2\2\2\u00cd\u00cf\3\2\2\2\u00ce\u00ca\3\2\2\2\u00ce"+
+		"\u00cd\3\2\2\2\u00cf-\3\2\2\2\u00d0\u00d1\5\24\13\2\u00d1\u00d2\5&\24"+
+		"\2\u00d2\u00d5\3\2\2\2\u00d3\u00d5\3\2\2\2\u00d4\u00d0\3\2\2\2\u00d4\u00d3"+
+		"\3\2\2\2\u00d5/\3\2\2\2\u00d6\u00e0\5\62\32\2\u00d7\u00d8\5\62\32\2\u00d8"+
+		"\u00d9\7\r\2\2\u00d9\u00da\5\60\31\2\u00da\u00e0\3\2\2\2\u00db\u00dc\5"+
+		"\62\32\2\u00dc\u00dd\7\16\2\2\u00dd\u00de\5\60\31\2\u00de\u00e0\3\2\2"+
+		"\2\u00df\u00d6\3\2\2\2\u00df\u00d7\3\2\2\2\u00df\u00db\3\2\2\2\u00e0\61"+
+		"\3\2\2\2\u00e1\u00e2\5&\24\2\u00e2\u00e3\7&\2\2\u00e3\u00e4\5&\24\2\u00e4"+
+		"\u00e8\3\2\2\2\u00e5\u00e8\7\17\2\2\u00e6\u00e8\7\20\2\2\u00e7\u00e1\3"+
+		"\2\2\2\u00e7\u00e5\3\2\2\2\u00e7\u00e6\3\2\2\2\u00e8\63\3\2\2\2\u00e9"+
+		"\u00ea\7\21\2\2\u00ea\u00eb\7\3\2\2\u00eb\u00ec\5&\24\2\u00ec\u00ed\7"+
+		"\4\2\2\u00ed\u00ee\5&\24\2\u00ee\u00ef\7\4\2\2\u00ef\u00f0\5&\24\2\u00f0"+
+		"\u00f1\7\4\2\2\u00f1\u00f2\5&\24\2\u00f2\u00f3\7\5\2\2\u00f3\u0109\3\2"+
+		"\2\2\u00f4\u00f5\7\22\2\2\u00f5\u00f6\7\3\2\2\u00f6\u00f7\5&\24\2\u00f7"+
+		"\u00f8\7\4\2\2\u00f8\u00f9\5&\24\2\u00f9\u00fa\7\4\2\2\u00fa\u00fb\5&"+
+		"\24\2\u00fb\u00fc\7\5\2\2\u00fc\u0109\3\2\2\2\u00fd\u00fe\7\23\2\2\u00fe"+
+		"\u00ff\7\3\2\2\u00ff\u0100\5&\24\2\u0100\u0101\7\4\2\2\u0101\u0102\5&"+
+		"\24\2\u0102\u0103\7\4\2\2\u0103\u0104\5&\24\2\u0104\u0105\7\4\2\2\u0105"+
+		"\u0106\5&\24\2\u0106\u0107\7\5\2\2\u0107\u0109\3\2\2\2\u0108\u00e9\3\2"+
+		"\2\2\u0108\u00f4\3\2\2\2\u0108\u00fd\3\2\2\2\u0109\65\3\2\2\2\u010a\u010b"+
+		"\7\34\2\2\u010b\u010c\5\64\33\2\u010c\u010e\5$\23\2\u010d\u010f\7\36\2"+
+		"\2\u010e\u010d\3\2\2\2\u010e\u010f\3\2\2\2\u010f\67\3\2\2\2\u0110\u0111"+
+		"\5\16\b\2\u0111\u0112\7\37\2\2\u0112\u0113\5&\24\2\u01139\3\2\2\2\26E"+
+		"GSX^jmr\177\u0085\u0090\u009c\u00ba\u00c8\u00ce\u00d4\u00df\u00e7\u0108"+
+		"\u010e";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

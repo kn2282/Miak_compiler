@@ -24,13 +24,15 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        lexer.removeErrorListeners();
+        lexer.addErrorListener(CanvasErrorStrategy.INSTANCE);
         // CanvasGrammarLexer lexer = new CanvasGrammarLexer(CharStreams.fromString("var=19\nDRAW RECTANGLE(10+10,10*10,var,var-10) RED\n"));
         CanvasGrammarParser parser = new CanvasGrammarParser(new CommonTokenStream(lexer));
-        CanvasMainListener listener = new CanvasMainListener(parser);
-        ParseTreeWalker walker = new ParseTreeWalker();
+        parser.removeErrorListeners();
+        parser.addErrorListener(CanvasErrorStrategy.INSTANCE);
         ParseTree tree = parser.program();
-        walker.walk(listener, tree);
+
+
         //parser.program();
     }
 }

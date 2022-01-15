@@ -1,6 +1,1 @@
-var=8
-DEF test(x)
-var=4
-DRAW RECTANGLE(x,^var,var,30) RED
-END DEF
-test(6)
+adasd RECTANGLE(1,21,22,30) RED

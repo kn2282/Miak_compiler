@@ -92,6 +92,7 @@ DEF: 'DEF';
 RGB: ('RGB'|'rgb');
 DRAW:'DRAW';
 BLOCK: 'BLOCK';
+FILL: 'FILL';
 AssignOperator: '=';
 TopScopeModifier: '^^';
 HigherScopeModifier: '^';
@@ -179,7 +180,7 @@ figure :
 	| (LINE '(' expression  ',' expression  ',' expression  ',' expression ')') #Line
 	;
 
- drawInstruction  : DRAW  figure  color ;
+ drawInstruction  : DRAW  figure  color FILL? ;
 
  variableOperation  :  variableRef AssignOperator expression ;
 
