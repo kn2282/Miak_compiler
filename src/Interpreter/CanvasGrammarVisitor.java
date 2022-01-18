@@ -233,6 +233,12 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDrawInstruction(CanvasGrammarParser.DrawInstructionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#rotation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRotation(CanvasGrammarParser.RotationContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#variableOperation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

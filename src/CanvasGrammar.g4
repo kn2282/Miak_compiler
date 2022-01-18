@@ -100,6 +100,7 @@ Minus: '-';
 Plus: '+';
 Mult: '*';
 Divide: '/';
+ROTATED: 'ROTATED';
 
 nonPriorityArithmeticOperator: Plus | Minus;
 
@@ -180,8 +181,8 @@ figure :
 	| (LINE '(' expression  ',' expression  ',' expression  ',' expression ')') #Line
 	;
 
- drawInstruction  : DRAW  figure  color FILL? ;
-
+ drawInstruction  : DRAW  figure  color FILL? rotation?;
+    rotation: ROTATED expression;
  variableOperation  :  variableRef AssignOperator expression ;
 
 ColorName: 'RED' | 'BLUE' | 'YELLOW' | 'GREEN' | 'WHITE' | 'BLACK';

@@ -382,6 +382,16 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitDrawInstruction(CanvasGrammarParser.DrawInstructionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CanvasGrammarParser#rotation}.
+	 * @param ctx the parse tree
+	 */
+	void enterRotation(CanvasGrammarParser.RotationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CanvasGrammarParser#rotation}.
+	 * @param ctx the parse tree
+	 */
+	void exitRotation(CanvasGrammarParser.RotationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#variableOperation}.
 	 * @param ctx the parse tree
 	 */

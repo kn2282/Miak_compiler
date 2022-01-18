@@ -35,12 +35,9 @@ public class Evaluator {
         }
     }
 
-    int eval(CanvasGrammarParser.ExpressionContext ctx) {
-
+    int eval(CanvasGrammarParser.ExpressionContext ctx)  {
         if (ctx.expressionSuffix().nonPriorityArithmeticOperator() == null) {  //czy wyra¿enie jest jednostronne?
-
             return eval(ctx.priorityExpression());
-            //return halfEval(ctx.halfExpression());
         } else {
             return calc(eval(ctx.priorityExpression()), ctx.expressionSuffix());
         }

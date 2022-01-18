@@ -436,6 +436,18 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterRotation(CanvasGrammarParser.RotationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRotation(CanvasGrammarParser.RotationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariableOperation(CanvasGrammarParser.VariableOperationContext ctx) { }
 	/**
 	 * {@inheritDoc}

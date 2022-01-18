@@ -68,8 +68,9 @@ public class Executor {
         }
         CanvasGrammarParser.DrawInstructionContext d = ctx.drawInstruction();
         if (d != null) {
-            String instruction = "ctx.";
+            String instruction = "";
             String fillMode;
+            int middle[]={0,0};
             if (d.FILL() == null)
                 fillMode = "stroke";
             else
@@ -81,23 +82,34 @@ public class Executor {
                     // ArrayList<String> strings = new ArrayList<>();
                     instruction += "ctx.beginPath()\n";
                     instruction += "ctx.arc(";
+                    int cargs[] = {0, 0, 0};
                     for (int i = 0; i < 3; i++) {
                         //String s = rect.expression(i).getText();
-                        instruction += Integer.toString(evaluator.eval(circle.expression(i)));//s;//Integer.parseInt(s);
+                        cargs[i] = evaluator.eval(circle.expression(i));
+                    }
+                    middle = new int[]{cargs[0], cargs[1]};
+                    for (int i = 0; i < 3; i++) {
+                        instruction += Integer.toString(cargs[i]);//s;//Integer.parseInt(s);
                         instruction += ",";
                     }
                     instruction += " 0, 2 * Math.PI)\n";
-                    instruction += "ctx."+fillMode+"()";
+                    instruction += "ctx." + fillMode + "()";
 
 
                     break;
                 case "RectangleContext":
                     CanvasGrammarParser.RectangleContext rect = (CanvasGrammarParser.RectangleContext) figure;
                     ArrayList<String> strings = new ArrayList<>();
-                    instruction += fillMode+"Rect(";
+                    instruction += "ctx."+fillMode + "Rect(";
+                    int rargs[] = {0, 0, 0, 0};
+
                     for (int i = 0; i < 4; i++) {
                         //String s = rect.expression(i).getText();
-                        instruction += Integer.toString(evaluator.eval(rect.expression(i)));//s;//Integer.parseInt(s);
+                        rargs[i] = evaluator.eval(rect.expression(i));
+                    }
+                    middle = new int[]{(rargs[0]+rargs[2]/2),(rargs[1]+rargs[3]/2)};
+                    for (int i = 0; i < 4; i++) {
+                        instruction += Integer.toString(rargs[i]);//s;//Integer.parseInt(s);
                         if (i == 3)
                             instruction += ")";
                         else instruction += ",";
@@ -107,17 +119,32 @@ public class Executor {
                     CanvasGrammarParser.LineContext line = (CanvasGrammarParser.LineContext) figure;
                     // ArrayList<String> strings = new ArrayList<>();
                     ArrayList<String> parsedArgs = new ArrayList<>();
+                    int largs[]={0,0,0,0};
                     for (int i = 0; i < 4; i++) {
-                        parsedArgs.add(Integer.toString(evaluator.eval(line.expression(i))));
+                        largs[i] = evaluator.eval(line.expression(i));
+                        parsedArgs.add(Integer.toString(largs[i]));
                     }
+                    middle = new int[]{(largs[0]+largs[2])/2,(largs[1]+largs[3])/2};
+                    instruction += "ctx.beginPath()\n";
                     instruction += "ctx.moveTo(" + parsedArgs.get(0) + "," + parsedArgs.get(1) + ")\n";
                     instruction += "ctx.lineTo(" + parsedArgs.get(2) + "," + parsedArgs.get(3) + ")\n";
-                    instruction += "ctx."+fillMode+"();\n";
+                    instruction += "ctx." + fillMode + "();\n";
             }
             //definiowanie koloru
             CanvasGrammarParser.ColorContext color = d.color();
-            System.out.println("ctx."+fillMode+"Style = '" + color.getText() + "'");
-            System.out.println(instruction);
+            if(d.rotation()==null){
+                System.out.println("ctx." + fillMode + "Style = '" + color.getText() + "'");
+                System.out.println(instruction);
+            }else{
+                System.out.println("ctx.save()");
+                System.out.println("ctx.translate("+middle[0]+","+middle[1]+");");
+                System.out.println("ctx.rotate("+evaluator.eval(d.rotation().expression())+"*Math.PI/180);");
+                System.out.println("ctx.translate(-"+middle[0]+",-"+middle[1]+");");
+                System.out.println("ctx." + fillMode + "Style = '" + color.getText() + "'");
+                System.out.println(instruction);
+                System.out.println("ctx.restore()");
+            }
+
         }
         CanvasGrammarParser.BlockContext b = ctx.block();
         if (b != null) {
