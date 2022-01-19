@@ -110,13 +110,13 @@ public class Evaluator {
         try {
             if (varRef instanceof CanvasGrammarParser.HigherScopeVarContext) {
                 toReturn = ((CanvasGrammarParser.HigherScopeVarContext) varRef).variableName().getText();
-                return minus ? mem.get(toReturn, 1).adversity() : mem.get(toReturn, 1);
+                return minus ? mem.get(toReturn, 1) : mem.get(toReturn, 1).adversity();
             } else if (varRef instanceof CanvasGrammarParser.TopScopeVarContext) {
                 toReturn = ((CanvasGrammarParser.TopScopeVarContext) varRef).variableName().getText();
-                return minus ? mem.get(toReturn, 2).adversity() : mem.get(toReturn, 2);
+                return minus ? mem.get(toReturn, 2) : mem.get(toReturn, 2).adversity();
             } else {
                 toReturn = ((CanvasGrammarParser.SameScopeVarContext) varRef).variableName().getText();
-                return minus ? mem.get(toReturn, 0).adversity() : mem.get(toReturn, 0);
+                return minus ? mem.get(toReturn, 0) : mem.get(toReturn, 0).adversity();
             }
         } catch (Exception e) {
             ErrorHandler.variableNotFound(ctx.start, varRef.getText());
@@ -143,7 +143,7 @@ public class Evaluator {
         if (boolSrcContext.FALSE() != null) return false;
         if (boolSrcContext.expression()!=null){
             CanvasGrammarParser.ExpressionContext expressionContextLeft = boolSrcContext.expression().get(0), expressionContextRight = boolSrcContext.expression().get(1);
-            float left = (float) eval(expressionContextLeft).getValue(), right = (float) eval(expressionContextRight).getValue();
+            float left = eval(expressionContextLeft).getValue().floatValue(), right = eval(expressionContextRight).getValue().floatValue();
             switch (boolSrcContext.ComprehensionOperator().getText()){
                 case "==":
                     return left == right;
