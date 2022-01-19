@@ -43,7 +43,7 @@ public class Executor {
             LinkedList<ValueContainer> args = new LinkedList<>();
             for (CanvasGrammarParser.ExpressionContext expr : c.functionCallArguments().arg
             ) {
-                args.add(new ValueContainer(evaluator.eval(expr)));
+                args.add(evaluator.eval(expr));
             }
             try {
                 functionPool.call(c.functionName().getText(), args);
@@ -56,7 +56,7 @@ public class Executor {
         }
         CanvasGrammarParser.VariableOperationContext v = ctx.variableOperation();
         if (v != null) {
-            ValueContainer cont = new ValueContainer(evaluator.eval(v.expression()));
+            ValueContainer cont = evaluator.eval(v.expression());
             CanvasGrammarParser.VariableRefContext varRef = v.variableRef();
             if (varRef instanceof CanvasGrammarParser.SameScopeVarContext)
                 memory.set(((CanvasGrammarParser.SameScopeVarContext) varRef).variableName().getText(), cont, 0);
@@ -70,7 +70,7 @@ public class Executor {
         if (d != null) {
             String instruction = "";
             String fillMode;
-            int middle[]={0,0};
+            ValueContainer[] middle = new ValueContainer[3];
             if (d.FILL() == null)
                 fillMode = "stroke";
             else
@@ -82,14 +82,14 @@ public class Executor {
                     // ArrayList<String> strings = new ArrayList<>();
                     instruction += "ctx.beginPath()\n";
                     instruction += "ctx.arc(";
-                    int cargs[] = {0, 0, 0};
+                    ValueContainer[] cargs = new ValueContainer[3];
                     for (int i = 0; i < 3; i++) {
                         //String s = rect.expression(i).getText();
                         cargs[i] = evaluator.eval(circle.expression(i));
                     }
-                    middle = new int[]{cargs[0], cargs[1]};
+                    middle = new ValueContainer[]{cargs[0], cargs[1]};
                     for (int i = 0; i < 3; i++) {
-                        instruction += Integer.toString(cargs[i]);//s;//Integer.parseInt(s);
+                        instruction += cargs[i].toString();//s;//Integer.parseInt(s);
                         instruction += ",";
                     }
                     instruction += " 0, 2 * Math.PI)\n";
@@ -101,15 +101,15 @@ public class Executor {
                     CanvasGrammarParser.RectangleContext rect = (CanvasGrammarParser.RectangleContext) figure;
                     ArrayList<String> strings = new ArrayList<>();
                     instruction += "ctx."+fillMode + "Rect(";
-                    int rargs[] = {0, 0, 0, 0};
+                    ValueContainer[] rargs = new ValueContainer[4];
 
                     for (int i = 0; i < 4; i++) {
                         //String s = rect.expression(i).getText();
                         rargs[i] = evaluator.eval(rect.expression(i));
                     }
-                    middle = new int[]{(rargs[0]+rargs[2]/2),(rargs[1]+rargs[3]/2)};
+                    middle = new ValueContainer[]{(rargs[0].add(rargs[2].divide(2))),(rargs[1].add(rargs[3].divide(2)))};
                     for (int i = 0; i < 4; i++) {
-                        instruction += Integer.toString(rargs[i]);//s;//Integer.parseInt(s);
+                        instruction += rargs[i].toString();//s;//Integer.parseInt(s);
                         if (i == 3)
                             instruction += ")";
                         else instruction += ",";
@@ -119,12 +119,12 @@ public class Executor {
                     CanvasGrammarParser.LineContext line = (CanvasGrammarParser.LineContext) figure;
                     // ArrayList<String> strings = new ArrayList<>();
                     ArrayList<String> parsedArgs = new ArrayList<>();
-                    int largs[]={0,0,0,0};
+                    ValueContainer[] largs=new ValueContainer[4];
                     for (int i = 0; i < 4; i++) {
                         largs[i] = evaluator.eval(line.expression(i));
-                        parsedArgs.add(Integer.toString(largs[i]));
+                        parsedArgs.add(largs[i].toString());
                     }
-                    middle = new int[]{(largs[0]+largs[2])/2,(largs[1]+largs[3])/2};
+                    middle = new ValueContainer[]{(largs[0].add(largs[2])).divide(2), (largs[1].add(largs[3])).divide(2)};
                     instruction += "ctx.beginPath()\n";
                     instruction += "ctx.moveTo(" + parsedArgs.get(0) + "," + parsedArgs.get(1) + ")\n";
                     instruction += "ctx.lineTo(" + parsedArgs.get(2) + "," + parsedArgs.get(3) + ")\n";
@@ -137,7 +137,7 @@ public class Executor {
                 System.out.println(instruction);
             }else{
                 System.out.println("ctx.save()");
-                System.out.println("ctx.translate("+middle[0]+","+middle[1]+");");
+                System.out.println("ctx.translate("+middle[0].toString()+","+middle[1]+");");
                 System.out.println("ctx.rotate("+evaluator.eval(d.rotation().expression())+"*Math.PI/180);");
                 System.out.println("ctx.translate(-"+middle[0]+",-"+middle[1]+");");
                 System.out.println("ctx." + fillMode + "Style = '" + color.getText() + "'");

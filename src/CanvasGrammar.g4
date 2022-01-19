@@ -41,6 +41,8 @@ HexColor : HexPrefix HexDigit  HexDigit  HexDigit  HexDigit  HexDigit  HexDigit;
 Integer  :  NonZeroDigit Digit*|
 '0';
 
+Float : (NonZeroDigit Digit* | '0') '.' (NonZeroDigit Digit* | '0')?;
+
 functionName : VariableName;
 
 variableName: VariableName;
@@ -58,7 +60,7 @@ VariableName: (('a'..'z') |'_') (('a'..'z') | ('A'..'Z') | '_' | '0'..'9')* ;
 variable  :  Minus? variableRef ;
 
 
-constant : Minus? Integer;
+constant : Minus? (Integer | Float);
 
 //WhiteSpace:
 // ' '+

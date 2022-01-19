@@ -1,6 +1,7 @@
 package pl.edu.agh;
 
 import Interpreter.CanvasGrammarParser;
+import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Evaluator {
         this.listener = listener;
     }
 
-    int halfEval(CanvasGrammarParser.HalfExpressionContext ctx) {
+    ValueContainer halfEval(CanvasGrammarParser.HalfExpressionContext ctx) {
         //CanvasGrammarParser. e = ctx.exp();
 
         switch (ctx.getClass().getSimpleName()) {
@@ -30,12 +31,12 @@ public class Evaluator {
                 return evalBracket((CanvasGrammarParser.BracketExpressionContext) ctx);
             default:
                 System.out.println("//evaluation error");
-                return 0;
+                return new ValueContainer(0);
 
         }
     }
 
-    int eval(CanvasGrammarParser.ExpressionContext ctx)  {
+    ValueContainer eval(CanvasGrammarParser.ExpressionContext ctx)  {
         if (ctx.expressionSuffix().nonPriorityArithmeticOperator() == null) {  //czy wyra¿enie jest jednostronne?
             return eval(ctx.priorityExpression());
         } else {
@@ -43,7 +44,7 @@ public class Evaluator {
         }
     }
 
-    int eval(CanvasGrammarParser.PriorityExpressionContext ctx) {
+    ValueContainer eval(CanvasGrammarParser.PriorityExpressionContext ctx) {
 
         if (ctx.priorityExpressionSuffix().priorityArithmeticOperator() == null) {  //czy wyra¿enie jest jednostronne?
 
@@ -54,70 +55,74 @@ public class Evaluator {
         }
     }
 
-    int calc(int expr1, CanvasGrammarParser.ExpressionSuffixContext expr2) {
-        int right = eval(expr2.expression());
+    ValueContainer calc(ValueContainer expr1, CanvasGrammarParser.ExpressionSuffixContext expr2) {
+        ValueContainer right = eval(expr2.expression());
+
         try {
             switch (expr2.nonPriorityArithmeticOperator().getText()) {
                 case "+":
-                    return expr1 + right;
+                    return expr1.add(right);
                 case "-":
-                    return expr1 - right;
+                    return expr1.minus(right);
                 default:
-                    return 0;
+                    throw new ValueException("incorrect operator");
             }
         } catch (ArithmeticException e) {
             ErrorHandler.arithmeticError(expr2.start);
-            return 0;
+            return new ValueContainer(0);
         }
 
     }
 
-    int calc(int expr1, CanvasGrammarParser.PriorityExpressionSuffixContext expr2) {
-        int right = eval(expr2.priorityExpression());
+    ValueContainer calc(ValueContainer expr1, CanvasGrammarParser.PriorityExpressionSuffixContext expr2) {
+        ValueContainer right = eval(expr2.priorityExpression());
         try {
             switch (expr2.priorityArithmeticOperator().getText()) {
                 case "*":
-                    return expr1 * right;
+                    return expr1.mul(right);
                 case "/":
-                    return expr1 / right;
+                    return expr1.divide(right);
                 default:
-                    return 0;
+                    throw new ValueException("incorrect operator");
             }
         } catch (ArithmeticException e) {
             ErrorHandler.arithmeticError(expr2.start);
-            return 0;
+            return new ValueContainer(0);
         }
 
     }
 
-    int evalBracket(CanvasGrammarParser.BracketExpressionContext ctx) {
+    ValueContainer evalBracket(CanvasGrammarParser.BracketExpressionContext ctx) {
         return eval(ctx.expression());
     }
 
-    int evalConstant(CanvasGrammarParser.ConstantExpressionContext ctx) {
-        return Integer.parseInt(ctx.getText());
+    ValueContainer evalConstant(CanvasGrammarParser.ConstantExpressionContext ctx) {
+        if (ctx.constant().Integer() != null)
+            return new ValueContainer(Integer.parseInt(ctx.getText()));
+        else
+            return new ValueContainer(Float.parseFloat(ctx.getText()));
     }
 
-    int evalVariable(CanvasGrammarParser.VariableExpressionContext ctx) {
+    ValueContainer evalVariable(CanvasGrammarParser.VariableExpressionContext ctx) {
         String toReturn = "";
         CanvasGrammarParser.VariableRefContext varRef = ctx.variable().variableRef();
-        int minus = ctx.variable().Minus() == null ? 1 : -1;
+        boolean minus = ctx.variable().Minus() == null;
         try {
             if (varRef instanceof CanvasGrammarParser.HigherScopeVarContext) {
                 toReturn = ((CanvasGrammarParser.HigherScopeVarContext) varRef).variableName().getText();
-                return mem.get(toReturn, 1).getInt() * minus;
+                return minus ? mem.get(toReturn, 1).adversity() : mem.get(toReturn, 1);
             } else if (varRef instanceof CanvasGrammarParser.TopScopeVarContext) {
                 toReturn = ((CanvasGrammarParser.TopScopeVarContext) varRef).variableName().getText();
-                return mem.get(toReturn, 2).getInt() * minus;
+                return minus ? mem.get(toReturn, 2).adversity() : mem.get(toReturn, 2);
             } else {
                 toReturn = ((CanvasGrammarParser.SameScopeVarContext) varRef).variableName().getText();
-                return mem.get(toReturn, 0).getInt() * minus;
+                return minus ? mem.get(toReturn, 0).adversity() : mem.get(toReturn, 0);
             }
         } catch (Exception e) {
             ErrorHandler.variableNotFound(ctx.start, varRef.getText());
             System.exit(1);
         }
-        return 0;
+        throw new ValueException("incorrect variable");
     }
 
     boolean evalBool(CanvasGrammarParser.BoolContext boolContext){
@@ -138,7 +143,7 @@ public class Evaluator {
         if (boolSrcContext.FALSE() != null) return false;
         if (boolSrcContext.expression()!=null){
             CanvasGrammarParser.ExpressionContext expressionContextLeft = boolSrcContext.expression().get(0), expressionContextRight = boolSrcContext.expression().get(1);
-            int left = eval(expressionContextLeft), right = eval(expressionContextRight);
+            float left = (float) eval(expressionContextLeft).getValue(), right = (float) eval(expressionContextRight).getValue();
             switch (boolSrcContext.ComprehensionOperator().getText()){
                 case "==":
                     return left == right;
