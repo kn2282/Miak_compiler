@@ -1,9 +1,11 @@
-var = 112 / 5 + 4.5 / 15 * 7.5
+ret=1.0
 
-i=0
-i=5
-WHILE i < 10:
-    DRAW RECTANGLE(i,100.5,var/i,var) RED ROTATED 45
-    DRAW RECTANGLE(i,100.5,100,100.5) RED
-    i=i+1
-END
+DEF foo(x)
+    IF x > 1:
+        foo(x-1)
+        ^^ret = ^^ret * x * 0.5 * 2.0
+    END
+END DEF
+
+foo(5)
+DRAW RECTANGLE(ret, ret, ret, ret) RED

@@ -1,0 +1,8 @@
+DEF foo(x, y, l, w, depth)
+    DRAW RECTANGLE(x, y, l, w) RED
+    IF depth > 0:
+        foo(x+l/4, y+w/4, l/2, w/2, depth-1)
+    END
+END DEF
+
+foo(200, 200, 400, 400, 6)

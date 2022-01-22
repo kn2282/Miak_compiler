@@ -1,0 +1,13 @@
+x=0
+y=0
+separetor_len=20
+rect_len=50
+WHILE x < 10:
+    WHILE y < 10:
+        DRAW RECTANGLE(x*(separetor_len + rect_len),y*(separetor_len + rect_len), rect_len, rect_len) RED
+        DRAW RECTANGLE(x*(separetor_len + rect_len) + rect_len/2,y*(separetor_len + rect_len) + rect_len/2, rect_len/2, rect_len/2) RED ROTATE 45
+        y = y+1
+    END
+    y=0
+    x=x+1
+END

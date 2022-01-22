@@ -37,7 +37,7 @@ public class Evaluator {
     }
 
     ValueContainer eval(CanvasGrammarParser.ExpressionContext ctx)  {
-        if (ctx.expressionSuffix().nonPriorityArithmeticOperator() == null) {  //czy wyra¿enie jest jednostronne?
+        if (ctx.expressionSuffix() == null) {  //czy wyra¿enie jest jednostronne?
             return eval(ctx.priorityExpression());
         } else {
             return calc(eval(ctx.priorityExpression()), ctx.expressionSuffix());
@@ -46,7 +46,7 @@ public class Evaluator {
 
     ValueContainer eval(CanvasGrammarParser.PriorityExpressionContext ctx) {
 
-        if (ctx.priorityExpressionSuffix().priorityArithmeticOperator() == null) {  //czy wyra¿enie jest jednostronne?
+        if (ctx.priorityExpressionSuffix() == null) {  //czy wyra¿enie jest jednostronne?
 
             return halfEval(ctx.halfExpression());
             //return halfEval(ctx.halfExpression());

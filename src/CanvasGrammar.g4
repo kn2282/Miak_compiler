@@ -20,7 +20,7 @@ block:BLOCK ENDL
 instructionChain
 END BLOCK;
 
-instructionChain  :  instr+=instruction (ENDL+ instr+=instruction )* ENDL*;
+instructionChain  : ENDL* instr+=instruction (ENDL+ instr+=instruction )* ENDL*;
 
 fragment
 NonZeroDigit : [1-9];
@@ -141,11 +141,11 @@ color  :
 	;
 
 expression:
- (priorityExpression expressionSuffix)
+ priorityExpression expressionSuffix?
  ;
 
 priorityExpression:
- halfExpression priorityExpressionSuffix
+ halfExpression priorityExpressionSuffix?
 ;
 
 halfExpression:
@@ -156,13 +156,11 @@ halfExpression:
 
 priorityExpressionSuffix:
  priorityArithmeticOperator priorityExpression
- |
 ;
 
 
 expressionSuffix:
 nonPriorityArithmeticOperator expression
-|
 ;
 
 bool :
