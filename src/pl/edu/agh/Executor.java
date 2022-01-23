@@ -2,6 +2,9 @@ package pl.edu.agh;
 
 import Interpreter.CanvasGrammarParser;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
@@ -132,18 +135,20 @@ public class Executor {
             }
             //definiowanie koloru
             CanvasGrammarParser.ColorContext color = d.color();
-            if(d.rotation()==null){
-                System.out.println("ctx." + fillMode + "Style = '" + color.getText() + "'");
-                System.out.println(instruction);
-            }else{
-                System.out.println("ctx.save()");
-                System.out.println("ctx.translate("+middle[0].toString()+","+middle[1]+");");
-                System.out.println("ctx.rotate("+evaluator.eval(d.rotation().expression())+"*Math.PI/180);");
-                System.out.println("ctx.translate(-"+middle[0]+",-"+middle[1]+");");
-                System.out.println("ctx." + fillMode + "Style = '" + color.getText() + "'");
-                System.out.println(instruction);
-                System.out.println("ctx.restore()");
+            
+            if (d.rotation() == null) {
+                Main.OutputWriter.add("ctx." + fillMode + "Style = '" + color.getText() + "'");
+                Main.OutputWriter.add(instruction);
+            } else {
+                Main.OutputWriter.add("ctx.save()");
+                Main.OutputWriter.add("ctx.translate(" + middle[0].toString() + "," + middle[1] + ");");
+                Main.OutputWriter.add("ctx.rotate(" + evaluator.eval(d.rotation().expression()) + "*Math.PI/180);");
+                Main.OutputWriter.add("ctx.translate(-" + middle[0] + ",-" + middle[1] + ");");
+                Main.OutputWriter.add("ctx." + fillMode + "Style = '" + color.getText() + "'");
+                Main.OutputWriter.add(instruction);
+                Main.OutputWriter.add("ctx.restore()");
             }
+            
 
         }
         CanvasGrammarParser.BlockContext b = ctx.block();
@@ -176,6 +181,7 @@ public class Executor {
                 executeInstructionChain(loopContext.instructionChain());
             }
         }
+
 
     }//todo - refractor
 }

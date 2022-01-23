@@ -6,10 +6,14 @@ import Interpreter.CanvasGrammarLexer;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
 public class Main {
+
+
     public static void main(String[] args) {
 
 
@@ -30,8 +34,36 @@ public class Main {
         ParseTreeWalker walker = new ParseTreeWalker();
         ParseTree tree = parser.program();
         walker.walk(listener,tree);
+        OutputWriter.save();
 
+        try {
+
+            Process process = Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", ";", new File("show/index.html").getAbsolutePath()});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //parser.program();
     }
+
+    public static class OutputWriter{
+        static final File output = new File("show/main.js");
+        static String totalOutput = "";
+
+        public static void add(String str){
+            totalOutput += str + "\n";
+        }
+
+        public static void save(){
+            try {
+                FileWriter fr = new FileWriter(output);
+                fr.write(totalOutput);
+                fr.close();
+            } catch (IOException e) {
+                System.out.println("error while saving!!!");
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
