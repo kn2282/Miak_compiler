@@ -14,7 +14,10 @@ instruction  :
 	| variableOperation
 	| functionCall
 	| block ENDL?
+	| debug
 	;
+
+debug:'DEBUG';
 
 block:BLOCK ENDL
 instructionChain

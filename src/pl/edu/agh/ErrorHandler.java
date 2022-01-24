@@ -4,7 +4,7 @@ import org.antlr.v4.runtime.Token;
 
 public class ErrorHandler {
     private static void error(String string){
-        System.out.println("console.error("+string+")");
+        System.out.println("console.error(\""+string+"\")");
     }
     public static void arithmeticError(Token where) {
         error("Error at " + where.getLine() + ":" + where.getCharPositionInLine() + " - arithmetic/division by 0");

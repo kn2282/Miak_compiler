@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class MemoryPool {
     private HashMap<String, ValueContainer> memory;
-    private MemoryPool widerScopePool;
+    public MemoryPool widerScopePool;
 
     public MemoryPool(MemoryPool widerScopePool) {
         this.widerScopePool = widerScopePool;
@@ -62,5 +62,10 @@ public class MemoryPool {
 
     public void update(String key, ValueContainer val) {
         memory.replace(key, val);//todo
+    }
+    public void dump(){
+        memory.forEach((k,v)->{
+            System.out.println("console.log('"+k+":"+v.getValue().doubleValue()+"')");
+        });
     }
 }

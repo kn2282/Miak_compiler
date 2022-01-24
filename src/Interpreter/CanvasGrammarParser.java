@@ -1,4 +1,5 @@
-package Interpreter;// Generated from C:/Materia³y/MIAK/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
+// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
+package Interpreter;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -16,25 +17,25 @@ public class CanvasGrammarParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, HexColor=5, Integer=6, Float=7, VariableName=8, 
-		SPACE=9, ENDL=10, COMMENT=11, AND=12, OR=13, TRUE=14, FALSE=15, RECTANGLE=16, 
-		CIRCLE=17, LINE=18, BEGIN=19, END=20, IF=21, ELSE=22, THEN=23, WHILE=24, 
-		DEF=25, RGB=26, DRAW=27, BLOCK=28, FILL=29, AssignOperator=30, TopScopeModifier=31, 
-		HigherScopeModifier=32, Minus=33, Plus=34, Mult=35, Divide=36, ROTATED=37, 
-		ComprehensionOperator=38, ColorName=39;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, HexColor=6, Integer=7, Float=8, 
+		VariableName=9, SPACE=10, ENDL=11, COMMENT=12, AND=13, OR=14, TRUE=15, 
+		FALSE=16, RECTANGLE=17, CIRCLE=18, LINE=19, BEGIN=20, END=21, IF=22, ELSE=23, 
+		THEN=24, WHILE=25, DEF=26, RGB=27, DRAW=28, BLOCK=29, FILL=30, AssignOperator=31, 
+		TopScopeModifier=32, HigherScopeModifier=33, Minus=34, Plus=35, Mult=36, 
+		Divide=37, ROTATED=38, ComprehensionOperator=39, ColorName=40;
 	public static final int
-		RULE_program = 0, RULE_instruction = 1, RULE_block = 2, RULE_instructionChain = 3, 
-		RULE_functionName = 4, RULE_variableName = 5, RULE_variableRef = 6, RULE_variable = 7, 
-		RULE_constant = 8, RULE_nonPriorityArithmeticOperator = 9, RULE_priorityArithmeticOperator = 10, 
-		RULE_functionCall = 11, RULE_functionCallArguments = 12, RULE_arguments = 13, 
-		RULE_condition = 14, RULE_functionDefinition = 15, RULE_loop = 16, RULE_color = 17, 
-		RULE_expression = 18, RULE_priorityExpression = 19, RULE_halfExpression = 20, 
-		RULE_priorityExpressionSuffix = 21, RULE_expressionSuffix = 22, RULE_bool = 23, 
-		RULE_boolSrc = 24, RULE_figure = 25, RULE_drawInstruction = 26, RULE_rotation = 27, 
-		RULE_variableOperation = 28;
+		RULE_program = 0, RULE_instruction = 1, RULE_debug = 2, RULE_block = 3, 
+		RULE_instructionChain = 4, RULE_functionName = 5, RULE_variableName = 6, 
+		RULE_variableRef = 7, RULE_variable = 8, RULE_constant = 9, RULE_nonPriorityArithmeticOperator = 10, 
+		RULE_priorityArithmeticOperator = 11, RULE_functionCall = 12, RULE_functionCallArguments = 13, 
+		RULE_arguments = 14, RULE_condition = 15, RULE_functionDefinition = 16, 
+		RULE_loop = 17, RULE_color = 18, RULE_expression = 19, RULE_priorityExpression = 20, 
+		RULE_halfExpression = 21, RULE_priorityExpressionSuffix = 22, RULE_expressionSuffix = 23, 
+		RULE_bool = 24, RULE_boolSrc = 25, RULE_figure = 26, RULE_drawInstruction = 27, 
+		RULE_rotation = 28, RULE_variableOperation = 29;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"program", "instruction", "block", "instructionChain", "functionName", 
+			"program", "instruction", "debug", "block", "instructionChain", "functionName", 
 			"variableName", "variableRef", "variable", "constant", "nonPriorityArithmeticOperator", 
 			"priorityArithmeticOperator", "functionCall", "functionCallArguments", 
 			"arguments", "condition", "functionDefinition", "loop", "color", "expression", 
@@ -46,16 +47,17 @@ public class CanvasGrammarParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'('", "','", "')'", "':'", null, null, null, null, null, null, 
-			null, null, null, null, null, null, "'CIRCLE'", "'LINE'", "'BEGIN'", 
-			"'END'", null, null, "'THEN'", "'WHILE'", "'DEF'", null, "'DRAW'", "'BLOCK'", 
-			"'FILL'", "'='", "'^^'", "'^'", "'-'", "'+'", "'*'", "'/'", "'ROTATED'"
+			null, "'DEBUG'", "'('", "','", "')'", "':'", null, null, null, null, 
+			null, null, null, null, null, null, null, null, "'CIRCLE'", "'LINE'", 
+			"'BEGIN'", "'END'", null, null, "'THEN'", "'WHILE'", "'DEF'", null, "'DRAW'", 
+			"'BLOCK'", "'FILL'", "'='", "'^^'", "'^'", "'-'", "'+'", "'*'", "'/'", 
+			"'ROTATED'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, "HexColor", "Integer", "Float", "VariableName", 
+			null, null, null, null, null, null, "HexColor", "Integer", "Float", "VariableName", 
 			"SPACE", "ENDL", "COMMENT", "AND", "OR", "TRUE", "FALSE", "RECTANGLE", 
 			"CIRCLE", "LINE", "BEGIN", "END", "IF", "ELSE", "THEN", "WHILE", "DEF", 
 			"RGB", "DRAW", "BLOCK", "FILL", "AssignOperator", "TopScopeModifier", 
@@ -133,7 +135,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitProgram(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitProgram(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -144,9 +146,9 @@ public class CanvasGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
+			setState(60);
 			instructionChain();
-			setState(59);
+			setState(61);
 			match(EOF);
 			}
 		}
@@ -184,6 +186,9 @@ public class CanvasGrammarParser extends Parser {
 			return getRuleContext(BlockContext.class,0);
 		}
 		public TerminalNode ENDL() { return getToken(CanvasGrammarParser.ENDL, 0); }
+		public DebugContext debug() {
+			return getRuleContext(DebugContext.class,0);
+		}
 		public InstructionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -198,7 +203,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitInstruction(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitInstruction(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -207,68 +212,116 @@ public class CanvasGrammarParser extends Parser {
 		InstructionContext _localctx = new InstructionContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_instruction);
 		try {
-			setState(71);
+			setState(74);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(61);
+				setState(63);
 				loop();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(62);
+				setState(64);
 				functionDefinition();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(63);
+				setState(65);
 				condition();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(64);
+				setState(66);
 				drawInstruction();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(65);
+				setState(67);
 				variableOperation();
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(66);
+				setState(68);
 				functionCall();
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(67);
-				block();
 				setState(69);
+				block();
+				setState(71);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 				case 1:
 					{
-					setState(68);
+					setState(70);
 					match(ENDL);
 					}
 					break;
 				}
 				}
 				break;
+			case 8:
+				enterOuterAlt(_localctx, 8);
+				{
+				setState(73);
+				debug();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class DebugContext extends ParserRuleContext {
+		public DebugContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_debug; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CanvasGrammarListener ) ((CanvasGrammarListener)listener).enterDebug(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CanvasGrammarListener ) ((CanvasGrammarListener)listener).exitDebug(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitDebug(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final DebugContext debug() throws RecognitionException {
+		DebugContext _localctx = new DebugContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_debug);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(76);
+			match(T__0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -306,26 +359,26 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBlock(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBlock(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final BlockContext block() throws RecognitionException {
 		BlockContext _localctx = new BlockContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_block);
+		enterRule(_localctx, 6, RULE_block);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(73);
+			setState(78);
 			match(BLOCK);
-			setState(74);
+			setState(79);
 			match(ENDL);
-			setState(75);
+			setState(80);
 			instructionChain();
-			setState(76);
+			setState(81);
 			match(END);
-			setState(77);
+			setState(82);
 			match(BLOCK);
 			}
 		}
@@ -367,78 +420,78 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitInstructionChain(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitInstructionChain(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final InstructionChainContext instructionChain() throws RecognitionException {
 		InstructionChainContext _localctx = new InstructionChainContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_instructionChain);
+		enterRule(_localctx, 8, RULE_instructionChain);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(82);
+			setState(87);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ENDL) {
 				{
 				{
-				setState(79);
+				setState(84);
 				match(ENDL);
 				}
 				}
-				setState(84);
+				setState(89);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(85);
+			setState(90);
 			((InstructionChainContext)_localctx).instruction = instruction();
 			((InstructionChainContext)_localctx).instr.add(((InstructionChainContext)_localctx).instruction);
-			setState(94);
+			setState(99);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(87); 
+					setState(92); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 					do {
 						{
 						{
-						setState(86);
+						setState(91);
 						match(ENDL);
 						}
 						}
-						setState(89); 
+						setState(94); 
 						_errHandler.sync(this);
 						_la = _input.LA(1);
 					} while ( _la==ENDL );
-					setState(91);
+					setState(96);
 					((InstructionChainContext)_localctx).instruction = instruction();
 					((InstructionChainContext)_localctx).instr.add(((InstructionChainContext)_localctx).instruction);
 					}
 					} 
 				}
-				setState(96);
+				setState(101);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			}
-			setState(100);
+			setState(105);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ENDL) {
 				{
 				{
-				setState(97);
+				setState(102);
 				match(ENDL);
 				}
 				}
-				setState(102);
+				setState(107);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -471,18 +524,18 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionName(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionName(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final FunctionNameContext functionName() throws RecognitionException {
 		FunctionNameContext _localctx = new FunctionNameContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_functionName);
+		enterRule(_localctx, 10, RULE_functionName);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(103);
+			setState(108);
 			match(VariableName);
 			}
 		}
@@ -513,18 +566,18 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableName(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableName(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VariableNameContext variableName() throws RecognitionException {
 		VariableNameContext _localctx = new VariableNameContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_variableName);
+		enterRule(_localctx, 12, RULE_variableName);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(105);
+			setState(110);
 			match(VariableName);
 			}
 		}
@@ -566,7 +619,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitHigherScopeVar(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitHigherScopeVar(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -586,7 +639,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitTopScopeVar(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitTopScopeVar(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -605,25 +658,25 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitSameScopeVar(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitSameScopeVar(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VariableRefContext variableRef() throws RecognitionException {
 		VariableRefContext _localctx = new VariableRefContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_variableRef);
+		enterRule(_localctx, 14, RULE_variableRef);
 		try {
-			setState(112);
+			setState(117);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case TopScopeModifier:
 				_localctx = new TopScopeVarContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(107);
+				setState(112);
 				match(TopScopeModifier);
-				setState(108);
+				setState(113);
 				variableName();
 				}
 				break;
@@ -631,9 +684,9 @@ public class CanvasGrammarParser extends Parser {
 				_localctx = new HigherScopeVarContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(109);
+				setState(114);
 				match(HigherScopeModifier);
-				setState(110);
+				setState(115);
 				variableName();
 				}
 				break;
@@ -641,7 +694,7 @@ public class CanvasGrammarParser extends Parser {
 				_localctx = new SameScopeVarContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(111);
+				setState(116);
 				variableName();
 				}
 				break;
@@ -679,29 +732,29 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariable(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariable(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VariableContext variable() throws RecognitionException {
 		VariableContext _localctx = new VariableContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_variable);
+		enterRule(_localctx, 16, RULE_variable);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(115);
+			setState(120);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==Minus) {
 				{
-				setState(114);
+				setState(119);
 				match(Minus);
 				}
 			}
 
-			setState(117);
+			setState(122);
 			variableRef();
 			}
 		}
@@ -734,29 +787,29 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitConstant(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitConstant(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ConstantContext constant() throws RecognitionException {
 		ConstantContext _localctx = new ConstantContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_constant);
+		enterRule(_localctx, 18, RULE_constant);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(120);
+			setState(125);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==Minus) {
 				{
-				setState(119);
+				setState(124);
 				match(Minus);
 				}
 			}
 
-			setState(122);
+			setState(127);
 			_la = _input.LA(1);
 			if ( !(_la==Integer || _la==Float) ) {
 			_errHandler.recoverInline(this);
@@ -796,19 +849,19 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitNonPriorityArithmeticOperator(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitNonPriorityArithmeticOperator(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final NonPriorityArithmeticOperatorContext nonPriorityArithmeticOperator() throws RecognitionException {
 		NonPriorityArithmeticOperatorContext _localctx = new NonPriorityArithmeticOperatorContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_nonPriorityArithmeticOperator);
+		enterRule(_localctx, 20, RULE_nonPriorityArithmeticOperator);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(124);
+			setState(129);
 			_la = _input.LA(1);
 			if ( !(_la==Minus || _la==Plus) ) {
 			_errHandler.recoverInline(this);
@@ -848,19 +901,19 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityArithmeticOperator(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityArithmeticOperator(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PriorityArithmeticOperatorContext priorityArithmeticOperator() throws RecognitionException {
 		PriorityArithmeticOperatorContext _localctx = new PriorityArithmeticOperatorContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_priorityArithmeticOperator);
+		enterRule(_localctx, 22, RULE_priorityArithmeticOperator);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(126);
+			setState(131);
 			_la = _input.LA(1);
 			if ( !(_la==Mult || _la==Divide) ) {
 			_errHandler.recoverInline(this);
@@ -904,20 +957,20 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionCall(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionCall(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final FunctionCallContext functionCall() throws RecognitionException {
 		FunctionCallContext _localctx = new FunctionCallContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_functionCall);
+		enterRule(_localctx, 24, RULE_functionCall);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(128);
+			setState(133);
 			functionName();
-			setState(129);
+			setState(134);
 			functionCallArguments();
 			}
 		}
@@ -955,50 +1008,50 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionCallArguments(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionCallArguments(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final FunctionCallArgumentsContext functionCallArguments() throws RecognitionException {
 		FunctionCallArgumentsContext _localctx = new FunctionCallArgumentsContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_functionCallArguments);
+		enterRule(_localctx, 26, RULE_functionCallArguments);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(131);
-			match(T__0);
-			setState(133);
+			setState(136);
+			match(T__1);
+			setState(138);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << Integer) | (1L << Float) | (1L << VariableName) | (1L << TopScopeModifier) | (1L << HigherScopeModifier) | (1L << Minus))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << Integer) | (1L << Float) | (1L << VariableName) | (1L << TopScopeModifier) | (1L << HigherScopeModifier) | (1L << Minus))) != 0)) {
 				{
-				setState(132);
+				setState(137);
 				((FunctionCallArgumentsContext)_localctx).expression = expression();
 				((FunctionCallArgumentsContext)_localctx).arg.add(((FunctionCallArgumentsContext)_localctx).expression);
 				}
 			}
 
-			setState(139);
+			setState(144);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__1) {
+			while (_la==T__2) {
 				{
 				{
-				setState(135);
-				match(T__1);
-				setState(136);
+				setState(140);
+				match(T__2);
+				setState(141);
 				((FunctionCallArgumentsContext)_localctx).expression = expression();
 				((FunctionCallArgumentsContext)_localctx).arg.add(((FunctionCallArgumentsContext)_localctx).expression);
 				}
 				}
-				setState(141);
+				setState(146);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(142);
-			match(T__2);
+			setState(147);
+			match(T__3);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1035,42 +1088,42 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitArguments(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitArguments(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ArgumentsContext arguments() throws RecognitionException {
 		ArgumentsContext _localctx = new ArgumentsContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_arguments);
+		enterRule(_localctx, 28, RULE_arguments);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(144);
-			match(T__0);
-			setState(145);
+			setState(149);
+			match(T__1);
+			setState(150);
 			((ArgumentsContext)_localctx).variableRef = variableRef();
 			((ArgumentsContext)_localctx).arg.add(((ArgumentsContext)_localctx).variableRef);
-			setState(150);
+			setState(155);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__1) {
+			while (_la==T__2) {
 				{
 				{
-				setState(146);
-				match(T__1);
-				setState(147);
+				setState(151);
+				match(T__2);
+				setState(152);
 				((ArgumentsContext)_localctx).variableRef = variableRef();
 				((ArgumentsContext)_localctx).arg.add(((ArgumentsContext)_localctx).variableRef);
 				}
 				}
-				setState(152);
+				setState(157);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(153);
-			match(T__2);
+			setState(158);
+			match(T__3);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1112,41 +1165,41 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitCondition(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitCondition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ConditionContext condition() throws RecognitionException {
 		ConditionContext _localctx = new ConditionContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_condition);
+		enterRule(_localctx, 30, RULE_condition);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(155);
+			setState(160);
 			match(IF);
-			setState(156);
+			setState(161);
 			bool();
-			setState(157);
-			match(T__3);
-			setState(158);
-			match(ENDL);
-			setState(159);
-			instructionChain();
 			setState(162);
+			match(T__4);
+			setState(163);
+			match(ENDL);
+			setState(164);
+			instructionChain();
+			setState(167);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ELSE) {
 				{
-				setState(160);
+				setState(165);
 				match(ELSE);
-				setState(161);
+				setState(166);
 				instructionChain();
 				}
 			}
 
-			setState(164);
+			setState(169);
 			match(END);
 			}
 		}
@@ -1191,30 +1244,30 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionDefinition(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitFunctionDefinition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final FunctionDefinitionContext functionDefinition() throws RecognitionException {
 		FunctionDefinitionContext _localctx = new FunctionDefinitionContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_functionDefinition);
+		enterRule(_localctx, 32, RULE_functionDefinition);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(166);
-			match(DEF);
-			setState(167);
-			functionName();
-			setState(168);
-			arguments();
-			setState(169);
-			match(ENDL);
-			setState(170);
-			instructionChain();
 			setState(171);
-			match(END);
+			match(DEF);
 			setState(172);
+			functionName();
+			setState(173);
+			arguments();
+			setState(174);
+			match(ENDL);
+			setState(175);
+			instructionChain();
+			setState(176);
+			match(END);
+			setState(177);
 			match(DEF);
 			}
 		}
@@ -1253,28 +1306,28 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitLoop(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitLoop(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final LoopContext loop() throws RecognitionException {
 		LoopContext _localctx = new LoopContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_loop);
+		enterRule(_localctx, 34, RULE_loop);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(174);
-			match(WHILE);
-			setState(175);
-			bool();
-			setState(176);
-			match(T__3);
-			setState(177);
-			match(ENDL);
-			setState(178);
-			instructionChain();
 			setState(179);
+			match(WHILE);
+			setState(180);
+			bool();
+			setState(181);
+			match(T__4);
+			setState(182);
+			match(ENDL);
+			setState(183);
+			instructionChain();
+			setState(184);
 			match(END);
 			}
 		}
@@ -1319,7 +1372,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorRGB(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorRGB(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1336,7 +1389,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorHex(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorHex(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1353,23 +1406,23 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorName(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitColorName(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ColorContext color() throws RecognitionException {
 		ColorContext _localctx = new ColorContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_color);
+		enterRule(_localctx, 36, RULE_color);
 		try {
-			setState(192);
+			setState(197);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ColorName:
 				_localctx = new ColorNameContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(181);
+				setState(186);
 				match(ColorName);
 				}
 				break;
@@ -1377,29 +1430,29 @@ public class CanvasGrammarParser extends Parser {
 				_localctx = new ColorRGBContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(182);
-				match(RGB);
-				setState(183);
-				match(T__0);
-				setState(184);
-				expression();
-				setState(185);
-				match(T__1);
-				setState(186);
-				expression();
 				setState(187);
-				match(T__1);
+				match(RGB);
 				setState(188);
-				expression();
+				match(T__1);
 				setState(189);
+				expression();
+				setState(190);
 				match(T__2);
+				setState(191);
+				expression();
+				setState(192);
+				match(T__2);
+				setState(193);
+				expression();
+				setState(194);
+				match(T__3);
 				}
 				break;
 			case HexColor:
 				_localctx = new ColorHexContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(191);
+				setState(196);
 				match(HexColor);
 				}
 				break;
@@ -1439,26 +1492,26 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitExpression(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
 		ExpressionContext _localctx = new ExpressionContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_expression);
+		enterRule(_localctx, 38, RULE_expression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(194);
+			setState(199);
 			priorityExpression();
-			setState(196);
+			setState(201);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==Minus || _la==Plus) {
 				{
-				setState(195);
+				setState(200);
 				expressionSuffix();
 				}
 			}
@@ -1497,26 +1550,26 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityExpression(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PriorityExpressionContext priorityExpression() throws RecognitionException {
 		PriorityExpressionContext _localctx = new PriorityExpressionContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_priorityExpression);
+		enterRule(_localctx, 40, RULE_priorityExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(198);
+			setState(203);
 			halfExpression();
-			setState(200);
+			setState(205);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==Mult || _la==Divide) {
 				{
-				setState(199);
+				setState(204);
 				priorityExpressionSuffix();
 				}
 			}
@@ -1560,7 +1613,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBracketExpression(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBracketExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1579,7 +1632,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitConstantExpression(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitConstantExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1598,23 +1651,23 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableExpression(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final HalfExpressionContext halfExpression() throws RecognitionException {
 		HalfExpressionContext _localctx = new HalfExpressionContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_halfExpression);
+		enterRule(_localctx, 42, RULE_halfExpression);
 		try {
-			setState(208);
+			setState(213);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 			case 1:
 				_localctx = new VariableExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(202);
+				setState(207);
 				variable();
 				}
 				break;
@@ -1622,19 +1675,19 @@ public class CanvasGrammarParser extends Parser {
 				_localctx = new BracketExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(203);
-				match(T__0);
-				setState(204);
+				setState(208);
+				match(T__1);
+				setState(209);
 				expression();
-				setState(205);
-				match(T__2);
+				setState(210);
+				match(T__3);
 				}
 				break;
 			case 3:
 				_localctx = new ConstantExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(207);
+				setState(212);
 				constant();
 				}
 				break;
@@ -1672,20 +1725,20 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityExpressionSuffix(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitPriorityExpressionSuffix(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PriorityExpressionSuffixContext priorityExpressionSuffix() throws RecognitionException {
 		PriorityExpressionSuffixContext _localctx = new PriorityExpressionSuffixContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_priorityExpressionSuffix);
+		enterRule(_localctx, 44, RULE_priorityExpressionSuffix);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(210);
+			setState(215);
 			priorityArithmeticOperator();
-			setState(211);
+			setState(216);
 			priorityExpression();
 			}
 		}
@@ -1721,20 +1774,20 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitExpressionSuffix(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitExpressionSuffix(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ExpressionSuffixContext expressionSuffix() throws RecognitionException {
 		ExpressionSuffixContext _localctx = new ExpressionSuffixContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_expressionSuffix);
+		enterRule(_localctx, 46, RULE_expressionSuffix);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(213);
+			setState(218);
 			nonPriorityArithmeticOperator();
-			setState(214);
+			setState(219);
 			expression();
 			}
 		}
@@ -1772,22 +1825,22 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBool(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBool(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final BoolContext bool() throws RecognitionException {
 		BoolContext _localctx = new BoolContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_bool);
+		enterRule(_localctx, 48, RULE_bool);
 		try {
-			setState(225);
+			setState(230);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(216);
+				setState(221);
 				boolSrc();
 				}
 				break;
@@ -1795,11 +1848,11 @@ public class CanvasGrammarParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				{
-				setState(217);
+				setState(222);
 				boolSrc();
-				setState(218);
+				setState(223);
 				match(AND);
-				setState(219);
+				setState(224);
 				bool();
 				}
 				}
@@ -1808,11 +1861,11 @@ public class CanvasGrammarParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				{
-				setState(221);
+				setState(226);
 				boolSrc();
-				setState(222);
+				setState(227);
 				match(OR);
-				setState(223);
+				setState(228);
 				bool();
 				}
 				}
@@ -1854,21 +1907,21 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBoolSrc(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitBoolSrc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final BoolSrcContext boolSrc() throws RecognitionException {
 		BoolSrcContext _localctx = new BoolSrcContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_boolSrc);
+		enterRule(_localctx, 50, RULE_boolSrc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(233);
+			setState(238);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case T__0:
+			case T__1:
 			case Integer:
 			case Float:
 			case VariableName:
@@ -1877,24 +1930,24 @@ public class CanvasGrammarParser extends Parser {
 			case Minus:
 				{
 				{
-				setState(227);
+				setState(232);
 				expression();
-				setState(228);
+				setState(233);
 				match(ComprehensionOperator);
-				setState(229);
+				setState(234);
 				expression();
 				}
 				}
 				break;
 			case TRUE:
 				{
-				setState(231);
+				setState(236);
 				match(TRUE);
 				}
 				break;
 			case FALSE:
 				{
-				setState(232);
+				setState(237);
 				match(FALSE);
 				}
 				break;
@@ -1944,7 +1997,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitLine(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitLine(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1967,7 +2020,7 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitCircle(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitCircle(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1990,16 +2043,16 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitRectangle(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitRectangle(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final FigureContext figure() throws RecognitionException {
 		FigureContext _localctx = new FigureContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_figure);
+		enterRule(_localctx, 52, RULE_figure);
 		try {
-			setState(266);
+			setState(271);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case RECTANGLE:
@@ -2007,26 +2060,26 @@ public class CanvasGrammarParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				{
-				setState(235);
-				match(RECTANGLE);
-				setState(236);
-				match(T__0);
-				setState(237);
-				expression();
-				setState(238);
-				match(T__1);
-				setState(239);
-				expression();
 				setState(240);
-				match(T__1);
+				match(RECTANGLE);
 				setState(241);
-				expression();
-				setState(242);
 				match(T__1);
-				setState(243);
+				setState(242);
 				expression();
-				setState(244);
+				setState(243);
 				match(T__2);
+				setState(244);
+				expression();
+				setState(245);
+				match(T__2);
+				setState(246);
+				expression();
+				setState(247);
+				match(T__2);
+				setState(248);
+				expression();
+				setState(249);
+				match(T__3);
 				}
 				}
 				break;
@@ -2035,22 +2088,22 @@ public class CanvasGrammarParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				{
-				setState(246);
-				match(CIRCLE);
-				setState(247);
-				match(T__0);
-				setState(248);
-				expression();
-				setState(249);
-				match(T__1);
-				setState(250);
-				expression();
 				setState(251);
-				match(T__1);
+				match(CIRCLE);
 				setState(252);
-				expression();
+				match(T__1);
 				setState(253);
+				expression();
+				setState(254);
 				match(T__2);
+				setState(255);
+				expression();
+				setState(256);
+				match(T__2);
+				setState(257);
+				expression();
+				setState(258);
+				match(T__3);
 				}
 				}
 				break;
@@ -2059,26 +2112,26 @@ public class CanvasGrammarParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				{
-				setState(255);
-				match(LINE);
-				setState(256);
-				match(T__0);
-				setState(257);
-				expression();
-				setState(258);
-				match(T__1);
-				setState(259);
-				expression();
 				setState(260);
-				match(T__1);
+				match(LINE);
 				setState(261);
-				expression();
-				setState(262);
 				match(T__1);
-				setState(263);
+				setState(262);
 				expression();
-				setState(264);
+				setState(263);
 				match(T__2);
+				setState(264);
+				expression();
+				setState(265);
+				match(T__2);
+				setState(266);
+				expression();
+				setState(267);
+				match(T__2);
+				setState(268);
+				expression();
+				setState(269);
+				match(T__3);
 				}
 				}
 				break;
@@ -2123,40 +2176,40 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitDrawInstruction(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitDrawInstruction(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final DrawInstructionContext drawInstruction() throws RecognitionException {
 		DrawInstructionContext _localctx = new DrawInstructionContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_drawInstruction);
+		enterRule(_localctx, 54, RULE_drawInstruction);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(268);
+			setState(273);
 			match(DRAW);
-			setState(269);
+			setState(274);
 			figure();
-			setState(270);
+			setState(275);
 			color();
-			setState(272);
+			setState(277);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==FILL) {
 				{
-				setState(271);
+				setState(276);
 				match(FILL);
 				}
 			}
 
-			setState(275);
+			setState(280);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ROTATED) {
 				{
-				setState(274);
+				setState(279);
 				rotation();
 				}
 			}
@@ -2193,20 +2246,20 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitRotation(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitRotation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final RotationContext rotation() throws RecognitionException {
 		RotationContext _localctx = new RotationContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_rotation);
+		enterRule(_localctx, 56, RULE_rotation);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(277);
+			setState(282);
 			match(ROTATED);
-			setState(278);
+			setState(283);
 			expression();
 			}
 		}
@@ -2243,22 +2296,22 @@ public class CanvasGrammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CanvasGrammarVisitor) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableOperation(this);
+			if ( visitor instanceof CanvasGrammarVisitor ) return ((CanvasGrammarVisitor<? extends T>)visitor).visitVariableOperation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VariableOperationContext variableOperation() throws RecognitionException {
 		VariableOperationContext _localctx = new VariableOperationContext(_ctx, getState());
-		enterRule(_localctx, 56, RULE_variableOperation);
+		enterRule(_localctx, 58, RULE_variableOperation);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(280);
+			setState(285);
 			variableRef();
-			setState(281);
+			setState(286);
 			match(AssignOperator);
-			setState(282);
+			setState(287);
 			expression();
 			}
 		}
@@ -2274,98 +2327,101 @@ public class CanvasGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3)\u011f\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3*\u0124\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
-		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\3\2\3\2\3\2\3\3\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\5\3H\n\3\5\3J\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\5"+
-		"\7\5S\n\5\f\5\16\5V\13\5\3\5\3\5\6\5Z\n\5\r\5\16\5[\3\5\7\5_\n\5\f\5\16"+
-		"\5b\13\5\3\5\7\5e\n\5\f\5\16\5h\13\5\3\6\3\6\3\7\3\7\3\b\3\b\3\b\3\b\3"+
-		"\b\5\bs\n\b\3\t\5\tv\n\t\3\t\3\t\3\n\5\n{\n\n\3\n\3\n\3\13\3\13\3\f\3"+
-		"\f\3\r\3\r\3\r\3\16\3\16\5\16\u0088\n\16\3\16\3\16\7\16\u008c\n\16\f\16"+
-		"\16\16\u008f\13\16\3\16\3\16\3\17\3\17\3\17\3\17\7\17\u0097\n\17\f\17"+
-		"\16\17\u009a\13\17\3\17\3\17\3\20\3\20\3\20\3\20\3\20\3\20\3\20\5\20\u00a5"+
-		"\n\20\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\22\3\22\3\22"+
-		"\3\22\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23"+
-		"\3\23\5\23\u00c3\n\23\3\24\3\24\5\24\u00c7\n\24\3\25\3\25\5\25\u00cb\n"+
-		"\25\3\26\3\26\3\26\3\26\3\26\3\26\5\26\u00d3\n\26\3\27\3\27\3\27\3\30"+
-		"\3\30\3\30\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\5\31\u00e4\n\31"+
-		"\3\32\3\32\3\32\3\32\3\32\3\32\5\32\u00ec\n\32\3\33\3\33\3\33\3\33\3\33"+
-		"\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33"+
-		"\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\5\33\u010d"+
-		"\n\33\3\34\3\34\3\34\3\34\5\34\u0113\n\34\3\34\5\34\u0116\n\34\3\35\3"+
-		"\35\3\35\3\36\3\36\3\36\3\36\3\36\2\2\37\2\4\6\b\n\f\16\20\22\24\26\30"+
-		"\32\34\36 \"$&(*,.\60\62\64\668:\2\5\3\2\b\t\3\2#$\3\2%&\2\u0122\2<\3"+
-		"\2\2\2\4I\3\2\2\2\6K\3\2\2\2\bT\3\2\2\2\ni\3\2\2\2\fk\3\2\2\2\16r\3\2"+
-		"\2\2\20u\3\2\2\2\22z\3\2\2\2\24~\3\2\2\2\26\u0080\3\2\2\2\30\u0082\3\2"+
-		"\2\2\32\u0085\3\2\2\2\34\u0092\3\2\2\2\36\u009d\3\2\2\2 \u00a8\3\2\2\2"+
-		"\"\u00b0\3\2\2\2$\u00c2\3\2\2\2&\u00c4\3\2\2\2(\u00c8\3\2\2\2*\u00d2\3"+
-		"\2\2\2,\u00d4\3\2\2\2.\u00d7\3\2\2\2\60\u00e3\3\2\2\2\62\u00eb\3\2\2\2"+
-		"\64\u010c\3\2\2\2\66\u010e\3\2\2\28\u0117\3\2\2\2:\u011a\3\2\2\2<=\5\b"+
-		"\5\2=>\7\2\2\3>\3\3\2\2\2?J\5\"\22\2@J\5 \21\2AJ\5\36\20\2BJ\5\66\34\2"+
-		"CJ\5:\36\2DJ\5\30\r\2EG\5\6\4\2FH\7\f\2\2GF\3\2\2\2GH\3\2\2\2HJ\3\2\2"+
-		"\2I?\3\2\2\2I@\3\2\2\2IA\3\2\2\2IB\3\2\2\2IC\3\2\2\2ID\3\2\2\2IE\3\2\2"+
-		"\2J\5\3\2\2\2KL\7\36\2\2LM\7\f\2\2MN\5\b\5\2NO\7\26\2\2OP\7\36\2\2P\7"+
-		"\3\2\2\2QS\7\f\2\2RQ\3\2\2\2SV\3\2\2\2TR\3\2\2\2TU\3\2\2\2UW\3\2\2\2V"+
-		"T\3\2\2\2W`\5\4\3\2XZ\7\f\2\2YX\3\2\2\2Z[\3\2\2\2[Y\3\2\2\2[\\\3\2\2\2"+
-		"\\]\3\2\2\2]_\5\4\3\2^Y\3\2\2\2_b\3\2\2\2`^\3\2\2\2`a\3\2\2\2af\3\2\2"+
-		"\2b`\3\2\2\2ce\7\f\2\2dc\3\2\2\2eh\3\2\2\2fd\3\2\2\2fg\3\2\2\2g\t\3\2"+
-		"\2\2hf\3\2\2\2ij\7\n\2\2j\13\3\2\2\2kl\7\n\2\2l\r\3\2\2\2mn\7!\2\2ns\5"+
-		"\f\7\2op\7\"\2\2ps\5\f\7\2qs\5\f\7\2rm\3\2\2\2ro\3\2\2\2rq\3\2\2\2s\17"+
-		"\3\2\2\2tv\7#\2\2ut\3\2\2\2uv\3\2\2\2vw\3\2\2\2wx\5\16\b\2x\21\3\2\2\2"+
-		"y{\7#\2\2zy\3\2\2\2z{\3\2\2\2{|\3\2\2\2|}\t\2\2\2}\23\3\2\2\2~\177\t\3"+
-		"\2\2\177\25\3\2\2\2\u0080\u0081\t\4\2\2\u0081\27\3\2\2\2\u0082\u0083\5"+
-		"\n\6\2\u0083\u0084\5\32\16\2\u0084\31\3\2\2\2\u0085\u0087\7\3\2\2\u0086"+
-		"\u0088\5&\24\2\u0087\u0086\3\2\2\2\u0087\u0088\3\2\2\2\u0088\u008d\3\2"+
-		"\2\2\u0089\u008a\7\4\2\2\u008a\u008c\5&\24\2\u008b\u0089\3\2\2\2\u008c"+
-		"\u008f\3\2\2\2\u008d\u008b\3\2\2\2\u008d\u008e\3\2\2\2\u008e\u0090\3\2"+
-		"\2\2\u008f\u008d\3\2\2\2\u0090\u0091\7\5\2\2\u0091\33\3\2\2\2\u0092\u0093"+
-		"\7\3\2\2\u0093\u0098\5\16\b\2\u0094\u0095\7\4\2\2\u0095\u0097\5\16\b\2"+
-		"\u0096\u0094\3\2\2\2\u0097\u009a\3\2\2\2\u0098\u0096\3\2\2\2\u0098\u0099"+
-		"\3\2\2\2\u0099\u009b\3\2\2\2\u009a\u0098\3\2\2\2\u009b\u009c\7\5\2\2\u009c"+
-		"\35\3\2\2\2\u009d\u009e\7\27\2\2\u009e\u009f\5\60\31\2\u009f\u00a0\7\6"+
-		"\2\2\u00a0\u00a1\7\f\2\2\u00a1\u00a4\5\b\5\2\u00a2\u00a3\7\30\2\2\u00a3"+
-		"\u00a5\5\b\5\2\u00a4\u00a2\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5\u00a6\3\2"+
-		"\2\2\u00a6\u00a7\7\26\2\2\u00a7\37\3\2\2\2\u00a8\u00a9\7\33\2\2\u00a9"+
-		"\u00aa\5\n\6\2\u00aa\u00ab\5\34\17\2\u00ab\u00ac\7\f\2\2\u00ac\u00ad\5"+
-		"\b\5\2\u00ad\u00ae\7\26\2\2\u00ae\u00af\7\33\2\2\u00af!\3\2\2\2\u00b0"+
-		"\u00b1\7\32\2\2\u00b1\u00b2\5\60\31\2\u00b2\u00b3\7\6\2\2\u00b3\u00b4"+
-		"\7\f\2\2\u00b4\u00b5\5\b\5\2\u00b5\u00b6\7\26\2\2\u00b6#\3\2\2\2\u00b7"+
-		"\u00c3\7)\2\2\u00b8\u00b9\7\34\2\2\u00b9\u00ba\7\3\2\2\u00ba\u00bb\5&"+
-		"\24\2\u00bb\u00bc\7\4\2\2\u00bc\u00bd\5&\24\2\u00bd\u00be\7\4\2\2\u00be"+
-		"\u00bf\5&\24\2\u00bf\u00c0\7\5\2\2\u00c0\u00c3\3\2\2\2\u00c1\u00c3\7\7"+
-		"\2\2\u00c2\u00b7\3\2\2\2\u00c2\u00b8\3\2\2\2\u00c2\u00c1\3\2\2\2\u00c3"+
-		"%\3\2\2\2\u00c4\u00c6\5(\25\2\u00c5\u00c7\5.\30\2\u00c6\u00c5\3\2\2\2"+
-		"\u00c6\u00c7\3\2\2\2\u00c7\'\3\2\2\2\u00c8\u00ca\5*\26\2\u00c9\u00cb\5"+
-		",\27\2\u00ca\u00c9\3\2\2\2\u00ca\u00cb\3\2\2\2\u00cb)\3\2\2\2\u00cc\u00d3"+
-		"\5\20\t\2\u00cd\u00ce\7\3\2\2\u00ce\u00cf\5&\24\2\u00cf\u00d0\7\5\2\2"+
-		"\u00d0\u00d3\3\2\2\2\u00d1\u00d3\5\22\n\2\u00d2\u00cc\3\2\2\2\u00d2\u00cd"+
-		"\3\2\2\2\u00d2\u00d1\3\2\2\2\u00d3+\3\2\2\2\u00d4\u00d5\5\26\f\2\u00d5"+
-		"\u00d6\5(\25\2\u00d6-\3\2\2\2\u00d7\u00d8\5\24\13\2\u00d8\u00d9\5&\24"+
-		"\2\u00d9/\3\2\2\2\u00da\u00e4\5\62\32\2\u00db\u00dc\5\62\32\2\u00dc\u00dd"+
-		"\7\16\2\2\u00dd\u00de\5\60\31\2\u00de\u00e4\3\2\2\2\u00df\u00e0\5\62\32"+
-		"\2\u00e0\u00e1\7\17\2\2\u00e1\u00e2\5\60\31\2\u00e2\u00e4\3\2\2\2\u00e3"+
-		"\u00da\3\2\2\2\u00e3\u00db\3\2\2\2\u00e3\u00df\3\2\2\2\u00e4\61\3\2\2"+
-		"\2\u00e5\u00e6\5&\24\2\u00e6\u00e7\7(\2\2\u00e7\u00e8\5&\24\2\u00e8\u00ec"+
-		"\3\2\2\2\u00e9\u00ec\7\20\2\2\u00ea\u00ec\7\21\2\2\u00eb\u00e5\3\2\2\2"+
-		"\u00eb\u00e9\3\2\2\2\u00eb\u00ea\3\2\2\2\u00ec\63\3\2\2\2\u00ed\u00ee"+
-		"\7\22\2\2\u00ee\u00ef\7\3\2\2\u00ef\u00f0\5&\24\2\u00f0\u00f1\7\4\2\2"+
-		"\u00f1\u00f2\5&\24\2\u00f2\u00f3\7\4\2\2\u00f3\u00f4\5&\24\2\u00f4\u00f5"+
-		"\7\4\2\2\u00f5\u00f6\5&\24\2\u00f6\u00f7\7\5\2\2\u00f7\u010d\3\2\2\2\u00f8"+
-		"\u00f9\7\23\2\2\u00f9\u00fa\7\3\2\2\u00fa\u00fb\5&\24\2\u00fb\u00fc\7"+
-		"\4\2\2\u00fc\u00fd\5&\24\2\u00fd\u00fe\7\4\2\2\u00fe\u00ff\5&\24\2\u00ff"+
-		"\u0100\7\5\2\2\u0100\u010d\3\2\2\2\u0101\u0102\7\24\2\2\u0102\u0103\7"+
-		"\3\2\2\u0103\u0104\5&\24\2\u0104\u0105\7\4\2\2\u0105\u0106\5&\24\2\u0106"+
-		"\u0107\7\4\2\2\u0107\u0108\5&\24\2\u0108\u0109\7\4\2\2\u0109\u010a\5&"+
-		"\24\2\u010a\u010b\7\5\2\2\u010b\u010d\3\2\2\2\u010c\u00ed\3\2\2\2\u010c"+
-		"\u00f8\3\2\2\2\u010c\u0101\3\2\2\2\u010d\65\3\2\2\2\u010e\u010f\7\35\2"+
-		"\2\u010f\u0110\5\64\33\2\u0110\u0112\5$\23\2\u0111\u0113\7\37\2\2\u0112"+
-		"\u0111\3\2\2\2\u0112\u0113\3\2\2\2\u0113\u0115\3\2\2\2\u0114\u0116\58"+
-		"\35\2\u0115\u0114\3\2\2\2\u0115\u0116\3\2\2\2\u0116\67\3\2\2\2\u0117\u0118"+
-		"\7\'\2\2\u0118\u0119\5&\24\2\u01199\3\2\2\2\u011a\u011b\5\16\b\2\u011b"+
-		"\u011c\7 \2\2\u011c\u011d\5&\24\2\u011d;\3\2\2\2\30GIT[`fruz\u0087\u008d"+
-		"\u0098\u00a4\u00c2\u00c6\u00ca\u00d2\u00e3\u00eb\u010c\u0112\u0115";
+		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\3\2\3\2\3"+
+		"\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3J\n\3\3\3\5\3M\n\3\3\4\3\4\3\5\3"+
+		"\5\3\5\3\5\3\5\3\5\3\6\7\6X\n\6\f\6\16\6[\13\6\3\6\3\6\6\6_\n\6\r\6\16"+
+		"\6`\3\6\7\6d\n\6\f\6\16\6g\13\6\3\6\7\6j\n\6\f\6\16\6m\13\6\3\7\3\7\3"+
+		"\b\3\b\3\t\3\t\3\t\3\t\3\t\5\tx\n\t\3\n\5\n{\n\n\3\n\3\n\3\13\5\13\u0080"+
+		"\n\13\3\13\3\13\3\f\3\f\3\r\3\r\3\16\3\16\3\16\3\17\3\17\5\17\u008d\n"+
+		"\17\3\17\3\17\7\17\u0091\n\17\f\17\16\17\u0094\13\17\3\17\3\17\3\20\3"+
+		"\20\3\20\3\20\7\20\u009c\n\20\f\20\16\20\u009f\13\20\3\20\3\20\3\21\3"+
+		"\21\3\21\3\21\3\21\3\21\3\21\5\21\u00aa\n\21\3\21\3\21\3\22\3\22\3\22"+
+		"\3\22\3\22\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\24\3\24"+
+		"\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\5\24\u00c8\n\24\3\25\3\25"+
+		"\5\25\u00cc\n\25\3\26\3\26\5\26\u00d0\n\26\3\27\3\27\3\27\3\27\3\27\3"+
+		"\27\5\27\u00d8\n\27\3\30\3\30\3\30\3\31\3\31\3\31\3\32\3\32\3\32\3\32"+
+		"\3\32\3\32\3\32\3\32\3\32\5\32\u00e9\n\32\3\33\3\33\3\33\3\33\3\33\3\33"+
+		"\5\33\u00f1\n\33\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34"+
+		"\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34"+
+		"\3\34\3\34\3\34\3\34\3\34\3\34\5\34\u0112\n\34\3\35\3\35\3\35\3\35\5\35"+
+		"\u0118\n\35\3\35\5\35\u011b\n\35\3\36\3\36\3\36\3\37\3\37\3\37\3\37\3"+
+		"\37\2\2 \2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668"+
+		":<\2\5\3\2\t\n\3\2$%\3\2&\'\2\u0127\2>\3\2\2\2\4L\3\2\2\2\6N\3\2\2\2\b"+
+		"P\3\2\2\2\nY\3\2\2\2\fn\3\2\2\2\16p\3\2\2\2\20w\3\2\2\2\22z\3\2\2\2\24"+
+		"\177\3\2\2\2\26\u0083\3\2\2\2\30\u0085\3\2\2\2\32\u0087\3\2\2\2\34\u008a"+
+		"\3\2\2\2\36\u0097\3\2\2\2 \u00a2\3\2\2\2\"\u00ad\3\2\2\2$\u00b5\3\2\2"+
+		"\2&\u00c7\3\2\2\2(\u00c9\3\2\2\2*\u00cd\3\2\2\2,\u00d7\3\2\2\2.\u00d9"+
+		"\3\2\2\2\60\u00dc\3\2\2\2\62\u00e8\3\2\2\2\64\u00f0\3\2\2\2\66\u0111\3"+
+		"\2\2\28\u0113\3\2\2\2:\u011c\3\2\2\2<\u011f\3\2\2\2>?\5\n\6\2?@\7\2\2"+
+		"\3@\3\3\2\2\2AM\5$\23\2BM\5\"\22\2CM\5 \21\2DM\58\35\2EM\5<\37\2FM\5\32"+
+		"\16\2GI\5\b\5\2HJ\7\r\2\2IH\3\2\2\2IJ\3\2\2\2JM\3\2\2\2KM\5\6\4\2LA\3"+
+		"\2\2\2LB\3\2\2\2LC\3\2\2\2LD\3\2\2\2LE\3\2\2\2LF\3\2\2\2LG\3\2\2\2LK\3"+
+		"\2\2\2M\5\3\2\2\2NO\7\3\2\2O\7\3\2\2\2PQ\7\37\2\2QR\7\r\2\2RS\5\n\6\2"+
+		"ST\7\27\2\2TU\7\37\2\2U\t\3\2\2\2VX\7\r\2\2WV\3\2\2\2X[\3\2\2\2YW\3\2"+
+		"\2\2YZ\3\2\2\2Z\\\3\2\2\2[Y\3\2\2\2\\e\5\4\3\2]_\7\r\2\2^]\3\2\2\2_`\3"+
+		"\2\2\2`^\3\2\2\2`a\3\2\2\2ab\3\2\2\2bd\5\4\3\2c^\3\2\2\2dg\3\2\2\2ec\3"+
+		"\2\2\2ef\3\2\2\2fk\3\2\2\2ge\3\2\2\2hj\7\r\2\2ih\3\2\2\2jm\3\2\2\2ki\3"+
+		"\2\2\2kl\3\2\2\2l\13\3\2\2\2mk\3\2\2\2no\7\13\2\2o\r\3\2\2\2pq\7\13\2"+
+		"\2q\17\3\2\2\2rs\7\"\2\2sx\5\16\b\2tu\7#\2\2ux\5\16\b\2vx\5\16\b\2wr\3"+
+		"\2\2\2wt\3\2\2\2wv\3\2\2\2x\21\3\2\2\2y{\7$\2\2zy\3\2\2\2z{\3\2\2\2{|"+
+		"\3\2\2\2|}\5\20\t\2}\23\3\2\2\2~\u0080\7$\2\2\177~\3\2\2\2\177\u0080\3"+
+		"\2\2\2\u0080\u0081\3\2\2\2\u0081\u0082\t\2\2\2\u0082\25\3\2\2\2\u0083"+
+		"\u0084\t\3\2\2\u0084\27\3\2\2\2\u0085\u0086\t\4\2\2\u0086\31\3\2\2\2\u0087"+
+		"\u0088\5\f\7\2\u0088\u0089\5\34\17\2\u0089\33\3\2\2\2\u008a\u008c\7\4"+
+		"\2\2\u008b\u008d\5(\25\2\u008c\u008b\3\2\2\2\u008c\u008d\3\2\2\2\u008d"+
+		"\u0092\3\2\2\2\u008e\u008f\7\5\2\2\u008f\u0091\5(\25\2\u0090\u008e\3\2"+
+		"\2\2\u0091\u0094\3\2\2\2\u0092\u0090\3\2\2\2\u0092\u0093\3\2\2\2\u0093"+
+		"\u0095\3\2\2\2\u0094\u0092\3\2\2\2\u0095\u0096\7\6\2\2\u0096\35\3\2\2"+
+		"\2\u0097\u0098\7\4\2\2\u0098\u009d\5\20\t\2\u0099\u009a\7\5\2\2\u009a"+
+		"\u009c\5\20\t\2\u009b\u0099\3\2\2\2\u009c\u009f\3\2\2\2\u009d\u009b\3"+
+		"\2\2\2\u009d\u009e\3\2\2\2\u009e\u00a0\3\2\2\2\u009f\u009d\3\2\2\2\u00a0"+
+		"\u00a1\7\6\2\2\u00a1\37\3\2\2\2\u00a2\u00a3\7\30\2\2\u00a3\u00a4\5\62"+
+		"\32\2\u00a4\u00a5\7\7\2\2\u00a5\u00a6\7\r\2\2\u00a6\u00a9\5\n\6\2\u00a7"+
+		"\u00a8\7\31\2\2\u00a8\u00aa\5\n\6\2\u00a9\u00a7\3\2\2\2\u00a9\u00aa\3"+
+		"\2\2\2\u00aa\u00ab\3\2\2\2\u00ab\u00ac\7\27\2\2\u00ac!\3\2\2\2\u00ad\u00ae"+
+		"\7\34\2\2\u00ae\u00af\5\f\7\2\u00af\u00b0\5\36\20\2\u00b0\u00b1\7\r\2"+
+		"\2\u00b1\u00b2\5\n\6\2\u00b2\u00b3\7\27\2\2\u00b3\u00b4\7\34\2\2\u00b4"+
+		"#\3\2\2\2\u00b5\u00b6\7\33\2\2\u00b6\u00b7\5\62\32\2\u00b7\u00b8\7\7\2"+
+		"\2\u00b8\u00b9\7\r\2\2\u00b9\u00ba\5\n\6\2\u00ba\u00bb\7\27\2\2\u00bb"+
+		"%\3\2\2\2\u00bc\u00c8\7*\2\2\u00bd\u00be\7\35\2\2\u00be\u00bf\7\4\2\2"+
+		"\u00bf\u00c0\5(\25\2\u00c0\u00c1\7\5\2\2\u00c1\u00c2\5(\25\2\u00c2\u00c3"+
+		"\7\5\2\2\u00c3\u00c4\5(\25\2\u00c4\u00c5\7\6\2\2\u00c5\u00c8\3\2\2\2\u00c6"+
+		"\u00c8\7\b\2\2\u00c7\u00bc\3\2\2\2\u00c7\u00bd\3\2\2\2\u00c7\u00c6\3\2"+
+		"\2\2\u00c8\'\3\2\2\2\u00c9\u00cb\5*\26\2\u00ca\u00cc\5\60\31\2\u00cb\u00ca"+
+		"\3\2\2\2\u00cb\u00cc\3\2\2\2\u00cc)\3\2\2\2\u00cd\u00cf\5,\27\2\u00ce"+
+		"\u00d0\5.\30\2\u00cf\u00ce\3\2\2\2\u00cf\u00d0\3\2\2\2\u00d0+\3\2\2\2"+
+		"\u00d1\u00d8\5\22\n\2\u00d2\u00d3\7\4\2\2\u00d3\u00d4\5(\25\2\u00d4\u00d5"+
+		"\7\6\2\2\u00d5\u00d8\3\2\2\2\u00d6\u00d8\5\24\13\2\u00d7\u00d1\3\2\2\2"+
+		"\u00d7\u00d2\3\2\2\2\u00d7\u00d6\3\2\2\2\u00d8-\3\2\2\2\u00d9\u00da\5"+
+		"\30\r\2\u00da\u00db\5*\26\2\u00db/\3\2\2\2\u00dc\u00dd\5\26\f\2\u00dd"+
+		"\u00de\5(\25\2\u00de\61\3\2\2\2\u00df\u00e9\5\64\33\2\u00e0\u00e1\5\64"+
+		"\33\2\u00e1\u00e2\7\17\2\2\u00e2\u00e3\5\62\32\2\u00e3\u00e9\3\2\2\2\u00e4"+
+		"\u00e5\5\64\33\2\u00e5\u00e6\7\20\2\2\u00e6\u00e7\5\62\32\2\u00e7\u00e9"+
+		"\3\2\2\2\u00e8\u00df\3\2\2\2\u00e8\u00e0\3\2\2\2\u00e8\u00e4\3\2\2\2\u00e9"+
+		"\63\3\2\2\2\u00ea\u00eb\5(\25\2\u00eb\u00ec\7)\2\2\u00ec\u00ed\5(\25\2"+
+		"\u00ed\u00f1\3\2\2\2\u00ee\u00f1\7\21\2\2\u00ef\u00f1\7\22\2\2\u00f0\u00ea"+
+		"\3\2\2\2\u00f0\u00ee\3\2\2\2\u00f0\u00ef\3\2\2\2\u00f1\65\3\2\2\2\u00f2"+
+		"\u00f3\7\23\2\2\u00f3\u00f4\7\4\2\2\u00f4\u00f5\5(\25\2\u00f5\u00f6\7"+
+		"\5\2\2\u00f6\u00f7\5(\25\2\u00f7\u00f8\7\5\2\2\u00f8\u00f9\5(\25\2\u00f9"+
+		"\u00fa\7\5\2\2\u00fa\u00fb\5(\25\2\u00fb\u00fc\7\6\2\2\u00fc\u0112\3\2"+
+		"\2\2\u00fd\u00fe\7\24\2\2\u00fe\u00ff\7\4\2\2\u00ff\u0100\5(\25\2\u0100"+
+		"\u0101\7\5\2\2\u0101\u0102\5(\25\2\u0102\u0103\7\5\2\2\u0103\u0104\5("+
+		"\25\2\u0104\u0105\7\6\2\2\u0105\u0112\3\2\2\2\u0106\u0107\7\25\2\2\u0107"+
+		"\u0108\7\4\2\2\u0108\u0109\5(\25\2\u0109\u010a\7\5\2\2\u010a\u010b\5("+
+		"\25\2\u010b\u010c\7\5\2\2\u010c\u010d\5(\25\2\u010d\u010e\7\5\2\2\u010e"+
+		"\u010f\5(\25\2\u010f\u0110\7\6\2\2\u0110\u0112\3\2\2\2\u0111\u00f2\3\2"+
+		"\2\2\u0111\u00fd\3\2\2\2\u0111\u0106\3\2\2\2\u0112\67\3\2\2\2\u0113\u0114"+
+		"\7\36\2\2\u0114\u0115\5\66\34\2\u0115\u0117\5&\24\2\u0116\u0118\7 \2\2"+
+		"\u0117\u0116\3\2\2\2\u0117\u0118\3\2\2\2\u0118\u011a\3\2\2\2\u0119\u011b"+
+		"\5:\36\2\u011a\u0119\3\2\2\2\u011a\u011b\3\2\2\2\u011b9\3\2\2\2\u011c"+
+		"\u011d\7(\2\2\u011d\u011e\5(\25\2\u011e;\3\2\2\2\u011f\u0120\5\20\t\2"+
+		"\u0120\u0121\7!\2\2\u0121\u0122\5(\25\2\u0122=\3\2\2\2\30ILY`ekwz\177"+
+		"\u008c\u0092\u009d\u00a9\u00c7\u00cb\u00cf\u00d7\u00e8\u00f0\u0111\u0117"+
+		"\u011a";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -181,7 +181,20 @@ public class Executor {
                 executeInstructionChain(loopContext.instructionChain());
             }
         }
+        CanvasGrammarParser.DebugContext debugContext = ctx.debug();
+        if (debugContext != null) {
 
+            MemoryPool mem = memory;
+            while (true) {
+                mem.dump();
+                mem = mem.widerScopePool;
+                if (mem == null) {
+                    break;
+                }
+                System.out.println("console.log('<<< End of scope >>>')");
+
+            }
+        }
 
     }//todo - refractor
 }

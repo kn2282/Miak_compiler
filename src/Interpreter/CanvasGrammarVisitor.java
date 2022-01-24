@@ -1,4 +1,5 @@
-package Interpreter;// Generated from C:/Materia³y/MIAK/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
+// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
+package Interpreter;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -21,6 +22,12 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitInstruction(CanvasGrammarParser.InstructionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CanvasGrammarParser#debug}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDebug(CanvasGrammarParser.DebugContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#block}.
 	 * @param ctx the parse tree

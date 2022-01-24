@@ -1,4 +1,5 @@
-package Interpreter;// Generated from C:/Materia³y/MIAK/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
+// Generated from D:/AGH/Metody i Algorytmy Kompilacji/lab/Miak_compiler/src\CanvasGrammar.g4 by ANTLR 4.9.2
+package Interpreter;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -34,6 +35,18 @@ public class CanvasGrammarBaseListener implements CanvasGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitInstruction(CanvasGrammarParser.InstructionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDebug(CanvasGrammarParser.DebugContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDebug(CanvasGrammarParser.DebugContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
