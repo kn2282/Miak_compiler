@@ -109,3 +109,9 @@ Użycie operatora ^^ przed zmiennymi sygnalizuje operatorowi odwołanie do zmien
         double()
       
 Powyższy przykład demonstruje podwojenie zmiennej globalnej, z wnętrza bloku.
+
+## Pobieranie
+Kompletna wersja interpretera znajduje się w pliku import_version.zip .
+Jedyne wymagania to system windows, oraz interface języka java (maszyna wirtualna).
+skrypt uruchamiający znajduje się w import_version\compiler\jcc.bat .
+
