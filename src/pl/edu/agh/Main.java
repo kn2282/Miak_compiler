@@ -1,8 +1,8 @@
 package pl.edu.agh;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import Interpreter.CanvasGrammarParser;
-import Interpreter.CanvasGrammarLexer;
+import pl.edu.agh.Interpreter.CanvasGrammarParser;
+import pl.edu.agh.Interpreter.CanvasGrammarLexer;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
@@ -58,29 +58,32 @@ public class Main {
 
     public static class OutputWriter{
         static String totalOutput = "";
-        private static final String HTML_SHOW_CODE =
-                "<!DOCTYPE html>\n" +
-                "<html lang=\"en\">\n" +
-                "<head>\n" +
-                "    <meta charset=\"UTF-8\">\n" +
-                "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
-                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-                "    <title>Document</title>\n" +
-                "\n" +
-                "</head>\n" +
-                "<body>\n" +
-                "<canvas id=\"myCanvas\" width=\"1280\" height=\"720\" style=\"border:1px solid #000000;\">\n" +
-                "\n" +
-                "</canvas>\n" +
-                "</body>\n" +
-                "<script>\n" +
-                "        var c = document.getElementById(\"myCanvas\");\n" +
-                "        var ctx = c.getContext(\"2d\");\n" +
-                "</script>\n" +
-                "<script src=\"main.js\"></script>\n" +
-                "\n" +
-                "</html>\n";
+        private static final String HTML_SHOW_CODE;
 
+        static {
+            HTML_SHOW_CODE =
+                    "<!DOCTYPE html>\n" +
+                    "<html lang=\"en\">\n" +
+                    "<head>\n" +
+                    "    <meta charset=\"UTF-8\">\n" +
+                    "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                    "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                    "    <title>Document</title>\n" +
+                    "\n" +
+                    "</head>\n" +
+                    "<body>\n" +
+                    "<canvas id=\"myCanvas\" width=\"1280\" height=\"720\" style=\"border:1px solid #000000;\">\n" +
+                    "\n" +
+                    "</canvas>\n" +
+                    "</body>\n" +
+                    "<script>\n" +
+                    "        var c = document.getElementById(\"myCanvas\");\n" +
+                    "        var ctx = c.getContext(\"2d\");\n" +
+                    "</script>\n" +
+                    "<script src=\"main.js\"></script>\n" +
+                    "\n" +
+                    "</html>\n";
+        }
 
 
         public static void add(String str){

@@ -1,6 +1,6 @@
 package pl.edu.agh;
 
-import Interpreter.CanvasGrammarParser;
+import pl.edu.agh.Interpreter.CanvasGrammarParser;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -1,10 +1,7 @@
 package pl.edu.agh;
 
-import Interpreter.CanvasGrammarParser;
+import pl.edu.agh.Interpreter.CanvasGrammarParser;
 import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class Evaluator {
     private MemoryPool mem;

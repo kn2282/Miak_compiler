@@ -1,9 +1,7 @@
 package pl.edu.agh;
 
-import Interpreter.CanvasGrammarBaseListener;
-import Interpreter.CanvasGrammarParser;
-
-import java.util.ArrayList;
+import pl.edu.agh.Interpreter.CanvasGrammarBaseListener;
+import pl.edu.agh.Interpreter.CanvasGrammarParser;
 
 public class CanvasMainListener extends CanvasGrammarBaseListener {
     CanvasGrammarParser parser;

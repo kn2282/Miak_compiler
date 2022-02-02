@@ -1,10 +1,7 @@
 package pl.edu.agh;
 
-import Interpreter.CanvasGrammarParser;
+import pl.edu.agh.Interpreter.CanvasGrammarParser;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
