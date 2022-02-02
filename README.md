@@ -27,8 +27,9 @@ Opisy flag:
 Interpreter spróbuje przetłumaczyć zawartość pliku wejściowego i wynik zapisać do pliku output.js lub innego podanego. 
 Wyświetlanie pliku polega na zapisaniu kodu (w plikach index.html oraz main.js) w folderze show, a następnie wyświetlenie kodu strony w przeglądarce (w niektórych systemach otwarcie strony nie działa wtedy trzeba otworzyć ją ręcznie).
 Wynikowy kod odwołuje się do kontekstu canvas jako ctx.
-Objaśnienie znaków w dokumentacji
-Nawiasy kwadratowe oznaczają opcjonalność, zawartość nawiasów ostrych jest kontekstowa, np. <ciąg instrukcji> oznacza jedną lub więcej instrukcji np. rysowania, definiowania pętli lub operacji na zmiennych.
+
+### Objaśnienie znaków w dokumentacji
+Nawiasy kwadratowe \[] oznaczają opcjonalność, zawartość nawiasów ostrych jest kontekstowa, np. <ciąg instrukcji> oznacza jedną lub więcej instrukcji np. rysowania, definiowania pętli lub operacji na zmiennych.
 
 ## Komentarze
 Znaki w komentarzu będą ignorowane. Przykład:
