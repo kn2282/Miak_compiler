@@ -23,7 +23,7 @@ block:BLOCK ENDL
 instructionChain
 END BLOCK;
 
-instructionChain  : ENDL* instr+=instruction (ENDL+ instr+=instruction )* ENDL*;
+instructionChain  : (ENDL | COMMENT)* instr+=instruction ((ENDL | COMMENT)+ instr+=instruction )* (ENDL | COMMENT)*;
 
 fragment
 NonZeroDigit : [1-9];
@@ -77,7 +77,6 @@ ENDL:  '\r'? '\n'
 ;
 
 COMMENT: '//' (' '..'~' | '\t')* ENDL
--> skip
 ;
 
 AND: ('AND' | '&');

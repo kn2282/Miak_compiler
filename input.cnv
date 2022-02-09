@@ -1,14 +1,12 @@
-ret=1.0
-x=5
-
-DEF foo(x)
-    IF x > 1:
-        foo(x-1)
-        DEBUG
-        ^^ret = ^^ret * x * 0.5 * 2.0
+r = 100
+b = 100
+g = 100
+DEF foo(x, y, l, w, depth)
+    DRAW RECTANGLE(x, y, l, w) RGB(r + 100, g, b) // sdhxgfncfv
+    IF depth > 0 :
+        foo(x+l/4, y+w/4, l/2, w/2, depth-1)
     END
 END DEF
-x=75
-foo(5)
-DRAW RECTANGLE(ret, ret, ret, ret) RED
+
+foo(200, 200, 400, 400, 6)
 

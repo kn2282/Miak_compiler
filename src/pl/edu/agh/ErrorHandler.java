@@ -5,16 +5,15 @@ import org.antlr.v4.runtime.Token;
 public class ErrorHandler {
     private static void error(String string){
         Main.OutputWriter.add("console.error(\""+string+"\")");
-        //System.out.println("console.error(\""+string+"\")");
+        System.err.println("Error: "+string);
     }
-    private static void  criticalError(String string){
+    public static void  criticalError(String string){
         error(string);
-        System.out.println("Error: "+string);
-        System.out.println("Stopping execution...");
+        System.err.println("Stopping execution...");
         System.exit(1);
 
     }
-    public static void arithmeticError(Token where) {
+    public static void zeroDivisionError(Token where) {
         criticalError("Error at " + where.getLine() + ":" + where.getCharPositionInLine() + " - arithmetic/division by 0");
     }
 
@@ -25,12 +24,12 @@ public class ErrorHandler {
     }
 
     public static void functionNotDefined(Token where, String text) {
-        error("Error at " + where + " - function " + text + " is not defined");
+        error("Error at " + where.getLine() + " - function " + text + " is not defined");
 
     }
 
     public static void stackOverflow(Token where) {
-        error("Error at " + where.getLine() + ":" + where.getCharPositionInLine() + " - stack overflow");
+        criticalError("Error at " + where.getLine() + ":" + where.getCharPositionInLine() + " - stack overflow");
 
     }
 

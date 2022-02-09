@@ -27,9 +27,8 @@ public class Evaluator {
             case "BracketExpressionContext":
                 return evalBracket((CanvasGrammarParser.BracketExpressionContext) ctx);
             default:
-                System.out.println("//evaluation error");
-                return new ValueContainer(0);
-
+                ErrorHandler.criticalError("evaluation error: bad shape of expression");
+                throw new IllegalStateException();
         }
     }
 
@@ -62,13 +61,12 @@ public class Evaluator {
                 case "-":
                     return expr1.minus(right);
                 default:
-                    throw new ValueException("incorrect operator");
+                    ErrorHandler.criticalError("incorrect operator");
             }
         } catch (ArithmeticException e) {
-            ErrorHandler.arithmeticError(expr2.start);
-            return new ValueContainer(0);
+            ErrorHandler.zeroDivisionError(expr2.start);
         }
-
+        throw new IllegalStateException();
     }
 
     ValueContainer calc(ValueContainer expr1, CanvasGrammarParser.PriorityExpressionSuffixContext expr2) {
@@ -83,7 +81,7 @@ public class Evaluator {
                     throw new ValueException("incorrect operator");
             }
         } catch (ArithmeticException e) {
-            ErrorHandler.arithmeticError(expr2.start);
+            ErrorHandler.zeroDivisionError(expr2.start);
             return new ValueContainer(0);
         }
 
