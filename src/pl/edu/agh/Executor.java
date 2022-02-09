@@ -131,10 +131,24 @@ public class Executor {
                     instruction += "ctx." + fillMode + "();\n";
             }
             //definiowanie koloru
+            String finalColor;
             CanvasGrammarParser.ColorContext color = d.color();
+            if(d.color().getClass().getSimpleName().equals("ColorRGBContext")){
+                CanvasGrammarParser.ColorRGBContext rgb = (CanvasGrammarParser.ColorRGBContext) color;
+                finalColor="rgb(";
+                for (int i = 0; i < 3; i++) {
+                    finalColor+=evaluator.eval(rgb.expression(i)).getValue().intValue();
+                    if(i==2)
+                        finalColor+=")";
+                    else finalColor+=",";
+                }
+
+            }else{
+                finalColor = color.getText();
+            }
             
             if (d.rotation() == null) {
-                Main.OutputWriter.add("ctx." + fillMode + "Style = '" + color.getText() + "'");
+                Main.OutputWriter.add("ctx." + fillMode + "Style = '" + finalColor + "'");
                 Main.OutputWriter.add(instruction);
             } else {
                 Main.OutputWriter.add("ctx.save()");

@@ -4,10 +4,18 @@ import org.antlr.v4.runtime.Token;
 
 public class ErrorHandler {
     private static void error(String string){
-        System.out.println("console.error(\""+string+"\")");
+        Main.OutputWriter.add("console.error(\""+string+"\")");
+        //System.out.println("console.error(\""+string+"\")");
+    }
+    private static void  criticalError(String string){
+        error(string);
+        System.out.println("Error: "+string);
+        System.out.println("Stopping execution...");
+        System.exit(1);
+
     }
     public static void arithmeticError(Token where) {
-        error("Error at " + where.getLine() + ":" + where.getCharPositionInLine() + " - arithmetic/division by 0");
+        criticalError("Error at " + where.getLine() + ":" + where.getCharPositionInLine() + " - arithmetic/division by 0");
     }
 
 
@@ -27,6 +35,6 @@ public class ErrorHandler {
     }
 
     public static void argumentMismatch(Token where, String text) {
-        error("Error:Arguments mismatch in " + where.getLine() + ":" + where.getCharPositionInLine() + " in function "+text);
+        criticalError("Error:Arguments mismatch in " + where.getLine() + ":" + where.getCharPositionInLine() + " in function "+text);
     }
 }
