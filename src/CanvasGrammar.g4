@@ -73,6 +73,10 @@ SPACE: ' '+
 -> skip
 ;
 
+TAB: '\t'+
+-> skip
+;
+
 ENDL:  '\r'? '\n'
 ;
 
@@ -143,11 +147,11 @@ color  :
 	;
 
 expression:
- priorityExpression expressionSuffix?
+ priorityExpression (nonPriorityArithmeticOperator priorityExpression)*
  ;
 
 priorityExpression:
- halfExpression priorityExpressionSuffix?
+ halfExpression (priorityArithmeticOperator halfExpression)*
 ;
 
 halfExpression:
@@ -155,15 +159,6 @@ halfExpression:
  | '(' expression ')' #BracketExpression
  | constant #ConstantExpression
  ;
-
-priorityExpressionSuffix:
- priorityArithmeticOperator priorityExpression
-;
-
-
-expressionSuffix:
-nonPriorityArithmeticOperator expression
-;
 
 bool :
     boolSrc

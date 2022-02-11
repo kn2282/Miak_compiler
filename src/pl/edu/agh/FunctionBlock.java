@@ -28,8 +28,8 @@ public class FunctionBlock {
             }
 
 
-        Evaluator evaluator= new Evaluator(memPool,funcPool);
-        Executor executor = new Executor(memPool,funcPool,evaluator);   //todo - nowa instancja executor mo¿e nie byæ potrzebna
+        Evaluator evaluator= new Evaluator(memPool,funcPool.copy());
+        Executor executor = new Executor(memPool,funcPool.copy(),evaluator);   //todo - nowa instancja executor mo¿e nie byæ potrzebna
         executor.executeInstructionChain(this.ctx);
 
         return 0;

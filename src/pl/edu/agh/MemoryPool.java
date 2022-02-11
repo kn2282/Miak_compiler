@@ -65,7 +65,8 @@ public class MemoryPool {
     }
     public void dump(){
         memory.forEach((k,v)->{
-            System.out.println("console.log('"+k+":"+v.getValue().doubleValue()+"')");
+            System.out.println(k+":"+v.getValue().doubleValue());
+            Main.OutputWriter.add("console.log('"+k+":"+v.getValue().doubleValue()+"')");
         });
     }
 }

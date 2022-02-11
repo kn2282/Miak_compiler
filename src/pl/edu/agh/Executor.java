@@ -165,7 +165,7 @@ public class Executor {
         CanvasGrammarParser.BlockContext b = ctx.block();
         if (b != null) {
             MemoryPool lesserMem = new MemoryPool(this.memory);
-            Executor lesserExecutor = new Executor(lesserMem, this.functionPool, new Evaluator(lesserMem, functionPool));
+            Executor lesserExecutor = new Executor(lesserMem, this.functionPool.copy(), new Evaluator(lesserMem, functionPool.copy()));
             lesserExecutor.executeInstructionChain(b.instructionChain());
         }
 
@@ -202,8 +202,8 @@ public class Executor {
                 if (mem == null) {
                     break;
                 }
-                System.out.println("console.log('<<< End of scope >>>')");
-
+                System.out.println("<<< End of scope >>>");
+                Main.OutputWriter.add("console.log('<<< End of scope >>>')");
             }
         }
 

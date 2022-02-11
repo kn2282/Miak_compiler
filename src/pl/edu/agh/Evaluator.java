@@ -33,58 +33,51 @@ public class Evaluator {
     }
 
     ValueContainer eval(CanvasGrammarParser.ExpressionContext ctx)  {
-        if (ctx.expressionSuffix() == null) {  //czy wyra¿enie jest jednostronne?
-            return eval(ctx.priorityExpression());
-        } else {
-            return calc(eval(ctx.priorityExpression()), ctx.expressionSuffix());
+        ValueContainer result = eval(ctx.priorityExpression().get(0));
+        for (int i = 1; i < ctx.priorityExpression().size(); i++) {
+            try {
+                switch (ctx.nonPriorityArithmeticOperator(i - 1).getText()) {
+                    case "+":
+                        result = result.add(eval(ctx.priorityExpression(i)));
+                        break;
+                    case "-":
+                        result = result.minus(eval(ctx.priorityExpression(i)));
+                        break;
+                    default:
+                        ErrorHandler.criticalError("incorrect operator");
+                }
+            } catch (ArithmeticException e) {
+                ErrorHandler.zeroDivisionError(ctx.priorityExpression(i).start);
+            }
         }
+        return result;
     }
 
     ValueContainer eval(CanvasGrammarParser.PriorityExpressionContext ctx) {
 
-        if (ctx.priorityExpressionSuffix() == null) {  //czy wyra¿enie jest jednostronne?
-
-            return halfEval(ctx.halfExpression());
-            //return halfEval(ctx.halfExpression());
-        } else {
-            return calc(halfEval(ctx.halfExpression()), ctx.priorityExpressionSuffix());
-        }
-    }
-
-    ValueContainer calc(ValueContainer expr1, CanvasGrammarParser.ExpressionSuffixContext expr2) {
-        ValueContainer right = eval(expr2.expression());
-
-        try {
-            switch (expr2.nonPriorityArithmeticOperator().getText()) {
-                case "+":
-                    return expr1.add(right);
-                case "-":
-                    return expr1.minus(right);
-                default:
-                    ErrorHandler.criticalError("incorrect operator");
+        ValueContainer result = halfEval(ctx.halfExpression(0));
+        for (int i = 1; i < ctx.halfExpression().size(); i++) {
+            try {
+                ValueContainer right = halfEval(ctx.halfExpression(i));
+                switch (ctx.priorityArithmeticOperator(i - 1).getText()) {
+                    case "*":
+                        result = result.add(right);
+                        break;
+                    case "/":
+                        if (right.getValue().floatValue() == 0.0)
+                            throw new  ArithmeticException("zero division");
+                        result = result.divide(right);
+                        break;
+                    default:
+                        ErrorHandler.criticalError("incorrect operator");
+                }
+            } catch (ArithmeticException e) {
+                ErrorHandler.zeroDivisionError(ctx.halfExpression(i).start);
+            } catch (ValueException e){
+                ErrorHandler.criticalError(e.toString());
             }
-        } catch (ArithmeticException e) {
-            ErrorHandler.zeroDivisionError(expr2.start);
         }
-        throw new IllegalStateException();
-    }
-
-    ValueContainer calc(ValueContainer expr1, CanvasGrammarParser.PriorityExpressionSuffixContext expr2) {
-        ValueContainer right = eval(expr2.priorityExpression());
-        try {
-            switch (expr2.priorityArithmeticOperator().getText()) {
-                case "*":
-                    return expr1.mul(right);
-                case "/":
-                    return expr1.divide(right);
-                default:
-                    throw new ValueException("incorrect operator");
-            }
-        } catch (ArithmeticException e) {
-            ErrorHandler.zeroDivisionError(expr2.start);
-            return new ValueContainer(0);
-        }
-
+        return result;
     }
 
     ValueContainer evalBracket(CanvasGrammarParser.BracketExpressionContext ctx) {

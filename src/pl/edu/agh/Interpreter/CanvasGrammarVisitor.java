@@ -187,18 +187,6 @@ public interface CanvasGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitConstantExpression(CanvasGrammarParser.ConstantExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#priorityExpressionSuffix}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPriorityExpressionSuffix(CanvasGrammarParser.PriorityExpressionSuffixContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link CanvasGrammarParser#expressionSuffix}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExpressionSuffix(CanvasGrammarParser.ExpressionSuffixContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link CanvasGrammarParser#bool}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

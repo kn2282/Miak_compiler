@@ -305,26 +305,6 @@ public interface CanvasGrammarListener extends ParseTreeListener {
 	 */
 	void exitConstantExpression(CanvasGrammarParser.ConstantExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#priorityExpressionSuffix}.
-	 * @param ctx the parse tree
-	 */
-	void enterPriorityExpressionSuffix(CanvasGrammarParser.PriorityExpressionSuffixContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#priorityExpressionSuffix}.
-	 * @param ctx the parse tree
-	 */
-	void exitPriorityExpressionSuffix(CanvasGrammarParser.PriorityExpressionSuffixContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CanvasGrammarParser#expressionSuffix}.
-	 * @param ctx the parse tree
-	 */
-	void enterExpressionSuffix(CanvasGrammarParser.ExpressionSuffixContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CanvasGrammarParser#expressionSuffix}.
-	 * @param ctx the parse tree
-	 */
-	void exitExpressionSuffix(CanvasGrammarParser.ExpressionSuffixContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link CanvasGrammarParser#bool}.
 	 * @param ctx the parse tree
 	 */

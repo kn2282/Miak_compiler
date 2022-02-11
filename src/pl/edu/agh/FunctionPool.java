@@ -30,4 +30,10 @@ public class FunctionPool {
             throw new NoSuchElementException();
         return pool.get(name).run(args);
     }
+
+    public FunctionPool copy(){
+        FunctionPool functionPoolCopy = new FunctionPool();
+        functionPoolCopy.pool = (HashMap<String, FunctionBlock>) this.pool.clone();
+        return functionPoolCopy;
+    }
 }
